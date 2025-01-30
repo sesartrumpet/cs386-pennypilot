@@ -1,0 +1,11 @@
+import React, { useEffect, useState } from 'react';
+
+function Home() {
+    return (
+        <div>
+            <h1>Hello world!</h1>
+        </div>
+    );
+}
+
+export default Home;
