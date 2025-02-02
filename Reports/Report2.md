@@ -4,8 +4,8 @@
 **Group:** 8  
 **Date:** 02/01/2025  
 **Location:** Cline Library  
-**Present participants:** Victor, Sesar, Elijah  
-**Missing participants:** Vikram, Kyle, Manjot
+**Present participants:** Victor, Sesar(Product Owner), Elijah  
+**Missing participants:** Vikram(Archivist), Kyle(Scrum Mastor), Manjot
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)
 
 ---
@@ -24,6 +24,14 @@ Elijah:
 - Completed interviews for Deliverable 1
 - Created base code for the project
 - Created step-by-step README.md guide
+
+Victor:
+- Completed 3 interviews for Delivarable 1
+- Completed initial value proposition for Deliverable 1. Commit 'd29f80c'
+- Became reacquianted with git and github
+
+Vikram:
+- Completed the final value proposition 
 
 ## 2. Retrospective
 In your weekly meeting, you should spend a few minutes discussing how the group is functioning. What aspects of the group dynamics contribute to the success of the project? In addition, raise any issues—best done directly but with humor and kindness—that you believe are interfering with the effectiveness of the group and your ability to complete the project on time.
@@ -56,3 +64,16 @@ Sesar:
 Elijah:
 - Work on backend
 - Help with API Endpoints where needed
+
+Victor:
+- Work with Elijah on backend for login page
+
+Kyle:
+- 
+
+Manjot:
+- 
+
+Vikram:
+-
+
