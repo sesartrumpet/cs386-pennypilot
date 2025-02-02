@@ -5,7 +5,7 @@
 **Date:** 02/01/2025  
 **Location:** Cline Library  
 **Present participants:** Victor, Sesar, Elijah  
-**Missing participants:** Vikran, Kyle, Manjot
+**Missing participants:** Vikram, Kyle, Manjot
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)
 
 ---
@@ -13,7 +13,12 @@
 ## 1. Activity Summary
 Describe what each individual has contributed to the project in the last week.  Provide some supporting documentation (e.g., an issue number, commit id, corresponding meeting date, etc.).  If someone didn't do anything, please be honest and explain why. Activity that advances your project toward completion is expected every week and should be reflected in your Git repository!
 
----
+Sesar: 
+- Completed interviews for Deliverable 1
+- Created GitHub repository.
+
+Manjot:
+- Created interview questions for Deliverable 1
 
 ## 2. Retrospective
 In your weekly meeting, you should spend a few minutes discussing how the group is functioning. What aspects of the group dynamics contribute to the success of the project? In addition, raise any issues—best done directly but with humor and kindness—that you believe are interfering with the effectiveness of the group and your ability to complete the project on time.
@@ -32,3 +37,7 @@ The retrospective should be an open and safe space for the team to reflect on an
 
 ## 3. Next steps
 Think about what needs to be done and assign tasks. Update your activity management system with new tasks, actual hours spent in the activities, and corresponding GitHub issues.  Summarize these tasks here.
+
+Sesar:
+- Create login page (frontend) for PennyPilot
+- Review web essentials (HTML, CSS, and JS)
