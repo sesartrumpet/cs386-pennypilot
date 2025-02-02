@@ -9,9 +9,9 @@ by expense tracking using an easy to understand webpage (value/solution).
 # Interview Summary
 
 ## Interview 1:
-**Who:** Emilie (age 16)\  
-**When:** February 1, 2025\  
-**Customer Segment:** Young adults, students, interested in managing personal finances\
+**Who:** Emilie (age 16)   
+**When:** February 1, 2025    
+**Customer Segment:** Young adults, students, interested in managing personal finances   
 **Key Insights:**  
  - Emilie does not have a structured way of tracking her finances and uses a calculator for basic calculations.
  - She finds it diffifult to manage her finances without a designated platform or tool.
@@ -26,9 +26,9 @@ by expense tracking using an easy to understand webpage (value/solution).
  - Don't care: Financial reports or detailed financial summaries
 
 ## Interview 2:              
-**Who:** Ezequiel (age 20)\
-**When:** February 1, 2025\
-**Customer Segment:** Young adults, students interested in managing personal finances\
+**Who:** Ezequiel (age 20)   
+**When:** February 1, 2025   
+**Customer Segment:** Young adults, students interested in managing personal finances   
 **Key Insights:**   
  - Ezequiel does not currently have a structered process for tracking his finances and feels his current method lacks useful features.
  - He recognizes the need for tools like receipt tracking and setting spending limits. 
