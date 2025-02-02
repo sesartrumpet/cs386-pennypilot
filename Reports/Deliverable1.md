@@ -1,10 +1,10 @@
 # Introduction
-Our project aims to tackle the financial literacy gap in the younger generation. We plan to do this through a well made website that efficiently uses html, css, and JavaScript. We intend to provide language to engage younger users. Utilizing premade templates that the user can easily access and apply to their financial situation. 
+Our project aims to tackle the financial literacy gap in the younger generation. We plan to do this through a well made website that efficiently uses HTML, CSS, and JavaScript. We intend to provide language to engage younger users. Utilizing premade templates that the user can easily access and apply to their financial situation. 
 
 # Initial Value Proposition
-We help the younger generatio that are interested in attending 
+We help the younger generation that are interested in attending 
 Northern Arizona University (age 13-28) (audience) gain financial literacy (problem)
-by expense tracking using an easy to understand webpage (value/solution).
+by tracking their expenses using an easy to understand webpage (value/solution).
 
 # Interview Summary
 
@@ -14,7 +14,7 @@ by expense tracking using an easy to understand webpage (value/solution).
 **Customer Segment:** Young adults, students, interested in managing personal finances   
 **Key Insights:**  
  - Emilie does not have a structured way of tracking her finances and uses a calculator for basic calculations.
- - She finds it diffifult to manage her finances without a designated platform or tool.
+ - She finds it difficult to manage her finances without a designated platform or tool.
  - Coaching features would be useful if she were to want to better manage finances in the future.
  - A webpage that tracks spending and helps improve savings would be highly beneficial.  
 **Representative Quotes:**  
@@ -30,17 +30,19 @@ by expense tracking using an easy to understand webpage (value/solution).
 **When:** February 1, 2025   
 **Customer Segment:** Young adults, students interested in managing personal finances   
 **Key Insights:**   
- - Ezequiel does not currently have a structered process for tracking his finances and feels his current method lacks useful features.
+ - Ezequiel does not currently have a structured process for tracking his finances and feels his current method lacks useful features.
  - He recognizes the need for tools like receipt tracking and setting spending limits. 
  - Financial reports are not a priority.
  - Privacy concerns are a significant barrier to using new finance tracking tools.  
 **Representative Quotes:**
- - "I could definitley start keeping more receipts, that's for sure."
+ - "I could definitely start keeping more receipts, that's for sure."
  - "I think privacy is probably my biggest concern."   
 **Assessment:**   
  - Must have: Spending limit and receipt tracking features.
  - Nice to have: Integration with other financial tools.
  - Don't care: Financial report generation.
 
-
+# Final Value Proposition
+We will help prospective Northern Arizona University attendees (age 13-28) gain financial
+literacy by tracking their expenses using an easy-to-understand webpage/interface.
 
