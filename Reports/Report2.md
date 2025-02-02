@@ -20,6 +20,11 @@ Sesar:
 Manjot:
 - Created interview questions for Deliverable 1
 
+Elijah:
+- Completed interviews for Deliverable 1
+- Created base code for the project
+- Created step-by-step README.md guide
+
 ## 2. Retrospective
 In your weekly meeting, you should spend a few minutes discussing how the group is functioning. What aspects of the group dynamics contribute to the success of the project? In addition, raise any issues—best done directly but with humor and kindness—that you believe are interfering with the effectiveness of the group and your ability to complete the project on time.
 
@@ -32,6 +37,12 @@ The project retrospective is an opportunity for the group and each individual to
 5. What we should try next time.
 
 The retrospective should be an open and safe space for the team to reflect on and discuss what works well (and what doesn't!) so you can improve. Don't make it personal, and don't take it personally. Be open to criticism and offer constructive and polite critiques. Focus on how to improve the quality of your team and the product you are developing.
+
+1. Appreciations: Flexibility from everyone working with new tech stacks they're not familiar with
+2. Successes: Hit our goals for this week, everyone seems to have their environment set up
+3. Failures: Maybe meeting time wasn't clear? 50% attendance
+4. Barriers: Unfamiliarity with the tech stack
+5. What we should try next time: Make sure everyone is on the same page about meeting time/date
 
 ---
 
