@@ -52,3 +52,7 @@ Think about what needs to be done and assign tasks. Update your activity managem
 Sesar:
 - Create login page (frontend) for PennyPilot
 - Review web essentials ('HTML', 'CSS', and 'JS')
+
+Elijah:
+- Work on backend
+- Help with API Endpoints where needed
