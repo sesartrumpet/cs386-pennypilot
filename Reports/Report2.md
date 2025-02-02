@@ -15,7 +15,7 @@ Describe what each individual has contributed to the project in the last week.  
 
 Sesar: 
 - Completed interviews for Deliverable 1
-- Created GitHub repository.
+- Created GitHub repository. Commit '2c5decd'
 
 Manjot:
 - Created interview questions for Deliverable 1
@@ -40,4 +40,4 @@ Think about what needs to be done and assign tasks. Update your activity managem
 
 Sesar:
 - Create login page (frontend) for PennyPilot
-- Review web essentials (HTML, CSS, and JS)
+- Review web essentials ('HTML', 'CSS', and 'JS')
