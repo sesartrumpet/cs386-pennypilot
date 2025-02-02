@@ -20,6 +20,11 @@ Sesar:
 Manjot:
 - Created interview questions for Deliverable 1
 
+Elijah:
+- Completed interviews for Deliverable 1
+- Created base code for the project
+- Created step-by-step README.md guide
+
 ## 2. Retrospective
 In your weekly meeting, you should spend a few minutes discussing how the group is functioning. What aspects of the group dynamics contribute to the success of the project? In addition, raise any issues—best done directly but with humor and kindness—that you believe are interfering with the effectiveness of the group and your ability to complete the project on time.
 
@@ -47,3 +52,7 @@ Think about what needs to be done and assign tasks. Update your activity managem
 Sesar:
 - Create login page (frontend) for PennyPilot
 - Review web essentials (HTML, CSS, and JS)
+
+Elijah:
+- Work on backend
+- Help with API Endpoints where needed
