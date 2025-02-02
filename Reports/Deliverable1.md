@@ -42,5 +42,21 @@ by expense tracking using an easy to understand webpage (value/solution).
  - Nice to have: Integration with other financial tools.
  - Don't care: Financial report generation.
 
+ ## Interview 3:
+ **Who:** Leodan (age 20)\
+ **When:** February 1, 2025\
+ **Customer Segment:** Young adults, students interested in managing personal finances\
+ **Key Insights:**\
+ - Leodan uses an app to track his finances through his bank
+ - However, the app does not sort his transactions by type (Ex: Entertainment, Shopping, Food)
+ - Would like to be notified when his spending habits are not good
+**Representative Quotes:**\
+ - "I think it would be nice to be notified if I am spending too much"
+ - "Being able to sort by category to see where all my money is going would be cool"
+**Assessment:** \
+ - Must have: Notification if spending is too high
+ - Nice to have: Sorting transactions by category
+ - Don't care: Financial reports
+
 
 
