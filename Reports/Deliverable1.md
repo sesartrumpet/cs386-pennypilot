@@ -58,6 +58,40 @@ by tracking their expenses using an easy to understand webpage (value/solution).
  - Nice to have: Sorting transactions by category
  - Don't care: Financial reports
 
+ ## Interview 4:
+ **Who:** Daniel (age 21)\
+ **When:** February 1, 2025\
+ **Customer Segment:** Young adults, students interested in managing personal finances\
+ **Key Insights:**
+ - Daniel likes the control of handling his finances on his own
+ - Daniel manages his finances mainly through his banking app, and feels it's inconvenient
+ - Daniel doesn't like managing his own taxes
+
+**Representative Quotes:**
+ - "I wish it would just tell me how many taxes I owe! An automatic tax tracking system would be great."
+ - "Personally, I would always like to do it (budgeting) manually. I don’t like the convenience of it (an automatic tracker) because I’m afraid it will f*** up.
+
+**Assessment:**
+ - Daniel is skeptical of the helpfulness of a finance tracker or something that could aid him with budgeting
+ - However, he would be willing to try it
+ - He wishes he could do everything himself
+
+
+ ## Interview 5:
+ **Who:** Makayla (age 23)\
+ **When:** February 1, 2025\
+ **Customer Segment:** Young adults, students interested in managing personal finances\
+ **Key Insights:**
+ - Makayla mostly uses a whiteboard to track her finances
+ - However, has trouble when she forgets to update things on her whiteboard, or is away from home
+ - Makayla is fully open to a useful app that could make budgeting easier
+**Representative Quotes:**
+ - "I would love an app that plugs in bills and allow me to allocate funds towards things. I would use the f*** out of that."
+ - "Keeping track of income is difficult. To even keep up with my pay stubs is hard because of the constant “Face-ID, re-log in, Face-ID, re-log in.” makes it very inconvenient. It makes me want to cry."
+**Assessment:**
+ - Makayla could benefit from time-saving technology that helps track finances
+ - She doesn't like how over-complicated the process is, which is why she opts to do it on a whiteboard.
+ - However, this is a double-edged sword, because you don't have the convenience of carrying a whiteboard everywhere.
 
 
 # Final Value Proposition
