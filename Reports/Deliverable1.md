@@ -44,6 +44,7 @@ by tracking their expenses using an easy to understand webpage (value/solution).
 
  ## Interview 3:
  **Who:** Leodan (age 20)
+ **Conducted By:** Sesar
  **When:** February 1, 2025
  **Customer Segment:** Young adults, students interested in managing personal finances
  **Key Insights:**
