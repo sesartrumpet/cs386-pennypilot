@@ -197,6 +197,6 @@ by tracking their expenses using an easy to understand webpage (value/solution).
 
 # Final Value Proposition
 We will help prospective Northern Arizona University attendees (age 13-28) gain financial
-literacy by tracking their expenses using an easy-to-understand webpage/interface.
+literacy by tracking their expenses using an easy-to-understand and editable webpage.
 
 
