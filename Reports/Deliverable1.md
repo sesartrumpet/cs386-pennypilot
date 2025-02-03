@@ -98,6 +98,76 @@ by tracking their expenses using an easy to understand webpage (value/solution).
  - She doesn't like how over-complicated the process is, which is why she opts to do it on a whiteboard.
  - However, this is a double-edged sword, because you don't have the convenience of carrying a whiteboard everywhere.
 
+##Interview 6:
+**Who:** Shainie (age 19)\
+**When:** February 2, 2025\
+**Customer Segment:** Young adults, students interested in personal finances\
+**Key Insights:**
+-Shainie tracks finances using Microsoft Excel but lacks automation (e.g., reminders).
+-She would like notification features to keep track of due payments and avoid overdue bills.
+-She is not yet fully independent financially and relies on her father for some payments.
+
+**Representative Quotes:**
+-"I wish it gave me notification reminders about future payments or overdue payments."
+-"I just work with my father to manage my payments as he is my primary benefactor."
+
+**Assessment:**
+-Reminder and notification features would be helpful
+-Integration with scholarships and payment reminders
+-Don't Care about detailed financial reports
+
+##Interview 7:
+**Who:** Aaron (age 22)\
+**When:** February 2, 2025\
+**Customer Segment:** Young adult, student uses Rocket for financial management\
+**Key Insights:**
+-Aaron uses Rocket but faces issues with subscriptions that aren’t labeled or tracked correctly.
+-He values privacy but is open to tools that improve financial management.
+-He is interested in tools that can help him avoid overspending.
+
+**Representative Quotes:**
+-"I would worry that my information could be leaked on the internet."
+-"It would help in terms of understanding excess spending and help in forms of taxes."
+
+**Assessment:**
+-Subscription tracking feature
+-Integration with other apps/platforms
+-Don't Care about Detailed reports
+
+##Interview 8:
+**Who:** Paul (age 23)\
+**When:** February 2,2025\
+**Customer Segment:** Young adult managing finaces through spreadsheets or simple budgeting methods\
+**Key Insights:**
+-Paul uses Google Sheets to track his finances and feels that a basic tool works fine for him.
+-He is open to better solutions that could streamline his finances, such as integration with checking accounts for automatic expense tracking.
+
+**Representative Quotes:**
+-"I think it could be pretty important or beneficial to have integration with banks and payment processors."
+-"I don’t work with a team."
+
+**Assessment:**
+-Automatic tracking of expenses via integration
+-Ease of use (simple tool, no complex reports)
+-Don't Care about detailed financial reports
+
+#Interview 9:
+**Who:** Ella (age 18)\
+**When:** February 2,2025
+**Customer Segment:** Young adult seeking simple financial management tools\
+**Key Insights:**
+-Ella uses a manual method for grocery tracking and relies on her bank app for other financial tasks.
+-She would prefer an automatic syncing feature to simplify her financial tracking.
+-Ella may need more advanced tools in the future once her income and expenses increase.
+
+**Represntative Quotes:**
+-"I’d like a tool that makes budgeting easier without being too complicated."
+-"It would be nice if everything synced with my bank automatically."
+
+**Assessment:**
+-Automatic synchronization with bank accounts
+-Simple budgeting features
+-Don't Care about financial reports or summaries
 
 # Final Value Proposition
 We will help prospective Northern Arizona University attendees (age 13-28) gain financial
