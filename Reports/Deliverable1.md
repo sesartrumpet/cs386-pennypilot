@@ -50,9 +50,11 @@ by tracking their expenses using an easy to understand webpage (value/solution).
  - Leodan uses an app to track his finances through his bank
  - However, the app does not sort his transactions by type (Ex: Entertainment, Shopping, Food)
  - Would like to be notified when his spending habits are not good
+
 **Representative Quotes:**
  - "I think it would be nice to be notified if I am spending too much"
  - "Being able to sort by category to see where all my money is going would be cool"
+
 **Assessment:**
  - Must have: Notification if spending is too high
  - Nice to have: Sorting transactions by category
@@ -85,9 +87,11 @@ by tracking their expenses using an easy to understand webpage (value/solution).
  - Makayla mostly uses a whiteboard to track her finances
  - However, has trouble when she forgets to update things on her whiteboard, or is away from home
  - Makayla is fully open to a useful app that could make budgeting easier
+
 **Representative Quotes:**
  - "I would love an app that plugs in bills and allow me to allocate funds towards things. I would use the f*** out of that."
  - "Keeping track of income is difficult. To even keep up with my pay stubs is hard because of the constant “Face-ID, re-log in, Face-ID, re-log in.” makes it very inconvenient. It makes me want to cry."
+
 **Assessment:**
  - Makayla could benefit from time-saving technology that helps track finances
  - She doesn't like how over-complicated the process is, which is why she opts to do it on a whiteboard.
