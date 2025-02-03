@@ -9,7 +9,8 @@ by tracking their expenses using an easy to understand webpage (value/solution).
 # Interview Summary
 
 ## Interview 1:
-**Who:** Emilie (age 16)   
+**Who was interviewed:** Emilie (age 16)  
+**Who interviewed:** 
 **When:** February 1, 2025    
 **Customer Segment:** Young adults, students, interested in managing personal finances   
 **Key Insights:**  
@@ -26,7 +27,8 @@ by tracking their expenses using an easy to understand webpage (value/solution).
  - Don't care: Financial reports or detailed financial summaries
 
 ## Interview 2:              
-**Who:** Ezequiel (age 20)   
+**Who was interviewed:** Ezequiel (age 20)  
+**Who interviewed:** 
 **When:** February 1, 2025   
 **Customer Segment:** Young adults, students interested in managing personal finances   
 **Key Insights:**   
@@ -43,7 +45,8 @@ by tracking their expenses using an easy to understand webpage (value/solution).
  - Don't care: Financial report generation.
 
  ## Interview 3:
- **Who:** Leodan (age 20)
+ **Who was interviewed:** Leodan (age 20)  
+ **Who interviewed:**   
  **Conducted By:** Sesar
  **When:** February 1, 2025
  **Customer Segment:** Young adults, students interested in managing personal finances
@@ -62,7 +65,8 @@ by tracking their expenses using an easy to understand webpage (value/solution).
  - Don't care: Financial reports
 
  ## Interview 4:
- **Who:** Daniel (age 21)\
+ **Who was interviewed:** Daniel (age 21)\  
+ **Who interviewed:** 
  **When:** February 1, 2025\
  **Customer Segment:** Young adults, students interested in managing personal finances\
  **Key Insights:**
@@ -81,7 +85,8 @@ by tracking their expenses using an easy to understand webpage (value/solution).
 
 
  ## Interview 5:
- **Who:** Makayla (age 23)\
+ **Who was interviewed:** Makayla (age 23)\
+ **Who interviewed:** 
  **When:** February 1, 2025\
  **Customer Segment:** Young adults, students interested in managing personal finances\
  **Key Insights:**
@@ -100,7 +105,8 @@ by tracking their expenses using an easy to understand webpage (value/solution).
  - However, this is a double-edged sword, because you don't have the convenience of carrying a whiteboard everywhere.
 
 ## Interview 6:
-**Who:** Shainie (age 19)\
+**Who was interviewed:** Shainie (age 19)\
+**Who interviewed:** Manjot kaur\
 **When:** February 2, 2025\
 **Customer Segment:** Young adults, students interested in personal finances\  
 
@@ -122,7 +128,8 @@ by tracking their expenses using an easy to understand webpage (value/solution).
 -Don't Care about detailed financial reports
 
 ## Interview 7:
-**Who:** Aaron (age 22)\
+**Who was interviewed:** Aaron (age 22)\
+**Who interviewed:** Manjot kaur\
 **When:** February 2, 2025\
 **Customer Segment:** Young adult, student uses Rocket for financial management\  
 
@@ -144,16 +151,15 @@ by tracking their expenses using an easy to understand webpage (value/solution).
 -Don't Care about Detailed reports
 
 ## Interview 8:
-**Who:** Paul (age 23)\
+**Who was interviewed:** Paul (age 23)\
+**Who interviewed:** Manjot kaur\
 **When:** February 2,2025\
 **Customer Segment:** Young adult managing finaces through spreadsheets or simple budgeting methods\  
 
 **Key Insights:**  
 
--Paul uses Google Sheets to track his finances and feels that a basic tool works fine for him. 
-
-  
- -He is open to better solutions that could streamline his finances, such as integration with checking accounts for automatic expense tracking.
+-Paul uses Google Sheets to track his finances and feels that a basic tool works fine for him.   
+-He is open to better solutions that could streamline his finances, such as integration with checking accounts for automatic expense tracking.
 
 **Representative Quotes:**  
 
@@ -167,8 +173,9 @@ by tracking their expenses using an easy to understand webpage (value/solution).
 -Don't Care about detailed financial reports
 
 ## Interview 9:  
-**Who:** Ella (age 18)\
-**When:** February 2,2025
+**Who was interviewed:** Ella (age 18)\
+**Who interviewed:** Manjot kaur\
+**When:** February 2,2025\
 **Customer Segment:** Young adult seeking simple financial management tools\  
 
 **Key Insights:**  
