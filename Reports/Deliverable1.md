@@ -98,7 +98,7 @@ by tracking their expenses using an easy to understand webpage (value/solution).
  - She doesn't like how over-complicated the process is, which is why she opts to do it on a whiteboard.
  - However, this is a double-edged sword, because you don't have the convenience of carrying a whiteboard everywhere.
 
-##Interview 6:
+## Interview 6:
 **Who:** Shainie (age 19)\
 **When:** February 2, 2025\
 **Customer Segment:** Young adults, students interested in personal finances\
@@ -116,7 +116,7 @@ by tracking their expenses using an easy to understand webpage (value/solution).
 -Integration with scholarships and payment reminders
 -Don't Care about detailed financial reports
 
-##Interview 7:
+## Interview 7:
 **Who:** Aaron (age 22)\
 **When:** February 2, 2025\
 **Customer Segment:** Young adult, student uses Rocket for financial management\
@@ -134,7 +134,7 @@ by tracking their expenses using an easy to understand webpage (value/solution).
 -Integration with other apps/platforms
 -Don't Care about Detailed reports
 
-##Interview 8:
+## Interview 8:
 **Who:** Paul (age 23)\
 **When:** February 2,2025\
 **Customer Segment:** Young adult managing finaces through spreadsheets or simple budgeting methods\
@@ -151,7 +151,7 @@ by tracking their expenses using an easy to understand webpage (value/solution).
 -Ease of use (simple tool, no complex reports)
 -Don't Care about detailed financial reports
 
-#Interview 9:
+## Interview 9:
 **Who:** Ella (age 18)\
 **When:** February 2,2025
 **Customer Segment:** Young adult seeking simple financial management tools\
