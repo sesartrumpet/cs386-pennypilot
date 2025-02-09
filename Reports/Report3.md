@@ -13,6 +13,11 @@
 ## 1. Activity Summary
 Describe what each individual has contributed to the project in the last week.  Provide some supporting documentation (e.g., an issue number, commit id, corresponding meeting date, etc.).  If someone didn't do anything, please be honest and explain why. Activity that advances your project toward completion is expected every week and should be reflected in your Git repository!
 
+Victor:
+- Worked with Kyle on Homepage
+- Started Postioning section of Deliverable 2
+- Started Stakeholders section of Deliverable 2
+
 ## 2. Retrospective
 In your weekly meeting, you should spend a few minutes discussing how the group is functioning. What aspects of the group dynamics contribute to the success of the project? In addition, raise any issues—best done directly but with humor and kindness—that you believe are interfering with the effectiveness of the group and your ability to complete the project on time.
 
@@ -34,3 +39,6 @@ The project retrospective is an opportunity for the group and each individual to
 
 ## 3. Next steps
 Think about what needs to be done and assign tasks. Update your activity management system with new tasks, actual hours spent in the activities, and corresponding GitHub issues.  Summarize these tasks here.
+
+Victor:
+- Complete Homepage with Kyle
