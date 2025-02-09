@@ -24,6 +24,12 @@ The project retrospective is an opportunity for the group and each individual to
 4. Barriers: things that are blocking the maximum performance of the team
 5. What we should try next time.
 
+1. Appreciations: Everybody is working well together
+2. Successes: Everybody showed up to the meeting!
+3. Failures: None that come to mind
+4. Barriers: Some difficulties with errors in setting up the environments
+5. What we should try next time: Probably what we've been doing; troubleshooting using online forums or AI
+
 ---
 
 ## 3. Next steps
