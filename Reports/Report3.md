@@ -4,7 +4,7 @@
 **Group:** 8  
 **Date:** 02/07/2025  
 **Location:** Cline Library  
-**Present participants:** Victor, Sesar (Scrum Master), Elijah, Manjot (Archivist), Vikram (Product Owner)  
+**Present participants:** Victor, Sesar (Scrum Master), Elijah, Manjot (Archivist), Vikram (Product Owner), Kyle
 **Missing participants:** 
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)
 
@@ -27,6 +27,10 @@ Elijah:
 - Helped debug environment errors
 - Started work on Login page with Sesar
 
+Kyle:
+- Worked with Victor on Homepage
+- Familirazied with Git and the process
+
 Sesar:
 - Styled the Login page `7c950eb`
 - Started on register page
@@ -41,7 +45,8 @@ The project retrospective is an opportunity for the group and each individual to
 3. Failures: what did not go well
 4. Barriers: things that are blocking the maximum performance of the team
 5. What we should try next time.
-     
+
+### Our Retrospective
 1. Appreciations: Everybody is working well together
 2. Successes: Everybody showed up to the meeting!
 3. Failures: None that come to mind
@@ -70,3 +75,6 @@ Vikram:
 Sesar:
 - Finish the login page with Elijah
 - Start on register page
+
+Kyle:
+- Completed Homepage with Victor
