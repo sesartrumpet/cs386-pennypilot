@@ -23,6 +23,10 @@ Manjot:
 - Started Minimum Viable Product section of Deliverable 2
 - Learning how to work in GitHub
 
+Elijah:
+- Helped debug environment errors
+- Started work on Login page with Sesar
+
 ## 2. Retrospective
 In your weekly meeting, you should spend a few minutes discussing how the group is functioning. What aspects of the group dynamics contribute to the success of the project? In addition, raise any issues—best done directly but with humor and kindness—that you believe are interfering with the effectiveness of the group and your ability to complete the project on time.
 
@@ -51,3 +55,6 @@ Victor:
 Manjot:  
 -Complete navigation bar  
 -Complete MVP section of Deliverable 2  
+
+Elijah:
+- Complete Login page with Sesar, fully implement backend integration
