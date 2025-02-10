@@ -45,7 +45,8 @@ The project retrospective is an opportunity for the group and each individual to
 3. Failures: what did not go well
 4. Barriers: things that are blocking the maximum performance of the team
 5. What we should try next time.
-     
+
+### Our Retrospective
 1. Appreciations: Everybody is working well together
 2. Successes: Everybody showed up to the meeting!
 3. Failures: None that come to mind
