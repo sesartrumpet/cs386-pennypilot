@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 function Footer() {
     return (
         <div>
-            <p>This is a Footer</p>
+            <h6>This is a Footer</h6>
         </div>
     );
 }
