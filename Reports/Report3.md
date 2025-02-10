@@ -4,7 +4,7 @@
 **Group:** 8  
 **Date:** 02/07/2025  
 **Location:** Cline Library  
-**Present participants:** Victor, Sesar (Scrum Master), Elijah, Manjot (Archivist), Vikram (Product Owner)
+**Present participants:** Victor, Sesar (Scrum Master), Elijah, Manjot (Archivist), Vikram (Product Owner)  
 **Missing participants:** 
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)
 
@@ -17,6 +17,11 @@ Victor:
 - Worked with Kyle on Homepage
 - Started Postioning section of Deliverable 2
 - Started Stakeholders section of Deliverable 2
+
+Manjot:
+- Started working on navigation bar
+- Started Minimum Viable Product section of Deliverable 2
+- Learning how to work in GitHub
 
 ## 2. Retrospective
 In your weekly meeting, you should spend a few minutes discussing how the group is functioning. What aspects of the group dynamics contribute to the success of the project? In addition, raise any issues—best done directly but with humor and kindness—that you believe are interfering with the effectiveness of the group and your ability to complete the project on time.
@@ -42,3 +47,7 @@ Think about what needs to be done and assign tasks. Update your activity managem
 
 Victor:
 - Complete Homepage with Kyle
+
+Manjot:  
+-Complete navigation bar  
+-Complete MVP section of Deliverable 2  
