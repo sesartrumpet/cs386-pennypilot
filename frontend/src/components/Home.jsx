@@ -24,7 +24,10 @@ function Home() {
                     2025 PennyPilot
                 </p>
             </footer>
+<<<<<<< HEAD
 
+=======
+>>>>>>> ffbcf32da2f0d7b8e1fc233d7c66db9b93a5046d
         </div>
     );
 }
