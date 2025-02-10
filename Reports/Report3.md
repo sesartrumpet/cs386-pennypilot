@@ -58,3 +58,7 @@ Manjot:
 
 Elijah:
 - Complete Login page with Sesar, fully implement backend integration
+
+Vikram:
+- Reviewed HTML, CSS
+- Completed footer
