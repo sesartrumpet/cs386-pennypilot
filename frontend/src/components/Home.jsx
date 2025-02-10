@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 function Home() {
     return (
-        <div>
-            <h1>Hello world!</h1>
+        <div style={{ textAlign: 'center', padding: '50px' }}>
+            <h1>Welcome to Penny Pilot</h1>
+            <p>Your go to platform for financial insights and stock tracking.</p>
+            <button style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>
+                Get Started
+            </button>
         </div>
     );
 }
