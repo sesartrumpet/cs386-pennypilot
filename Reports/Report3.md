@@ -4,7 +4,7 @@
 **Group:** 8  
 **Date:** 02/07/2025  
 **Location:** Cline Library  
-**Present participants:** Victor, Sesar (Scrum Master), Elijah, Manjot (Archivist), Vikram (Product Owner)  
+**Present participants:** Victor, Sesar (Scrum Master), Elijah, Manjot (Archivist), Vikram (Product Owner), Kyle
 **Missing participants:** 
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)
 
@@ -26,6 +26,10 @@ Manjot:
 Elijah:
 - Helped debug environment errors
 - Started work on Login page with Sesar
+
+Kyle:
+- Worked with Victor on Homepage
+- Familirazied with Git and the process
 
 Sesar:
 - Styled the Login page `7c950eb`
@@ -70,3 +74,6 @@ Vikram:
 Sesar:
 - Finish the login page with Elijah
 - Start on register page
+
+Kyle:
+- Completed Homepage with Victor
