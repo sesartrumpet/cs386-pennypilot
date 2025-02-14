@@ -31,3 +31,147 @@ Consumer segment: College students who have many parallel homework assignments
 # 2. Stakeholders'
 Make a list of all stakeholders of the project with a brief description of each one of them, emphasizing any responsibilities with the project. Examples of stakeholders include users, clients, competitors, detractors, developers, etc.
 
+# 6. Use cases
+
+## Use Case Descriptions
+
+### Use Case 1: Create an Account
+Actor: User  
+Trigger: User decides to register a new account.  
+Pre-conditions: User does not have an existing account.  
+Post-condition: User successfully creates an account and can log in.  
+
+Success Scenario:
+1. User requests to create an account.
+2. System prompts the user for an email/username.
+3. System prompts the user for a password that meets our password requirements.
+4. User enters the required information.
+5. System determines that the provided details are valid.
+6. System confirms successful account creation.
+
+Alternate Scenario 1:
+
+5. System determines email/username is invalid/taken
+6. System prompts user to choose a new email/username
+7. User enters the required information.
+8. System determines that the provided details are valid.
+
+Alternate Scenario 2:
+
+5. System determines password has not met requirements.
+6. System prompts user to create a password that meets the requirements.
+7. User enters the required information.
+8. System determines that the provided details are valid.
+
+### Use Case 2: Logging in to Account
+Actor: User  
+Trigger: User decides to log into system.  
+Pre-conditions: User has an existing account in the system.  
+Post-condition: User successfully logs into their account.  
+
+Success Scenario:
+1. System prompts the user to enter email/username and password.
+2. User enters required information
+3. System validates that the email/username exists in the system.  
+4. System verifies that the entered password matches the stored password.  
+5. System confirms successful login and grants access to the account.  
+
+Alternate Scenario 1:
+
+3. System determines that the email/username does not exist.  
+4. System informs user that their email/username is invalid.  
+5. System prompts user to re-enter email/username and password.  
+6. User enters required information.
+ 
+Alternate Scenario 2:
+
+4. System determines that the password does not match the password associated with email/username.
+5. System informs the user that their password is invalid.
+6. System produces password recovery button.
+7. System prompts user to re-enter password.
+8. User enters required information.
+
+### Use Case 3: Adding a Transaction
+Actor: User  
+Trigger: User decides to record a financial transaction.  
+Pre-conditions: User is logged into their account.  
+Post-condition: The transaction is successfully recorded in the system.  
+
+Success Scenario:
+1. User requests to add a transaction.
+2. System prompts the user to enter transaction details (amount, category, date, description).
+3. User provides the required details.
+4. System validates the provided information.
+5. System confirms that the transaction has been successfully recorded.
+
+Alternate Scenario:  
+
+4. System detects missing or invalid transaction details.  
+5. System notifies the user and requests correction.
+6. User provides corrected details.
+
+### Use Case 4: Setting a Spending Limit  
+Actor: User  
+Trigger: User decides to set a spending limit for a specific category or time period.  
+Pre-conditions: User is logged into their account.   
+Post-condition: A spending limit is successfully set and stored in the system.
+
+Success Scenario:
+1. User requests to set a spending limit.
+2. System prompts the user to enter a spending limit amount.
+3. User enters the spending limit amount.
+4. System prompts the user to select a category and time period.
+5. User selects the relevant category and time period.
+6. System vlidates the inputs.
+7. System confirms that the spending limit has been successfully set.
+
+Alternate Scenario 1:  
+
+6. System detects that the spending limit amount is missing or invalid.  
+7. System notifies the user and requests a valid amount.  
+8. User enters a corrected amount.  
+
+Alternate Scenario 2:  
+
+6. System detects that the category or time period is missing or invalid.  
+7. System notifies the user and requests a valid amount.  
+8. User enters a corrected value. 
+
+### Use Case 5: Receiving a Too-High Spending Notification
+Actor: User  
+Trigger: The system detects that the user's spending exceeds a predefined limit.  
+Pre-conditions: User has set a spending limit for a specific category or time period. The system is actively tracking the user's transactions.  
+Post-condition: User is notified that their spending has exceeded the limit.  
+
+Success Scenario:
+1. User spends money on a transaction.
+2. System records the transaction and updates the total spending for the category and time period.
+3. System checks if the total spending exceeds the predefined limit.
+4. System determines that the spending has surpassed the limit.
+5. System generates a notification informing the user that their spending is too high.
+6. Systemp resents options for the user to review spending, adjust the limit, or ignore the notification.
+
+Alternate Scenario:  
+
+3. System finds no predefined limit for the transaction category or time period.
+4. System allows the transaction without triggering a notification.  
+
+### Use Case 6: Tracking Receipts
+Actor: User  
+Trigger: User wants to attach a receipt to a recorded transaction.  
+Pre-conditions: User is logged into their account. User has at least one recorded transaction in the system.  
+Post-condition: The receipt is successfully attached to the transaction and stored in the system.  
+
+Success Scenario:
+1. User selects a transaction to attach a receipt to.
+2. System prompts the user to upload or capture a receipt.
+3. User uploads or takes a photo of the receipt.
+4. System validates the uploaded receipt.
+5. System associates the receipt with the selected transaction and stores it.
+6. System confirms that the receipt has been successfully attached.
+
+Alternate Scenario:  
+
+4. System detects that the uploaded file is in an unsupported format or exceeds size limits.
+5. System notifies the user and requests a valid receipt file.
+6. User uploads a corrected file.
