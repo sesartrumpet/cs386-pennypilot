@@ -175,3 +175,53 @@ Alternate Scenario:
 4. System detects that the uploaded file is in an unsupported format or exceeds size limits.
 5. System notifies the user and requests a valid receipt file.
 6. User uploads a corrected file.
+
+# 7. User Stories
+
+1. **User Story:** As a person interested in tracking my finance, I want to register a new account so I can access personalized features.
+   **Priority:** High
+   **Estimation:** 5 Hours
+
+2. **User Story:** As someone who spends a lot of money, I want to be able to track my spending so I can be more mindful about my finances.
+   **Priority:** High
+   **Estimation:** 4 Hours
+
+3. **User Story:** As someone who tends to forget passwords, I want a password recovery option so I can regain access to my account.
+   **Priority:** Medium
+   **Estimation:** 3 Hours
+
+4. **User Story:** As a meticulous budgeter, I want to record a financial transaction so I can effectively track my spending.
+   **Priority:** High
+   **Estimation:** 6 Hours
+
+5. **User Story:** As a person who tends to go over-budget, I want to set a spending limit so I can control my budget more effectively.
+   **Priority:** High
+   **Estimation:** 5 Hours
+
+6. **User Story:** As a thoughtful spender, I want to be notified if I exceed my limit so I can be more mindful about my budget.
+   **Priority:** High
+   **Estimation:** 5 Hours
+
+7. **User Story:** As someone who likes to organize their finances, I want to see spending in different categories so I can better understand my expenses.
+   **Priority:** High
+   **Estimation:** 4 Hours
+
+8. **User Story:** As a detail-oriented person, I want to be notified if transaction details are missing so I can correct the information before it gets recorded.
+   **Priority:** Medium
+   **Estimation:** 2 Hours
+
+9. **User Story:** As someone who's finances change over time, I want to update spending limits so that I can adjust my budget according to my financial situation.
+   **Priority:** High
+   **Estimation:** 3 Hours
+
+10. **User Story:** As someone who keeps reciepts, I want to add attachments to recorded transactions so I have evidence of my expenses.
+   **Priority:** Medium
+   **Estimation:** 3 Hours
+
+11. **User Story:** As someone who has a lot of transactions, I want to filter transactions so finding a specific one will be easier for me.
+   **Priority:** Medium
+   **Estimation:** 6 Hours
+
+12. **User Story:** As someone who cares about privacy, I want to set PIN so that I can add an extra layer of security to my account.
+   **Priority:** Medium
+   **Estimation:** 4 Hours
