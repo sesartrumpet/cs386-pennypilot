@@ -5,7 +5,7 @@
 **Date:** 02/13/2025  
 **Location:** Cline Library  
 **Present participants:** Victor (Archivist), Sesar, Elijah, Manjot (Product Owner), Kyle
-**Missing participants:** Vikram (Scrum Master)
+**Missing participants:** Vikram (Scrum Master)  
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)
 
 ---
@@ -17,7 +17,9 @@ Victor:
 - Completed Positioning and Stakeholdes section for D2
 
 
-Manjot:
+Manjot:  
+- Worked on section 5 MVP in deliverable 2
+- Completed Navigation bar in HTML
 
 
 Elijah:
@@ -42,7 +44,8 @@ The project retrospective is an opportunity for the group and each individual to
 4. Barriers: things that are blocking the maximum performance of the team
 5. What we should try next time.
 
-### Our Retrospective
+### Our Retrospective  
+
 
 
 ---
@@ -54,7 +57,8 @@ Victor:
 - Work on homepage some more
 - brainstorm terminology to use as encouragement in product
 
-Manjot:  
+Manjot:   
+- Make modifications to swap HTML codes to C language
 
 
 Elijah:
