@@ -6,7 +6,8 @@ the finicial literacy gap
 affects
 incoming NAU student popultaion;
 the impact of which is
-[what is the impact of the problem? What does it cost?]
+a lack of understanding in managing personal finances, resulting in poor money management, high levels of debt, and stress, which can affect their academic and personal well-being.
+The financial struggles often lead to students not being able to save money, properly budget, or plan for future expenses. This problem causes long-term consequences, such as students' inability to make sound financial decisions, increased dependency on loans, and the struggle to build financial independence.
 
 ## Product Position Statement    
 For
@@ -30,7 +31,6 @@ Penny Pilot is a tech and finance product (i) designed to help users better mana
 
 Customer Segment:    
 Incoming college students aged 13-27 years who lack financial literacy and need help tracking and managing their finances.
-
 
 # 2. Stakeholders
 Make a list of all stakeholders of the project with a brief description of each one of them, emphasizing any responsibilities with the project. Examples of stakeholders include users, clients, competitors, detractors, developers, etc.
