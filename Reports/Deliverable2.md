@@ -31,6 +31,26 @@ Consumer segment: College students who have many parallel homework assignments
 # 2. Stakeholders'
 Make a list of all stakeholders of the project with a brief description of each one of them, emphasizing any responsibilities with the project. Examples of stakeholders include users, clients, competitors, detractors, developers, etc.
 
+# 3. Functional Requirements
+Make a numbered list of requirements for your software. Just self-explanatory titles are enough at this point. Remember that requirements should deliver the value proposition and they must be consistent with the interviews you performed for the previous deliverable. You can talk again to your clients to help define the requirements. While writing the requirements, focus on the capabilities needed and not on how they should be implemented.
+
+- Easily Insert and Track Expenses/Income
+- Help Calculate Taxes
+- Visual Representation of Data
+
+# 4. Non-functional Requirements
+## 1. Usability
+- Importance: This application should be easy to use and intuitive for users without much financial experience. Poor usability could lead to users dropping the tool altogether.
+- Verifiability: User testing with at least 10 participants, where 80% of users should be able to enter an expense/expenses within 3 minutes without outside interference from developers.
+
+## 2. Compatibility
+- Importance: The application should integrate well with imported data, like CSV files. Poor integration could lead to data corruption and wasting users' time.
+- Verifiability: The system is able to successfully import and export CSV data with no more than 5% formatting errors.
+
+## 3. Accuracy
+- Importance: The application should be able to accurately handle financial information. Poor accuracy could lead to unexpected outputs and legal trouble.
+- Verifiability: The system is able to correctly handle finances, with each monetary value being accurate with a 2% margin of error.
+
 # 6. Use cases
 
 ## Use Case Descriptions
