@@ -95,6 +95,28 @@ Make a numbered list of requirements for your software. Just self-explanatory ti
 - Importance: The application should be able to accurately handle financial information. Poor accuracy could lead to unexpected outputs and legal trouble.
 - Verifiability: The system is able to correctly handle finances, with each monetary value being accurate with a 2% margin of error.
 
+## 5. Minimum Viable Product  
+Our **Minimum Viable Product** will focus on essential functionalities that provide users with instant utility while allowing us to validate core features. The primary objective of the MVP is to allow users to track and control their finances efficiently while being offered insight into their spending habits.  
+
+## Things to test  
+The MVP shall have the following main features:  
+
+1.**Adding Transactions** - User is able to input income and expense manually.  
+2.**Login Page** - Secure sign in for user.  
+3.**Spending Limit** - User can set spending limit and get notifies when near threshold.  
+4.**Too-High Spending Notification** - Notifications will alert users when they exceed spending limits in some catagories.  
+5.**Sorting Transactions** - Users can arrange transactions by date, category, or amount.  
+6.**Saving Data** - Users can view the amount they have saved in the long run.  
+
+## Validation Approach  
+The MVP will be validated by:   
+
+-**Implementation & Protocols**: A functional prototype will be built and refined with early adopters to guarantee usability and essential functionality.  
+-**User Teting & Feedback**: Initial users will operate the system, providing us with feedback on erase of use, feature priority, and areas for improvement.  
+-**A/B Testing**: We'll experiment with different UI elements and spending limit alrets to optimize user interaction.  
+
+Through a focus on these core functionalities, the MVP provides for the availabilty of the most most critical financial mangement features to be both functional and effective beore they bring in advanced features such as **receipt tracking**, **financial tools integration**, and **coaching tools** in later versions.
+
 # 6. Use cases  
 
 ## Use Case Diagram  
