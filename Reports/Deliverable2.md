@@ -95,7 +95,12 @@ Make a numbered list of requirements for your software. Just self-explanatory ti
 - Importance: The application should be able to accurately handle financial information. Poor accuracy could lead to unexpected outputs and legal trouble.
 - Verifiability: The system is able to correctly handle finances, with each monetary value being accurate with a 2% margin of error.
 
-# 6. Use cases
+# 6. Use cases  
+
+## Use Case Diagram  
+
+
+![My Image](Deliverable2_images/UseCaseDiagram.png)
 
 ## Use Case Descriptions
 
@@ -125,7 +130,10 @@ Alternate Scenario 2:
 5. System determines password has not met requirements.
 6. System prompts user to create a password that meets the requirements.
 7. User enters the required information.
-8. System determines that the provided details are valid.
+8. System determines that the provided details are valid.  
+
+
+![My Image](Deliverable2_images/UseCase1.png)
 
 ### Use Case 2: Logging in to Account
 Actor: User  
@@ -153,7 +161,10 @@ Alternate Scenario 2:
 5. System informs the user that their password is invalid.
 6. System produces password recovery button.
 7. System prompts user to re-enter password.
-8. User enters required information.
+8. User enters required information.  
+
+
+![My Image](Deliverable2_images/UseCase2.png)
 
 ### Use Case 3: Adding a Transaction
 Actor: User  
@@ -172,7 +183,10 @@ Alternate Scenario:
 
 4. System detects missing or invalid transaction details.  
 5. System notifies the user and requests correction.
-6. User provides corrected details.
+6. User provides corrected details.  
+
+
+![My Image](Deliverable2_images/UseCase3.png)
 
 ### Use Case 4: Setting a Spending Limit  
 Actor: User  
@@ -199,7 +213,10 @@ Alternate Scenario 2:
 
 6. System detects that the category or time period is missing or invalid.  
 7. System notifies the user and requests a valid amount.  
-8. User enters a corrected value. 
+8. User enters a corrected value.   
+
+
+![My Image](Deliverable2_images/UseCase4.png)
 
 ### Use Case 5: Receiving a Too-High Spending Notification
 Actor: User  
@@ -220,6 +237,9 @@ Alternate Scenario:
 3. System finds no predefined limit for the transaction category or time period.
 4. System allows the transaction without triggering a notification.  
 
+
+![My Image](Deliverable2_images/UseCase5.png)
+
 ### Use Case 6: Tracking Receipts
 Actor: User  
 Trigger: User wants to attach a receipt to a recorded transaction.  
@@ -238,7 +258,10 @@ Alternate Scenario:
 
 4. System detects that the uploaded file is in an unsupported format or exceeds size limits.
 5. System notifies the user and requests a valid receipt file.
-6. User uploads a corrected file.
+6. User uploads a corrected file.  
+
+
+![My Image](Deliverable2_images/UseCase6.png)
 
 # 7. User Stories
 
