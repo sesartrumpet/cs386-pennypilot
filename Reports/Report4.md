@@ -24,7 +24,9 @@ Elijah:
 
 
 Kyle:
-
+- Organized group meeting
+- Section 6 Use Cases on deliverable 2
+- Commit #41, #35
 
 Sesar:
 
@@ -65,4 +67,5 @@ Sesar:
 
 
 Kyle:
-
+- Make modifications to swap to C language
+- Begin creating actual code
