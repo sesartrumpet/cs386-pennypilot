@@ -46,7 +46,11 @@ The project retrospective is an opportunity for the group and each individual to
 
 ### Our Retrospective  
 
-
+1. Appreciations: The team has been working efficiently and collaborating well. Everyone has contributed their fair share to discussions and implementation.
+2. Successes: We successfully outlined the core functionalites of Penny Pilot. We maintained effective communication through our chosen collaboration platform.
+3. Failures: None for now.
+4. Barriers: Need for additional research on financial regulations to ensure compliance.
+5. What we should try next time: Set up a shared document to track the tasks by using ClickUP.
 
 ---
 
