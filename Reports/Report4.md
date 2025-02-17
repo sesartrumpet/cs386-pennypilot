@@ -16,12 +16,11 @@ Describe what each individual has contributed to the project in the last week.  
 Victor:
 - Completed Positioning and Stakeholdes section for D2
 - Commit #'s: 59, 43, 40, 39, & 29
-
+- Submitted D2 and R4
 
 Manjot:  
 - Worked on section 5 MVP in deliverable 2
 - Completed Navigation bar in HTML
-
 
 Elijah:
 - Worked on Deliverable 2 Functional and Non-functional Requirements
@@ -36,6 +35,9 @@ Sesar:
 - Completed User Stories Section on Deliverable 2 `41963a5`
 - Completed Issue Tracker Section on Deliverable 2 `2ecdf39`
 - Added Register Page to PennyPilot `2ecdf39`
+
+Vikram:
+
 
 ## 2. Retrospective
 In your weekly meeting, you should spend a few minutes discussing how the group is functioning. What aspects of the group dynamics contribute to the success of the project? In addition, raise any issues—best done directly but with humor and kindness—that you believe are interfering with the effectiveness of the group and your ability to complete the project on time.
@@ -68,12 +70,10 @@ Victor:
 Manjot:   
 - Make modifications to swap HTML codes to C language
 
-
 Elijah:
 - Begin making the move to a different, desktop-based C framework
 
 Vikram:
-
 
 Sesar:
 - Begin working on converting frontend of Login and Register page to `C`
