@@ -334,3 +334,9 @@ Alternate Scenario:
 12. **User Story:** As someone who cares about privacy, I want to set PIN so that I can add an extra layer of security to my account.  
    **Priority:** Medium  
    **Estimation:** 4 Hours  
+
+# 8. Issue Tracker
+
+[GitHub Repository Issues](https://github.com/sesartrumpet/cs386-pennypilot/issues)
+
+![Issue Tracker](Deliverable2_images/IssueTrackerScreenshot.png)

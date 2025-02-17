@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Footer from './Footer';
 import Login from './Login';
+import Register from './Register';
 
 function App() {
     const [username, setUsername] = useState(localStorage.getItem('username') || '');
@@ -23,6 +24,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home/>} />
                 <Route path="/Login" element={<Login/>}/>
+                <Route path="/register" element={<Register />} />
             </Routes>
             <Footer />
         </Router>
