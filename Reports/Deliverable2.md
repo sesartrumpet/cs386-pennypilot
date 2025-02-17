@@ -78,9 +78,9 @@ Responsibilities: Ensure that Penny Pilot complies with financial regulations an
 # 3. Functional Requirements
 Make a numbered list of requirements for your software. Just self-explanatory titles are enough at this point. Remember that requirements should deliver the value proposition and they must be consistent with the interviews you performed for the previous deliverable. You can talk again to your clients to help define the requirements. While writing the requirements, focus on the capabilities needed and not on how they should be implemented.
 
-- Easily Insert and Track Expenses/Income
-- Help Calculate Taxes
-- Visual Representation of Data
+1. Easily Insert and Track Expenses/Income via Imported Data
+2. Help Calculate Taxes Given Relevant User Information
+3. Visual Representation of Data via Graphs, Tables, and Other Relevant Visualizations
 
 # 4. Non-functional Requirements
 ## 1. Usability

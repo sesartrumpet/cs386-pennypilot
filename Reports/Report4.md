@@ -23,7 +23,8 @@ Manjot:
 
 
 Elijah:
-
+- Worked on Deliverable 2 Functional and Non-functional Requirements
+- Worked on Login page
 
 Kyle:
 - Organized group meeting
@@ -66,7 +67,7 @@ Manjot:
 
 
 Elijah:
-
+- Begin making the move to a different, desktop-based C framework
 
 Vikram:
 
