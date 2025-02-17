@@ -15,6 +15,7 @@ Describe what each individual has contributed to the project in the last week.  
 
 Victor:
 - Completed Positioning and Stakeholdes section for D2
+- Commit #'s: 59, 43, 40, 39, & 29
 
 
 Manjot:  
