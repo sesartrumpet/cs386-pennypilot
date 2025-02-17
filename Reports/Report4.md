@@ -14,7 +14,8 @@
 Describe what each individual has contributed to the project in the last week.  Provide some supporting documentation (e.g., an issue number, commit id, corresponding meeting date, etc.).  If someone didn't do anything, please be honest and explain why. Activity that advances your project toward completion is expected every week and should be reflected in your Git repository!
 
 Victor:
-- Completed Positioning and Stakeholdes section for D2 (commit bbad66f)
+- Completed Positioning and Stakeholdes section for D2
+- Commit #'s: 59, 43, 40, 39, & 29
 - Submitted D2 and R4
 
 Manjot:  
