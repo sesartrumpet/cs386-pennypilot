@@ -73,10 +73,13 @@ Responsibilities: Offer assistance, resolve user issues, and provide ongoing hel
 Description: Government or industry regulators that monitor financial services and consumer protection.      
 Responsibilities: Ensure that Penny Pilot complies with financial regulations and privacy laws, especially related to managing personal financial data.
 
+
 # 3. Functional Requirements     
-- Easily Insert and Track Expenses/Income
-- Help Calculate Taxes
-- Visual Representation of Data
+
+1. Easily Insert and Track Expenses/Income via Imported Data
+2. Help Calculate Taxes Given Relevant User Information
+3. Visual Representation of Data via Graphs, Tables, and Other Relevant Visualizations
+
 
 # 4. Non-functional Requirements      
 ## 1. Usability
