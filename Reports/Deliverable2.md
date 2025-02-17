@@ -2,9 +2,9 @@
 ## Problem Statement    
 
 The problem of
-the finicial literacy gap 
+the financial literacy gap 
 affects
-incoming NAU student popultaion;
+incoming NAU student population;
 the impact of which is
 a lack of understanding in managing personal finances, resulting in poor money management, high levels of debt, and stress, which can affect their academic and personal well-being.
 The financial struggles often lead to students not being able to save money, properly budget, or plan for future expenses. This problem causes long-term consequences, such as students' inability to make sound financial decisions, increased dependency on loans, and the struggle to build financial independence.
@@ -112,8 +112,8 @@ The MVP shall have the following main features:
 The MVP will be validated by:   
 
 -**Implementation & Protocols**: A functional prototype will be built and refined with early adopters to guarantee usability and essential functionality.  
--**User Teting & Feedback**: Initial users will operate the system, providing us with feedback on erase of use, feature priority, and areas for improvement.  
--**A/B Testing**: We'll experiment with different UI elements and spending limit alrets to optimize user interaction.  
+-**User Testing & Feedback**: Initial users will operate the system, providing us with feedback on ease of use, feature priority, and areas for improvement.  
+-**A/B Testing**: We'll experiment with different UI elements and spending limit alerts to optimize user interaction.  
 
 Through a focus on these core functionalities, the MVP provides for the availabilty of the most most critical financial mangement features to be both functional and effective beore they bring in advanced features such as **receipt tracking**, **financial tools integration**, and **coaching tools** in later versions.
 
@@ -319,11 +319,11 @@ Alternate Scenario:
    **Priority:** Medium  
    **Estimation:** 2 Hours  
 
-9. **User Story:** As someone who's finances change over time, I want to update spending limits so that I can adjust my budget according to my financial situation.  
+9. **User Story:** As someone whose finances change over time, I want to update spending limits so that I can adjust my budget according to my financial situation.  
    **Priority:** High  
    **Estimation:** 3 Hours  
 
-10. **User Story:** As someone who keeps reciepts, I want to add attachments to recorded transactions so I have evidence of my expenses.  
+10. **User Story:** As someone who keeps receipts, I want to add attachments to recorded transactions so I have evidence of my expenses.  
    **Priority:** Medium  
    **Estimation:** 3 Hours  
 
