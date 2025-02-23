@@ -4,8 +4,8 @@
 **Group:** 8  
 **Date:** 02/20/2025  
 **Location:** Cline Library  
-**Present participants:** Kyle
-**Missing participants:** 
+**Present participants:** Kyle, Elijah, Manjot, Victor
+**Missing participants:** Vikram, Sesar
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)
 
 ---
@@ -21,7 +21,8 @@ Manjot:
 
 
 Elijah:
-
+- Researching FLTK framework for C
+- Built boilerplate
 
 Kyle:
 - Learned more about MySQL and how to implement it in the future
@@ -58,7 +59,7 @@ Manjot:
 
 
 Elijah:
-
+- Transfer work from login page to GUI
 
 Vikram:
 
