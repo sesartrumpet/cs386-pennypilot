@@ -4,8 +4,8 @@
 **Group:** 8  
 **Date:** 02/20/2025  
 **Location:** Cline Library  
-**Present participants:** Kyle, Elijah, Manjot, Victor
-**Missing participants:** Vikram, Sesar
+**Present participants:** Kyle, Elijah, Manjot, Victor  
+**Missing participants:** Vikram, Sesar  
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)
 
 ---
@@ -29,7 +29,7 @@ Kyle:
 - Brainstormed the functionality of our new project
 
 Sesar:
-
+- Updated README.md `a761541`
 
 Vikram:
 
@@ -65,7 +65,8 @@ Vikram:
 
 
 Sesar:
-
+- Restructure repository due to transition to `Python`
+- Work with Elijah on transitioning login page
 
 Kyle:
 - Make modifications to swap to Python language
