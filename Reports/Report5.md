@@ -20,7 +20,8 @@ Victor:
 - Came up with restructure for repository to keep the new project more organized and in line with new objectives
 
 
-Manjot:
+Manjot:  
+-Researched more about tkinter  
 
 
 Elijah:
@@ -64,6 +65,8 @@ Victor:
 
 
 Manjot:  
+-Make modification to swap codes from C to Python  
+-Will start working on backend of the project
 
 
 Elijah:
