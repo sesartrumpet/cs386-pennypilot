@@ -10,4 +10,4 @@ Provide the conceptual model of your system as a UML class diagram. Represent pr
  
 Some points to consider:
 
-![My Image](Deliverable3_images/deliverable3.drawio)
+![My Image](Deliverable3_images/deliverable3UMLCLass.png)
