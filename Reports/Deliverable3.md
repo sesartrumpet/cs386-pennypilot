@@ -5,6 +5,10 @@ Use Bold every time that you use a noun that is a class in your model. Use Itali
 
 Grading criteria (5 points): The description should be clear, concise, and well-written, free of typos and grammar problems. The use of bold, italic, and underline should be coherent with the model presented in Section 2---all classes, attributes, and associations from the model should appear in the text and their role in the system, as described in the text, should be consistent with the model.  
 
+Paragraph 1:<Problem Statement><Value Proposition>
+
+Paragraphs 2+:<Textual Summary of Stakeholders><Textual Summary of Functional Requirements><Textual Summary of Use Cases>***Students*** can view the *total estimated cost* of their **plans** for studying abroad, allowing them to make informed financial decisions with the help of an ***on-demand tool***. For those facing financial challenges, the system provides **budgeting projections** to help determine how long it will take to save enough for their trip. Additionally, **data visualizations** offer an intuitive way for ***students*** who are less ***financially literate*** to grasp their financial situation and make realistic, achievable **plans** for ***studying abroad***.
+
 Model
 Provide the conceptual model of your system as a UML class diagram. Represent proper cardinalities (multiplicities) for all associations. Also include the association names. 
  
