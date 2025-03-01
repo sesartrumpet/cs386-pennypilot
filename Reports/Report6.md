@@ -19,6 +19,8 @@ Victor:
 - conducted practice presentation run
 
 Manjot:  
+Discussed and completed presentation and D3.  
+Practiced presentation with others.
 
 Elijah:  
 
@@ -54,7 +56,8 @@ Think about what needs to be done and assign tasks. Update your activity managem
 Victor:  
 - get started on I1
 
-Manjot:  
+Manjot:   
+get started on modifying codes
 
 Elijah:  
 
