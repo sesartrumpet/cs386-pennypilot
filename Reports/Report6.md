@@ -23,6 +23,10 @@ Manjot:
 - Practiced presentation with others.
 
 Elijah:  
+- Met with team to complete presentation and D3
+- Practiced presentation
+- Completed User Stories in D3
+- Assisted team with parts of D3
 
 Kyle:  
 - Organized group meeting  
@@ -67,6 +71,7 @@ Manjot:
 - get started on modifying codes
 
 Elijah:  
+- Help with setting up Tkinter application
 
 Vikram:  
 
