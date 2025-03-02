@@ -32,6 +32,8 @@ Kyle:
 - Practiced presentation  
 
 Sesar:  
+- Added Stakeholders and Functional Requirements to Deliverable 6 `1068db4`
+- Worked on presentation with team
 
 Vikram:  
 
@@ -47,11 +49,11 @@ The project retrospective is an opportunity for the group and each individual to
 5. What we should try next time.
 
 ### Our Retrospective
-1. 
+1. Kyle did a great job on the diagrams for D3 and most of team is working together well
 2. Our group meeting to work on deliverable 3 and midterm presentation  
-3.  
+3. None for now besides the issue below
 4. Not having 100% attendance in our weekly meetings  
-5.  
+5. Better communication from team members if they will be missing
 
 ---
 
@@ -69,6 +71,8 @@ Elijah:
 Vikram:  
 
 Sesar:  
+- Start setting up Tkinter framework
+- Replace boilerplate code for entire application
 
 Kyle:  
 - Begin actually coding our project
