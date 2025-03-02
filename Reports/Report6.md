@@ -4,9 +4,9 @@
 **Group:** 8  
 **Date:** 02/27/2025  
 **Location:** Cline Library  
-**Present participants:**   
-**Missing participants:**   
-**Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)
+**Present participants:**   Victor, Manjot, Elijah, Kyle, Sesar  
+**Missing participants:**   Vikram  
+**Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)  
 
 ---
 
@@ -19,12 +19,17 @@ Victor:
 - conducted practice presentation run
 
 Manjot:  
-Discussed and completed presentation and D3.  
-Practiced presentation with others.
+- Discussed and completed presentation and D3.  
+- Practiced presentation with others.
 
 Elijah:  
 
 Kyle:  
+- Organized group meeting  
+- Created UML Class Diagram for deliverable 3  
+- Assisted with the rest of deliverable 3  
+- Worked on midterm presentation  
+- Practiced presentation  
 
 Sesar:  
 
@@ -43,9 +48,9 @@ The project retrospective is an opportunity for the group and each individual to
 
 ### Our Retrospective
 1. 
-2.  
+2. Our group meeting to work on deliverable 3 and midterm presentation  
 3.  
-4.  
+4. Not having 100% attendance in our weekly meetings  
 5.  
 
 ---
@@ -57,7 +62,7 @@ Victor:
 - get started on I1
 
 Manjot:   
-get started on modifying codes
+- get started on modifying codes
 
 Elijah:  
 
@@ -66,3 +71,4 @@ Vikram:
 Sesar:  
 
 Kyle:  
+- Begin actually coding our project
