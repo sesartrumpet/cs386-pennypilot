@@ -15,15 +15,16 @@ Describe what each individual has contributed to the project in the last week.  
 
 Victor:
 - Completed Positioning and Stakeholdes section for D2
-
+- Commit #'s: 59, 43, 40, 39, & 29
+- Submitted D2 and R4
 
 Manjot:  
 - Worked on section 5 MVP in deliverable 2
 - Completed Navigation bar in HTML
 
-
 Elijah:
-
+- Worked on Deliverable 2 Functional and Non-functional Requirements
+- Worked on Login page
 
 Kyle:
 - Organized group meeting
@@ -31,6 +32,11 @@ Kyle:
 - Commit #41, #35
 
 Sesar:
+- Completed User Stories Section on Deliverable 2 `41963a5`
+- Completed Issue Tracker Section on Deliverable 2 `2ecdf39`
+- Added Register Page to PennyPilot `2ecdf39`
+
+Vikram:
 
 
 ## 2. Retrospective
@@ -64,15 +70,14 @@ Victor:
 Manjot:   
 - Make modifications to swap HTML codes to C language
 
-
 Elijah:
-
+- Begin making the move to a different, desktop-based C framework
 
 Vikram:
 
-
 Sesar:
-
+- Begin working on converting frontend of Login and Register page to `C`
+- Brainstorm which library to use for `C` GUI
 
 Kyle:
 - Make modifications to swap to C language
