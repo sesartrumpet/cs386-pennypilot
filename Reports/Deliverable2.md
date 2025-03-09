@@ -9,7 +9,7 @@ the impact of which is
 a lack of understanding in managing personal finances, resulting in poor money management, high levels of debt, and stress, which can affect their academic and personal well-being.
 The financial struggles often lead to students not being able to save money, properly budget, or plan for future expenses. This problem causes long-term consequences, such as students' inability to make sound financial decisions, increased dependency on loans, and the struggle to build financial independence.
 
-## Product Position Statement    
+## Product Position Statement      
 For
 incoming students to NAU between 13-27 years old
 Who
@@ -23,18 +23,16 @@ Excel and EasyDollar,
 Our product
 uses lingo that resonates with the younger generation, making financial tracking more accessible and relatable.
 
-## Value proposition and customer segment
-Report the value propositions and customer segments of your product. Make sure that your value proposition is coherent with the product position statement and contains the following elements: i) what your product is; ii) the target customer; iii) the value your product provides; and iv) why your product is unique.
-
+## Value proposition and customer segment     
 Value Proposition:    
-Penny Pilot is a tech and finance product (i) designed to help users better manage their finances. It targets incoming college students aged 13-27 years (ii) who struggle with financial literacy and need support in tracking and managing their finances. Penny Pilot provides an easy-to-use platform (iii) that allows students to track their expenses, set spending limits, and understand their finances, ultimately helping them develop responsible financial habits. Unlike traditional tools like Excel or EasyDollar (iv), Penny Pilot stands out by using lingo and language that resonates with the younger generation, making financial concepts more engaging and easier to understand.
+Penny Pilot helps the younger generation that are interested in attending 
+Northern Arizona University (age 13-28) gain financial literacy
+by tracking their expenses using an easy to understand webpage. 
 
 Customer Segment:    
 Incoming college students aged 13-27 years who lack financial literacy and need help tracking and managing their finances.
 
-# 2. Stakeholders
-Make a list of all stakeholders of the project with a brief description of each one of them, emphasizing any responsibilities with the project. Examples of stakeholders include users, clients, competitors, detractors, developers, etc.
-
+# 2. Stakeholders       
 1. Users    
 Description: Incoming college students (13-27 years old) who need a tool to manage their finances and improve their financial literacy.    
 Responsibilities: Provide feedback on usability, features, and overall experience to ensure the product meets their needs.
@@ -75,14 +73,15 @@ Responsibilities: Offer assistance, resolve user issues, and provide ongoing hel
 Description: Government or industry regulators that monitor financial services and consumer protection.      
 Responsibilities: Ensure that Penny Pilot complies with financial regulations and privacy laws, especially related to managing personal financial data.
 
-# 3. Functional Requirements
-Make a numbered list of requirements for your software. Just self-explanatory titles are enough at this point. Remember that requirements should deliver the value proposition and they must be consistent with the interviews you performed for the previous deliverable. You can talk again to your clients to help define the requirements. While writing the requirements, focus on the capabilities needed and not on how they should be implemented.
 
-- Easily Insert and Track Expenses/Income
-- Help Calculate Taxes
-- Visual Representation of Data
+# 3. Functional Requirements     
 
-# 4. Non-functional Requirements
+1. Easily Insert and Track Expenses/Income via Imported Data
+2. Help Calculate Taxes Given Relevant User Information
+3. Visual Representation of Data via Graphs, Tables, and Other Relevant Visualizations
+
+
+# 4. Non-functional Requirements      
 ## 1. Usability
 - Importance: This application should be easy to use and intuitive for users without much financial experience. Poor usability could lead to users dropping the tool altogether.
 - Verifiability: User testing with at least 10 participants, where 80% of users should be able to enter an expense/expenses within 3 minutes without outside interference from developers.
