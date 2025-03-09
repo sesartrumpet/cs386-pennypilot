@@ -16,7 +16,8 @@ Describe what each individual has contributed to the project in the last week.  
 Victor:  
 
 
-Manjot:  
+Manjot:   
+Researching more about NAU abroad program.
 
 
 Elijah:  
@@ -54,7 +55,8 @@ Think about what needs to be done and assign tasks. Update your activity managem
 
 Victor:  
 
-Manjot:   
+Manjot:  
+Will work on the layout of application.
 
 Elijah:  
 
