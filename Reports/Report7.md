@@ -20,7 +20,7 @@ Manjot:
 
 
 Elijah:  
-
+- Completed retrospective
 
 Kyle:  
 - Presented midterm update of project
@@ -42,11 +42,11 @@ The project retrospective is an opportunity for the group and each individual to
 5. What we should try next time.
 
 ### Our Retrospective
-1.  
-2.  
-3.  
-4.  
-5.  
+1. Appreciations: Many people stepped up for certain difficult aspects of the presentation.
+2. Successes: Presentation went smoothly, and many people contributed.
+3. Failures: Not every member was able to contribute unfortunately.
+4. Barriers: Communication, or lack thereof, seems to be limiting the progress of the project.
+5. We are going to try meeting in-person more often starting after spring break to get more progress on the project.
 ---
 
 ## 3. Next steps
@@ -57,6 +57,7 @@ Victor:
 Manjot:   
 
 Elijah:  
+- Begin coding project
 
 Vikram:  
 
