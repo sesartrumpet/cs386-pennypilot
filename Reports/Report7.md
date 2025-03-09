@@ -23,7 +23,7 @@ Elijah:
 
 
 Kyle:  
-
+- Presented midterm update of project
 
 Sesar:  
 
@@ -63,3 +63,4 @@ Vikram:
 Sesar:  
 
 Kyle:  
+- Begin coding project
