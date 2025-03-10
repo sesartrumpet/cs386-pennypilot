@@ -18,7 +18,9 @@ Victor:
 - Presented functional requirements for midterm
 
 
-Manjot:  
+Manjot:    
+- Researched more about NAU abroad program.
+- Presented value proposition for midterm.
 
 
 Elijah:  
