@@ -4,7 +4,7 @@
 **Group:** 8  
 **Date:** 03/06/2025  
 **Location:** Cline Library  
-**Present participants:**   Kyle, Victor, Manjot, Elijah,       
+**Present participants:**   Kyle, Victor, Manjot, Elijah, Sesar      
 **Missing participants:**   
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)  
 
@@ -28,7 +28,7 @@ Kyle:
 - Presented midterm update of project
 
 Sesar:  
-
+- Presented Use Case diagram for midterm
 
 Vikram:  
 
