@@ -29,6 +29,7 @@ Sesar:
 
 
 Vikram:  
+- Presented midterm project; problem statement
 
 ## 2. Retrospective
 In your weekly meeting, you should spend a few minutes discussing how the group is functioning. What aspects of the group dynamics contribute to the success of the project? In addition, raise any issues—best done directly but with humor and kindness—that you believe are interfering with the effectiveness of the group and your ability to complete the project on time.
@@ -59,7 +60,8 @@ Manjot:
 Elijah:  
 
 Vikram:  
-
+- Begin assisting in implementation 
+- Work on communication with team members 
 Sesar:  
 
 Kyle:  
