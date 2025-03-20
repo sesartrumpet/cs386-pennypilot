@@ -4,7 +4,7 @@
 **Group:** 8  
 **Date:** 03/06/2025  
 **Location:** Cline Library  
-**Present participants:**   Kyle
+**Present participants:**   Kyle, Victor, Manjot, Elijah, Sesar      
 **Missing participants:**   
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)  
 
@@ -14,19 +14,23 @@
 Describe what each individual has contributed to the project in the last week.  Provide some supporting documentation (e.g., an issue number, commit id, corresponding meeting date, etc.).  If someone didn't do anything, please be honest and explain why. Activity that advances your project toward completion is expected every week and should be reflected in your Git repository!
 
 Victor:  
+- Redid UML use case diagram for presentation
+- Presented functional requirements for midterm
 
 
-Manjot:  
+Manjot:    
+- Researched more about NAU abroad program.
+- Presented value proposition for midterm.
 
 
 Elijah:  
-
+- Completed retrospective
 
 Kyle:  
 - Presented midterm update of project
 
 Sesar:  
-
+- Presented Use Case diagram for midterm
 
 Vikram:  
 - Presented midterm project; problem statement
@@ -43,26 +47,31 @@ The project retrospective is an opportunity for the group and each individual to
 5. What we should try next time.
 
 ### Our Retrospective
-1.  
-2.  
-3.  
-4.  
-5.  
+1. Appreciations: Many people stepped up for certain difficult aspects of the presentation.
+2. Successes: Presentation went smoothly, and many people contributed.
+3. Failures: Not every member was able to contribute unfortunately.
+4. Barriers: Communication, or lack thereof, seems to be limiting the progress of the project.
+5. We are going to try meeting in-person more often starting after spring break to get more progress on the project.
 ---
 
 ## 3. Next steps
 Think about what needs to be done and assign tasks. Update your activity management system with new tasks, actual hours spent in the activities, and corresponding GitHub issues.  Summarize these tasks here.
 
 Victor:  
+- Begin coding project
 
 Manjot:   
+- Begin coding project
 
 Elijah:  
+- Begin coding project
 
 Vikram:  
 - Begin assisting in implementation 
 - Work on communication with team members 
+
 Sesar:  
+- Begin coding project
 
 Kyle:  
 - Begin coding project
