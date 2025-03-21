@@ -3,90 +3,72 @@ from database import (
     update_savings,
     fetch_financial_data,
     create_tables,
-    create_connection
+    get_trips as db_get_trips,
+    get_user_savings
 )
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 def initialize_database():
-    """Initialize the database and create necessary tables."""
     create_tables()
 
 def handle_add_trip(destination, cost):
-    """Handle the addition of a new trip."""
     try:
-        cost = float(cost)  # Convert cost to float
+        cost = float(cost)
         if cost <= 0:
             return False, "Cost must be greater than 0"
         if not destination.strip():
             return False, "Destination cannot be empty"
-            
         add_trip(destination, cost)
         return True, "Trip added successfully"
     except ValueError:
         return False, "Invalid cost amount"
     except Exception as e:
-        return False, f"Error adding trip: {str(e)}"
+        return False, str(e)
 
 def handle_update_savings(amount):
-    """Handle updating the savings amount."""
     try:
-        amount = float(amount)  # Convert amount to float
+        amount = float(amount)
         if amount < 0:
             return False, "Savings amount cannot be negative"
-            
         update_savings(amount)
-        return True, "Savings updated successfully"
-    except ValueError:
-        return False, "Invalid savings amount"
+        return True, "Savings updated"
     except Exception as e:
-        return False, f"Error updating savings: {str(e)}"
+        return False, str(e)
 
 def handle_fetch_financial_data():
-    """Handle fetching all financial data."""
     try:
-        records = fetch_financial_data()
-        return True, records
+        return True, fetch_financial_data()
     except Exception as e:
-        return False, f"Error fetching financial data: {str(e)}"
+        return False, str(e)
 
 def get_trips():
-    """Fetches all trips from the database."""
     try:
-        conn = create_connection()
-        cursor = conn.cursor()
-
-        cursor.execute("SELECT id, destination, cost, timeframe FROM trips")
-        trips = cursor.fetchall()
-
-        cursor.close()
-        conn.close()
-        return True, trips
+        return True, db_get_trips()
     except Exception as e:
-        return False, f"Error fetching trips: {str(e)}"
+        return False, str(e)
 
-def calculate_savings_goal(trip_cost, timeframe):
-    """Calculates savings needed per month, week, and day to reach the trip goal.
-    Args:
-        trip_cost: Total cost of the trip
-        timeframe: Number of months until the trip
-    """
+def calculate_savings_goal(trip_cost, departure_date):
     try:
-        if timeframe <= 0:
-            return False, "Timeframe must be greater than 0 months"
+        today = datetime.today().date()
+        dep_date = datetime.strptime(departure_date, "%Y-%m-%d").date()
+        if dep_date <= today:
+            return False, "Departure date must be in the future."
 
-        # Convert months to days (approximate)
-        days_remaining = timeframe * 30
+        delta = relativedelta(dep_date, today)
+        total_months = delta.years * 12 + delta.months + (1 if delta.days > 0 else 0)
 
-        savings_per_month = round(trip_cost / timeframe, 2)
-        savings_per_week = round(trip_cost / (timeframe * 4), 2)  # Assuming 4 weeks per month
-        savings_per_day = round(trip_cost / days_remaining, 2)
+        if total_months == 0:
+            return False, "Trip is too close to calculate monthly savings."
+
+        per_month = round(trip_cost / total_months, 2)
+        per_week = round(trip_cost / (total_months * 4), 2)
+        per_day = round(trip_cost / (total_months * 30), 2)
 
         return True, {
-            "savings_per_month": savings_per_month,
-            "savings_per_week": savings_per_week,
-            "savings_per_day": savings_per_day,
+            "savings_per_month": per_month,
+            "savings_per_week": per_week,
+            "savings_per_day": per_day
         }
-    except ValueError:
-        return False, "Invalid timeframe or cost value"
     except Exception as e:
-        return False, f"Error calculating savings goal: {str(e)}"
+        return False, str(e)

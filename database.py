@@ -1,19 +1,18 @@
 import mysql.connector
 
-# Settings to connect database
-DB_CONFIG = {"host": "localhost",
-            "user": "your_username",
-            "password": "your_password",
-            "database": "penny_pilot"}
+DB_CONFIG = {
+    "host": "localhost",
+    "user": "root",
+    "password": "your_password",  # Use your actual password
+    "database": "pennypilot_db"  # Change this from "penny_pilot" to "pennypilot_db"
+}
 
-# function to connect to database
+
+
 def create_connection():
-    """Establish a connection to the MySQL database."""
     return mysql.connector.connect(**DB_CONFIG)
 
-# function to connect to database using 
 def create_tables():
-    """Creates necessary tables for the application."""
     conn = create_connection()
     cursor = conn.cursor()
 
@@ -38,37 +37,49 @@ def create_tables():
     conn.close()
 
 def add_trip(destination, cost):
-    """Inserts a new trip into the database."""
     conn = create_connection()
     cursor = conn.cursor()
-
-    query = "INSERT INTO trips (destination, cost) VALUES (%s, %s)"
-    cursor.execute(query, (destination, cost))
-
+    cursor.execute("INSERT INTO trips (destination, cost) VALUES (%s, %s)", (destination, cost))
     conn.commit()
     cursor.close()
     conn.close()
 
 def update_savings(amount):
-    """Updates the savings amount in the database."""
     conn = create_connection()
     cursor = conn.cursor()
-
-    query = "UPDATE finances SET amount = %s WHERE category = 'Savings'"
-    cursor.execute(query, (amount,))
-
+    cursor.execute("SELECT id FROM finances WHERE category = 'Savings'")
+    row = cursor.fetchone()
+    if row:
+        cursor.execute("UPDATE finances SET amount = %s WHERE category = 'Savings'", (amount,))
+    else:
+        cursor.execute("INSERT INTO finances (category, amount) VALUES ('Savings', %s)", (amount,))
     conn.commit()
     cursor.close()
     conn.close()
 
 def fetch_financial_data():
-    """Fetches all financial records from the database."""
     conn = create_connection()
     cursor = conn.cursor()
-
     cursor.execute("SELECT category, amount FROM finances")
     records = cursor.fetchall()
-
     cursor.close()
     conn.close()
     return records
+
+def get_user_savings():
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT amount FROM finances WHERE category = 'Savings'")
+    row = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    return float(row[0]) if row else 0.0
+
+def get_trips():
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, destination, cost FROM trips")
+    trips = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return trips
