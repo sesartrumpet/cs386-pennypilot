@@ -3,7 +3,7 @@ import tkinter as tk
 # Importing ttk for creating more advanced widgets( like Treeview)
 from tkinter import ttk
 # Importing functions for handling trip addition and savings update
-from controllers import handle_add_trip, handle_update_savings
+from controllers import get_trips, calculate_savings_goal
 # Defining the main class for the PennyPilot application
 class PennyPilotApp:
     # Initializer function to set up the main window and its elements
@@ -87,3 +87,51 @@ class PennyPilotApp:
     # Define the method to display savings (prints a message for now)
     def show_savings(self):
         print("Displaying savings")
+
+    def update_savings_display():
+        """Updates the UI with the calculated savings goal for the selected trip."""
+        selected_trip_id = trip_var.get()
+        if not selected_trip_id:
+            return
+
+        # Get selected trip details
+        selected_trip = next((trip for trip in trips if str(trip[0]) == selected_trip_id), None)
+        if not selected_trip:
+            return
+
+        destination, cost, start_date = selected_trip[1], float(selected_trip[2]), selected_trip[3]
+        savings = calculate_savings_goal(cost, start_date)
+
+        if "message" in savings:
+            savings_label.config(text=savings["message"])
+        else:
+            savings_label.config(
+                text=f"Save: ${savings['savings_per_month']}/month | "
+                    f"${savings['savings_per_week']}/week | "
+                    f"${savings['savings_per_day']}/day"
+            )
+
+
+
+# Initialize UI
+root = Tk()
+root.title("Penny Pilot - Trip Savings Calculator")
+
+# Fetch trips from database
+trips = get_trips()
+
+# Dropdown for trip selection
+trip_var = StringVar()
+trip_dropdown = ttk.Combobox(root, textvariable=trip_var, state="readonly")
+trip_dropdown["values"] = [f"{trip[0]} - {trip[1]}" for trip in trips]  # ID - Destination
+trip_dropdown.pack()
+
+# Button to calculate savings goal
+calculate_button = Button(root, text="Calculate Savings", command=update_savings_display)
+calculate_button.pack()
+
+# Label to display savings breakdown
+savings_label = Label(root, text="", font=("Arial", 12))
+savings_label.pack()
+
+root.mainloop()
