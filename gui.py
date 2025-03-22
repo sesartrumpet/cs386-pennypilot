@@ -55,6 +55,20 @@ class PennyPilotApp:
         # Result
         self.result_label = tk.Label(root, text="", font=("Arial", 12))
         self.result_label.pack(pady=5)
+        
+        # Create a savings breakdown table
+        self.savings_table = ttk.Treeview(root, columns=("Period", "Amount"), show="headings", height=3)
+        self.savings_table.heading("Period", text="Period")
+        self.savings_table.heading("Amount", text="Amount")
+        self.savings_table.pack(pady=10)
+
+        # Insert default rows
+        self.savings_table.insert("", "end", iid="month", values=("Monthly", "—"))
+        self.savings_table.insert("", "end", iid="week", values=("Weekly", "—"))
+        self.savings_table.insert("", "end", iid="day", values=("Daily", "—"))
+
+
+        
 
         # Graph frame
         self.graph_frame = tk.Frame(root)
@@ -69,14 +83,31 @@ class PennyPilotApp:
         date_str = self.date_entry.get()
         success, result = calculate_savings_goal(trip[2], date_str)
         if success:
-            self.result_label.config(text=(
-                f"Save ${result['savings_per_month']}/month | "
-                f"${result['savings_per_week']}/week | "
-                f"${result['savings_per_day']}/day"
-            ))
+            self.result_label.config(text="")
+
+            # Clear table
+            for row in self.savings_table.get_children():
+                self.savings_table.delete(row)
+
+            if success:
+                self.result_label.config(text="")
+
+                self.savings_table.item("month", values=("Monthly", f"${result['savings_per_month']}"))
+                self.savings_table.item("week", values=("Weekly", f"${result['savings_per_week']}"))
+                self.savings_table.item("day", values=("Daily", f"${result['savings_per_day']}"))
+
+                self.draw_graph(get_user_savings(), trip[2])
+            else:
+                self.savings_table.item("month", values=("Monthly", "—"))
+                self.savings_table.item("week", values=("Weekly", "—"))
+                self.savings_table.item("day", values=("Daily", "—"))
+                messagebox.showerror("Error", result)
+
+
             self.draw_graph(get_user_savings(), trip[2])
         else:
             messagebox.showerror("Error", result)
+
 
     def update_savings(self):
         try:
