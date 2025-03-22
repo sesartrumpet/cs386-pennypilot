@@ -31,8 +31,8 @@ def main(config):
     cursor = connector.cursor()
     warnings.filterwarnings("ignore", category=UserWarning)
     print("Initializing database...")
-    run_sql_file(cursor, 'Penny_Pilot/PennyPilot_db.sql')
-    run_sql_file(cursor, 'Penny_Pilot/data.sql')
+    run_sql_file(cursor, 'PennyPilot_db.sql')
+    run_sql_file(cursor, 'data.sql')
     connector.commit()
     print("Database initialized.")
 
