@@ -8,6 +8,7 @@ import matplotlib.animation as animation
 from tkcalendar import DateEntry  # Import DateEntry from tkcalendar
 import datetime
 import threading
+import mysql.connector
 
 def generate_future_dates():
     today = datetime.date.today()
@@ -21,6 +22,8 @@ class PennyPilotApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Penny Pilot - Trip Savings")
+        self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
+        self.connector = None  # Initialize database connection variable
 
         # Dropdown for trip
         self.trip_var = tk.StringVar()
@@ -32,7 +35,7 @@ class PennyPilotApp:
             messagebox.showerror("Database Error", result)
 
         self.trip_dropdown = ttk.Combobox(root, textvariable=self.trip_var, state="readonly")
-        self.trip_dropdown["values"] = [f"{trip[0]} - {trip[1]} (${trip[2]})" for trip in self.trips]
+        self.trip_dropdown["values"] = [f"{trip[0]} - {trip[1]} (${trip[2]:.2f})" for trip in self.trips]
         self.trip_dropdown.pack(pady=5)
 
         # Date input with calendar widget
@@ -95,8 +98,8 @@ class PennyPilotApp:
         selected = self.trip_var.get()
         if not selected:
             return
-        trip_id = int(selected.split(" - ")[0])
-        trip = next(t for t in self.trips if t[0] == trip_id)
+        username = selected.split(" - ")[0]  # Now getting username instead of trip_id
+        trip = next(t for t in self.trips if t[0] == username)
 
         # Get the selected date from the calendar widget
         date_str = self.date_entry.get_date().strftime("%Y-%m-%d")
@@ -151,8 +154,8 @@ class PennyPilotApp:
                 messagebox.showinfo("Success", msg)
                 selected = self.trip_var.get()
                 if selected:
-                    trip_id = int(selected.split(" - ")[0])
-                    trip = next(t for t in self.trips if t[0] == trip_id)
+                    username = selected.split(" - ")[0]
+                    trip = next(t for t in self.trips if t[0] == username)
                     self.draw_graph(amount, trip[2])
             else:
                 messagebox.showerror("Error", msg)
@@ -215,3 +218,25 @@ class PennyPilotApp:
         canvas = FigureCanvasTkAgg(fig, self.graph_frame)
         canvas.get_tk_widget().pack()
         canvas.draw()
+
+    def on_closing(self):
+        """Handle cleanup when window is closed"""
+        if self.connector:
+            try:
+                self.connector.close()
+                print("Database connection closed")
+            except Exception as e:
+                print(f"Error closing database connection: {e}")
+        self.root.destroy()
+
+    def create_connection(self):
+        """Create database connection if needed"""
+        if not self.connector or not self.connector.is_connected():
+            import config as myconfig
+            config = myconfig.Config.dbinfo().copy()
+            try:
+                self.connector = mysql.connector.Connect(**config)
+            except mysql.connector.Error as err:
+                print(f"Error connecting to database: {err}")
+                return None
+        return self.connector
