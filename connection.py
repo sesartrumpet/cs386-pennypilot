@@ -1,5 +1,22 @@
 # import MySQL connector driver manager
 import mysql.connector
+import os
+import warnings
+
+
+def run_sql_file(cursor, filepath):
+    if not os.path.exists(filepath):
+        print(f"SQL file not found: {filepath}")
+        return
+
+    with open(filepath, 'r') as file:
+        sql = file.read()
+        for statement in sql.split(';'):
+            if statement.strip():
+                try:
+                    cursor.execute(statement)
+                except mysql.connector.Error as err:
+                    print(f"Error executing statement: {err}")
 
 
 # main program
@@ -8,9 +25,26 @@ def main(config):
     connector = mysql.connector.Connect(**config)
     # check if the connection is open
     print("Is connected?", connector.is_connected())
+
     # print the server's version
     print("MySQL Server version:", connector.get_server_info())
+    cursor = connector.cursor()
+    warnings.filterwarnings("ignore", category=UserWarning)
+    print("Initializing database...")
+    run_sql_file(cursor, 'Penny_Pilot/PennyPilot_db.sql')
+    run_sql_file(cursor, 'Penny_Pilot/data.sql')
+    connector.commit()
+    print("Database initialized.")
 
+    # fetch and print userProfile data
+    cursor.execute("SELECT * FROM userProfile")
+    rows = cursor.fetchall()
+    print("userProfile data:")
+    for row in rows:
+        print(row)
+
+    cursor.close()
+    connector.close()
 
 # checks whether the script is being run as the main program
 if __name__ == '__main__':
