@@ -83,30 +83,21 @@ python3 main.py
    - Run the installer and follow the setup wizard
    - Connect to your root server
 
-3. **Clone the repository**:
+4. **Clone the repository**:
 ```bash
 git clone https://github.com/sesartrumpet/cs386-pennypilot.git
 cd cs386-pennypilot
 ```
 
-4. **Create and activate virtual environment**:
+5. **Create and activate virtual environment**:
 ```bash
 python -m venv venv
 .\venv\Scripts\activate
 ```
 
-5. **Install dependencies**:
+6. **Install dependencies**:
 ```bash
-pip install mysql-connector-python
-```
-
-6. **Configure MySQL Database**:
-```bash
-mysql -u root -p
-```
-Then in the MySQL prompt:
-```sql
-CREATE DATABASE pennyPilot;
+pip install -r requirements.txt
 ```
 
 7. **Run the application**:
