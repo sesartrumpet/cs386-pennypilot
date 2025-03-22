@@ -15,6 +15,7 @@
 - **Tkinter:** A built-in Python GUI toolkit used to create a desktop application interface for Penny Pilot. Tkinter allows for an interactive and user-friendly experience, enabling students to input financial data, visualize budgets, and track savings progress in an intuitive way.
   
 **Deployment**   
+Penny Pilot is designed as a cross-platform desktop application to help students plan study-abroad finances. It is launched via a Python script (main.py) that brings up a user interface built with Tkinter.
 
 **Licensing**   
 
