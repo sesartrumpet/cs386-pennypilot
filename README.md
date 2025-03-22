@@ -71,10 +71,17 @@ python3 main.py
    - Download Python from [python.org](https://www.python.org/downloads/)
    - During installation, make sure to check "Add Python to PATH"
 
-2. **Install MySQL**:
+2. **Install MySQL Workbench**:
    - Download MySQL Installer from [mysql.com](https://dev.mysql.com/downloads/installer/)
    - Run the installer and follow the setup wizard
-   - Remember your root password
+   - Choose "Full" for the Setup Type
+   - Remember your root password (make it 123455 to avoid altering code)
+   - Create a new MySQL Connection named "pennypilot"
+
+3. **Install MySQL Community Server**
+   - Download version 8.4.4 LTS from [mysql.com](https://dev.mysql.com/downloads/mysql/)
+   - Run the installer and follow the setup wizard
+   - Connect to your root server
 
 3. **Clone the repository**:
 ```bash
