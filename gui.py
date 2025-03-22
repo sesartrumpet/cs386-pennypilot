@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from controllers import get_trips, calculate_savings_goal, handle_update_savings
+from controllers import get_trips, calculate_savings_goal, handle_update_savings, fetch_trip_expense_breakdown
 from database import get_user_savings
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -67,6 +67,20 @@ class PennyPilotApp:
         self.savings_table.insert("", "end", iid="week", values=("Weekly", "—"))
         self.savings_table.insert("", "end", iid="day", values=("Daily", "—"))
 
+        self.expense_breakdown_table = ttk.Treeview(root, columns=("Category", "Estimated Cost"), show="headings", height=7)
+        self.expense_breakdown_table.heading("Category", text="Category")
+        self.expense_breakdown_table.heading("Estimated Cost", text="Estimated Cost")
+        self.expense_breakdown_table.pack(pady=10)
+
+        # Insert default rows with em dashes and unique IDs
+        self.expense_breakdown_table.insert("", "end", iid="travelto", values=("Travel To", "—"))
+        self.expense_breakdown_table.insert("", "end", iid="travelthere", values=("Travel There", "—"))
+        self.expense_breakdown_table.insert("", "end", iid="food", values=("Food", "—"))
+        self.expense_breakdown_table.insert("", "end", iid="housing", values=("Housing", "—"))
+        self.expense_breakdown_table.insert("", "end", iid="school", values=("School", "—"))
+        self.expense_breakdown_table.insert("", "end", iid="misc", values=("Misc", "—"))
+        self.expense_breakdown_table.insert("", "end", iid="total", values=("Total", "—"))
+
 
         
 
@@ -85,26 +99,38 @@ class PennyPilotApp:
         if success:
             self.result_label.config(text="")
 
-            # Clear table
-            for row in self.savings_table.get_children():
-                self.savings_table.delete(row)
-
-            if success:
-                self.result_label.config(text="")
-
-                self.savings_table.item("month", values=("Monthly", f"${result['savings_per_month']}"))
-                self.savings_table.item("week", values=("Weekly", f"${result['savings_per_week']}"))
-                self.savings_table.item("day", values=("Daily", f"${result['savings_per_day']}"))
-
-                self.draw_graph(get_user_savings(), trip[2])
-            else:
-                self.savings_table.item("month", values=("Monthly", "—"))
-                self.savings_table.item("week", values=("Weekly", "—"))
-                self.savings_table.item("day", values=("Daily", "—"))
-                messagebox.showerror("Error", result)
-
+            self.savings_table.item("month", values=("Monthly", f"${result['savings_per_month']}"))
+            self.savings_table.item("week", values=("Weekly", f"${result['savings_per_week']}"))
+            self.savings_table.item("day", values=("Daily", f"${result['savings_per_day']}"))
 
             self.draw_graph(get_user_savings(), trip[2])
+
+            # Show breakdown of expenses for the selected location
+            success, expenses = fetch_trip_expense_breakdown(trip[1])  # trip[1] = location
+            if success:
+                # Category to Treeview row ID mapping
+                category_ids = {
+                    "Travel To": "travelto",
+                    "Travel There": "travelthere",
+                    "Food": "food",
+                    "Housing": "housing",
+                    "School": "school",
+                    "Misc": "misc"
+                }
+
+                # Map DB results to a dictionary
+                amounts = {category: cost for category, cost in expenses}
+                total = 0
+
+                for label, iid in category_ids.items():
+                    amount = amounts.get(label, 0.0)
+                    total += amount
+                    self.expense_breakdown_table.item(iid, values=(label, f"${amount:.2f}"))
+
+                self.expense_breakdown_table.item("total", values=("Total", f"${total:.2f}"))
+            else:
+                messagebox.showerror("Error", f"Could not load breakdown: {expenses}")
+
         else:
             messagebox.showerror("Error", result)
 
