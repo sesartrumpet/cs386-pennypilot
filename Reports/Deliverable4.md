@@ -18,6 +18,7 @@
 Penny Pilot is designed as a cross-platform desktop application to help students plan study-abroad finances. It is launched via a Python script (main.py) that brings up a user interface built with Tkinter.
 
 **Licensing**   
+For the Penny Pilot project, we adopted the MIT License. This license was chosen because it offers both flexibility and simplicity, allowing anyone to freely use, modify, distribute, and even commercialize the software with minimal restrictions. It is one of the most widely used open-source licenses and is known for encouraging collaboration and broad adoption. The MIT License is easy to understand and includes a clear disclaimer that protects the original authors from liability. Its permissive nature aligns with our goal of making Penny Pilot accessible and adaptable for others who may want to build upon or contribute to the project. To ensure proper attribution and compliance, the license file has been included in the repository, and the GitHub repository has been configured accordingly.
 
 **Readme File**   
 
