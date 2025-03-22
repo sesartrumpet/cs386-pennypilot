@@ -4,6 +4,18 @@ from controllers import get_trips, calculate_savings_goal, handle_update_savings
 from database import get_user_savings
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import matplotlib.animation as animation
+from tkcalendar import DateEntry  # Import DateEntry from tkcalendar
+import datetime
+import threading
+
+def generate_future_dates():
+    today = datetime.date.today()
+    future_dates = []
+    for i in range(1, 31):  # Example: Generate 30 days of future dates
+        future_dates.append(today + datetime.timedelta(days=i))
+    return future_dates
+
 
 class PennyPilotApp:
     def __init__(self, root):
@@ -19,26 +31,12 @@ class PennyPilotApp:
             self.trips = []
             messagebox.showerror("Database Error", result)
 
-        
-        #self.trips = get_trips()[1]
-        
-        
         self.trip_dropdown = ttk.Combobox(root, textvariable=self.trip_var, state="readonly")
-        
-        
         self.trip_dropdown["values"] = [f"{trip[0]} - {trip[1]} (${trip[2]})" for trip in self.trips]
-        
-        #self.trip_dropdown["values"] = [f"{trip[0]} - {trip[1]} (${trip[2]})" for trip in self.trips]
-
-        
-        
         self.trip_dropdown.pack(pady=5)
 
-        # Date input
-        self.date_label = tk.Label(root, text="Enter trip date (YYYY-MM-DD):")
-        self.date_label.pack()
-        self.date_entry = tk.Entry(root)
-        self.date_entry.pack(pady=5)
+        # Date input with calendar widget
+        self.create_date_dropdown()
 
         # Calculate button
         self.calc_btn = tk.Button(root, text="Calculate Savings Goal", command=self.calculate)
@@ -55,7 +53,7 @@ class PennyPilotApp:
         # Result
         self.result_label = tk.Label(root, text="", font=("Arial", 12))
         self.result_label.pack(pady=5)
-        
+
         # Create a savings breakdown table
         self.savings_table = ttk.Treeview(root, columns=("Period", "Amount"), show="headings", height=3)
         self.savings_table.heading("Period", text="Period")
@@ -81,12 +79,17 @@ class PennyPilotApp:
         self.expense_breakdown_table.insert("", "end", iid="misc", values=("Misc", "—"))
         self.expense_breakdown_table.insert("", "end", iid="total", values=("Total", "—"))
 
-
-        
-
         # Graph frame
         self.graph_frame = tk.Frame(root)
         self.graph_frame.pack()
+
+        # Show initial empty graph
+        self.draw_graph(0, 0)
+
+    def create_date_dropdown(self):
+        # Create DateEntry widget from tkcalendar
+        self.date_entry = DateEntry(self.root, width=12, background='darkblue', foreground='white', borderwidth=2, year=datetime.datetime.now().year, month=datetime.datetime.now().month, day=datetime.datetime.now().day)
+        self.date_entry.pack(pady=5)
 
     def calculate(self):
         selected = self.trip_var.get()
@@ -94,7 +97,14 @@ class PennyPilotApp:
             return
         trip_id = int(selected.split(" - ")[0])
         trip = next(t for t in self.trips if t[0] == trip_id)
-        date_str = self.date_entry.get()
+
+        # Get the selected date from the calendar widget
+        date_str = self.date_entry.get_date().strftime("%Y-%m-%d")
+
+        # Run calculation and graph drawing in a separate thread
+        threading.Thread(target=self.calculate_in_background, args=(trip, date_str)).start()
+
+    def calculate_in_background(self, trip, date_str):
         success, result = calculate_savings_goal(trip[2], date_str)
         if success:
             self.result_label.config(text="")
@@ -130,10 +140,8 @@ class PennyPilotApp:
                 self.expense_breakdown_table.item("total", values=("Total", f"${total:.2f}"))
             else:
                 messagebox.showerror("Error", f"Could not load breakdown: {expenses}")
-
         else:
             messagebox.showerror("Error", result)
-
 
     def update_savings(self):
         try:
@@ -151,16 +159,59 @@ class PennyPilotApp:
         except ValueError:
             messagebox.showerror("Error", "Enter a valid number")
 
-    def draw_graph(self, saved, goal):
+    def draw_graph(self, saved=0, goal=0):
         for widget in self.graph_frame.winfo_children():
             widget.destroy()
 
-        fig = plt.Figure(figsize=(4,2))
+        fig = plt.Figure(figsize=(5.5, 1.6))
         ax = fig.add_subplot(111)
-        ax.bar(['Goal'], [goal], color='lightgray')
-        ax.bar(['Current'], [saved], color='green')
-        ax.set_ylim(0, max(goal, saved + 50))
-        ax.set_ylabel("Amount Saved")
+
+        # Avoid division by zero
+        goal = goal if goal > 0 else 1
+        target_progress = min(saved / goal, 1)
+
+        # Style
+        label_size = 8
+        y_offset = 0.15
+        bar_height = 0.5
+
+        you_are_here = "You are\nhere"
+        penny_pilot_msg = "PennyPilot\nhelps you\nget here"
+
+        bar_container = ax.barh([''], [0], color='green', height=bar_height)
+
+        # Draw faded remaining portion (light gray with alpha)
+        ax.barh([''], [1], left=0, color='lightgray', height=bar_height, alpha=0.3)
+
+        # Set fixed display
+        ax.set_xlim(0, 1)
+        ax.axis("off")
+
+        # Text annotations
+        value_label = ax.text(0.5, -0.4, "", ha="center", fontsize=9, fontweight="bold")
+        you_here_label = ax.text(0, y_offset, you_are_here, fontsize=label_size, fontweight="bold",
+                                color="white", backgroundcolor="green", ha="left")
+        penny_msg_label = ax.text(0.99, y_offset, penny_pilot_msg, fontsize=label_size,
+                                fontweight="bold", color="black", ha="right")
+
+        def update(frame):
+            progress = min(frame / 100, target_progress)
+            bar_container[0].set_width(progress)
+
+            # Update dollar value display
+            current_val = progress * goal
+            value_label.set_text(f"${current_val:,.2f} of ${goal:,.2f}")
+
+            # Move "You are here"
+            x_pos = max(progress * 0.98, 0.01)
+            align = "right" if progress > 0.1 else "left"
+            you_here_label.set_position((x_pos, y_offset))
+            you_here_label.set_ha(align)
+
+            return bar_container
+
+        anim = animation.FuncAnimation(fig, update, frames=101, interval=10, repeat=False)
+
         canvas = FigureCanvasTkAgg(fig, self.graph_frame)
         canvas.get_tk_widget().pack()
         canvas.draw()
