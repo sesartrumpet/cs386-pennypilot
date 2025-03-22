@@ -2,7 +2,6 @@ from database import (
     add_trip,
     update_savings,
     fetch_financial_data,
-    create_tables,
     get_trips as db_get_trips,
     get_user_savings,
     get_price_breakdown_by_location
@@ -10,9 +9,6 @@ from database import (
 
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-
-def initialize_database():
-    create_tables()
 
 def handle_add_trip(destination, cost):
     try:
