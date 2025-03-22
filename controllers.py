@@ -4,8 +4,10 @@ from database import (
     fetch_financial_data,
     create_tables,
     get_trips as db_get_trips,
-    get_user_savings
+    get_user_savings,
+    get_price_breakdown_by_location
 )
+
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
@@ -72,3 +74,15 @@ def calculate_savings_goal(trip_cost, departure_date):
         }
     except Exception as e:
         return False, str(e)
+    
+def fetch_trip_expense_breakdown(location):
+    """
+    Fetches expense breakdown for a given trip location.
+    Returns a list of (category, cost) tuples.
+    """
+    try:
+        return True, get_price_breakdown_by_location(location)
+    except Exception as e:
+        return False, str(e)
+
+    

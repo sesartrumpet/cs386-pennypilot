@@ -83,3 +83,21 @@ def get_trips():
     cursor.close()
     conn.close()
     return trips
+
+def get_price_breakdown_by_location(location):
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT Travelto, Travelthere, Food, Housing, School, Misc 
+        FROM prices WHERE location = %s
+    """, (location,))
+    row = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    
+    if not row:
+        return []
+    
+    categories = ["Travel To", "Travel There", "Food", "Housing", "School", "Misc"]
+    return list(zip(categories, row))
+
