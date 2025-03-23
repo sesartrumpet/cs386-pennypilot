@@ -5,6 +5,21 @@
 # Requirements
 
 #### Requirement:
+> As someone who has a lot of transactions, I want to filter transactions so I can know exactly how much I am spending
+ - Issue:
+ - Pull Request: 
+    - Implemented by:
+    - Approved by:
+<screenshot>
+
+#### Requirement:
+> As a new account holder, I want to be able to add and track my trips
+ - Issue: [<link>](https://github.com/sesartrumpet/cs386-pennypilot/issues/115)
+ - Pull Request: [<link>](https://github.com/sesartrumpet/cs386-pennypilot/pull/119)
+    - Implemented by: Elijah Sprouse
+    - Approved by: Kyle Radzvin
+
+#### Requirement:
 > As someone who is interested in studying in many different countries, I want data on many countries to be readily available.  
  - Issue: [Issue](https://github.com/sesartrumpet/cs386-pennypilot/issues/107)  
  - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/128)  
@@ -27,7 +42,9 @@
     - Implemented by: Victor Rodriguez  
     - Approved by: Vikram Singh  
 <screenshot>
-
+   
+  
+**Tests**  
 
 # Tests 
 
