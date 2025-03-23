@@ -25,8 +25,7 @@ class PennyPilotApp:
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
         self.connector = None  # Initialize database connection variable
 
-        self.username = username
-        self.display_username() # Display username
+        self.display_username()
         
         # Dropdown for trip
         self.trip_var = tk.StringVar()
@@ -93,8 +92,8 @@ class PennyPilotApp:
         self.draw_graph(0, 0)
     
     def display_username(self):
-        user = tk.Label(self.root, text=f"Hello {self.username}! Welcome to PennyPilot", font=("Arial", 14))
-        user.pack(pady=10) # Add label to window
+        greeting = tk.Label(self.root, text=f"Hello! Welcome to PennyPilot", font=("Arial", 14))
+        greeting.pack(pady=10) # Add label to window
     
     def create_date_dropdown(self):
         # Create DateEntry widget from tkcalendar
