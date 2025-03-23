@@ -32,7 +32,7 @@ def main(config):
     warnings.filterwarnings("ignore", category=UserWarning)
     print("Initializing database...")
     run_sql_file(cursor, 'PennyPilot_db.sql')
-    run_sql_file(cursor, 'data.sql')
+    run_sql_file(cursor, 'Penny_data.sql')
     connector.commit()
     print("Database initialized.")
 
@@ -106,15 +106,16 @@ def get_trips():
     connector = create_connection()
     cursor = connector.cursor()
     cursor.execute("""
-        SELECT t.userName, t.location, 
-        (p.Travelto + p.Travelthere + p.Food + p.Housing + p.School + p.Misc) as total_cost 
-        FROM trip t 
-        JOIN prices p ON t.location = p.location
+        SELECT d.location, 
+        (p.Travelto + p.Travelthere + p.Food + p.Housing + p.School + p.Misc) as total_cost
+        FROM tripDestination d
+        JOIN prices p ON d.location = p.location
     """)
     trips = cursor.fetchall()
     cursor.close()
     connector.close()
     return trips
+
 
 def get_price_breakdown_by_location(location):
     connector = create_connection()
