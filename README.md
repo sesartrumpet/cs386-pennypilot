@@ -27,12 +27,11 @@ To run this project, ensure you have the following installed:
 brew install python3
 ```
 
-3. **Install MySQL**:
-```bash
-brew install mysql
-brew services start mysql
-mysql_secure_installation
-```
+3. **Install MySQL Workbench**:
+   - Download MySQL Installer from [mysql.com](https://dev.mysql.com/downloads/workbench/)
+   - Remember your root password is not created so delete this in config.py to
+      '' instead of '123455'
+   - Create a new MySQL Connection named "pennypilot"
 
 4. **Clone the repository**:
 ```bash
