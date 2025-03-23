@@ -137,9 +137,16 @@ def create_connection():
     import config as myconfig
     config = myconfig.Config.dbinfo().copy()
     try:
+        print(f"Attempting to connect to MySQL with config: {config}")
         connector = mysql.connector.Connect(**config)
+        print("Successfully connected to MySQL")
         return connector
     except mysql.connector.Error as err:
         print(f"Error connecting to database: {err}")
+        print(f"Error code: {err.errno}")
+        print(f"SQL State: {err.sqlstate}")
+        return None
+    except Exception as e:
+        print(f"Unexpected error: {e}")
         return None
 
