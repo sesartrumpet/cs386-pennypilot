@@ -4,6 +4,31 @@
 
 **Requirements**  
 
+#### Requirement:
+> As someone who has a lot of transactions, I want to filter transactions so finding a specific one will be easier for me.
+ - Issue: <link>
+ - Pull Request: <link>
+    - Implemented by:
+    - Approved by:
+<screenshot>
+
+#### Requirement:
+> As a new account holder, I want to be able to add and track my trips
+ - Issue: <link>
+ - Pull Request: <link>
+    - Implemented by:
+    - Approved by:
+<screenshot>
+
+#### Requirement:
+> As a person who wants to easily manage their finances, I want to be able to see a clear breakdown of my total savings.
+  - Issue: <link>
+  - Pull Request: <link>
+    - Implemented by:
+    - Approved by:
+<screenshot>
+
+
 **Tests**  
 
 **Technology**    
@@ -14,3 +39,20 @@
 
 - **Tkinter:** A built-in Python GUI toolkit used to create a desktop application interface for Penny Pilot. Tkinter allows for an interactive and user-friendly experience, enabling students to input financial data, visualize budgets, and track savings progress in an intuitive way.
   
+**Deployment**   
+Penny Pilot is designed as a cross-platform desktop application to help students plan study-abroad finances. It is launched via a Python script (main.py) that brings up a user interface built with Tkinter.
+
+**Licensing**   
+For the Penny Pilot project, we adopted the MIT License. This license was chosen because it offers both flexibility and simplicity, allowing anyone to freely use, modify, distribute, and even commercialize the software with minimal restrictions. It is one of the most widely used open-source licenses and is known for encouraging collaboration and broad adoption. The MIT License is easy to understand and includes a clear disclaimer that protects the original authors from liability. Its permissive nature aligns with our goal of making Penny Pilot accessible and adaptable for others who may want to build upon or contribute to the project. To ensure proper attribution and compliance, the license file has been included in the repository, and the GitHub repository has been configured accordingly.
+
+**Readme File**   
+
+**UX Design**   
+
+**Lessons Learned** 
+During the first release of Penny Pilot, our team faced notable challenges with time management and communication, especially when balancing workloads across different schedules. One of the technical hurdles was working with MySQL, as only one team member had prior experience, which led to a learning curve for the rest of us. Despite this, we’re proud of successfully connecting a working database, which was a major milestone. As development progressed, our scope evolved significantly—we reworked everything from the user interface layout to the type of information we collect for calculating trip costs and savings. Through testing, we realized that some of our original ideas weren’t as essential to the core goal as we thought. For our second release, we plan to expand the database to include more destination options for students, improve the UI for a more polished and engaging user experience, and package the application so it can be distributed as a standalone desktop app.
+
+**Demo**   
+
+
+

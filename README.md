@@ -71,35 +71,33 @@ python3 main.py
    - Download Python from [python.org](https://www.python.org/downloads/)
    - During installation, make sure to check "Add Python to PATH"
 
-2. **Install MySQL**:
+2. **Install MySQL Workbench**:
    - Download MySQL Installer from [mysql.com](https://dev.mysql.com/downloads/installer/)
    - Run the installer and follow the setup wizard
-   - Remember your root password
+   - Choose "Full" for the Setup Type
+   - Remember your root password (make it 123455 to avoid altering code)
+   - Create a new MySQL Connection named "pennypilot"
 
-3. **Clone the repository**:
+3. **Install MySQL Community Server**
+   - Download version 8.4.4 LTS from [mysql.com](https://dev.mysql.com/downloads/mysql/)
+   - Run the installer and follow the setup wizard
+   - Connect to your root server
+
+4. **Clone the repository**:
 ```bash
 git clone https://github.com/sesartrumpet/cs386-pennypilot.git
 cd cs386-pennypilot
 ```
 
-4. **Create and activate virtual environment**:
+5. **Create and activate virtual environment**:
 ```bash
 python -m venv venv
 .\venv\Scripts\activate
 ```
 
-5. **Install dependencies**:
+6. **Install dependencies**:
 ```bash
-pip install mysql-connector-python
-```
-
-6. **Configure MySQL Database**:
-```bash
-mysql -u root -p
-```
-Then in the MySQL prompt:
-```sql
-CREATE DATABASE pennyPilot;
+pip install -r requirements.txt
 ```
 
 7. **Run the application**:
