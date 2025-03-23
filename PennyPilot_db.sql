@@ -35,3 +35,5 @@ CREATE TABLE IF NOT EXISTS trip (
     FOREIGN KEY (location) REFERENCES tripDestination(location) ON DELETE CASCADE
 );
 
+
+
