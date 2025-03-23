@@ -4,6 +4,31 @@
 
 **Requirements**  
 
+#### Requirement:
+> As someone who has a lot of transactions, I want to filter transactions so finding a specific one will be easier for me.
+ - Issue: <link>
+ - Pull Request: <link>
+    - Implemented by:
+    - Approved by:
+<screenshot>
+
+#### Requirement:
+> As a new account holder, I want to be able to add and track my trips
+ - Issue: <link>
+ - Pull Request: <link>
+    - Implemented by:
+    - Approved by:
+<screenshot>
+
+#### Requirement:
+> As a person who wants to easily manage their finances, I want to be able to see a clear breakdown of my total savings.
+  - Issue: <link>
+  - Pull Request: <link>
+    - Implemented by:
+    - Approved by:
+<screenshot>
+
+
 **Tests**  
 
 **Technology**    
