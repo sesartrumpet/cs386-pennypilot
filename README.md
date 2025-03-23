@@ -1,4 +1,7 @@
 # Penny Pilot
+## Version
+Current version: 0.1.0
+
 
 Penny Pilot is a financial planning tool designed to help students at Northern Arizona University (NAU) manage their budget and savings for studying abroad. Many students struggle with financial planning, which discourages them from pursuing international education opportunities. Penny Pilot provides a user-friendly platform to track expenses, set savings goals, and visualize financial progress, reducing stress and empowering students to focus on learning.
 
@@ -27,12 +30,11 @@ To run this project, ensure you have the following installed:
 brew install python3
 ```
 
-3. **Install MySQL**:
-```bash
-brew install mysql
-brew services start mysql
-mysql_secure_installation
-```
+3. **Install MySQL Workbench**:
+   - Download MySQL Installer from [mysql.com](https://dev.mysql.com/downloads/workbench/)
+   - Remember your root password is not created so delete this in config.py to
+      '' instead of '123455'
+   - Create a new MySQL Connection named "pennypilot"
 
 4. **Clone the repository**:
 ```bash
@@ -77,6 +79,8 @@ python3 main.py
    - Choose "Full" for the Setup Type
    - Remember your root password (make it 123455 to avoid altering code)
    - Create a new MySQL Connection named "pennypilot"
+   - Open and run PennyPilot_db.sql inside pennypilot
+   - Open and run data.sql inside pennypilot
 
 3. **Install MySQL Community Server**
    - Download version 8.4.4 LTS from [mysql.com](https://dev.mysql.com/downloads/mysql/)

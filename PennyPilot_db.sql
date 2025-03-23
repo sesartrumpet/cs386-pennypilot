@@ -34,3 +34,6 @@ CREATE TABLE IF NOT EXISTS trip (
     FOREIGN KEY (userName) REFERENCES userProfile(userName) ON DELETE CASCADE,
     FOREIGN KEY (location) REFERENCES tripDestination(location) ON DELETE CASCADE
 );
+
+
+
