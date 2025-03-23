@@ -18,6 +18,7 @@
  - Pull Request: [<link>](https://github.com/sesartrumpet/cs386-pennypilot/pull/119)
     - Implemented by: Elijah Sprouse
     - Approved by: Kyle Radzvin
+![Database](Deliverable4_images/addatrip.jpg)
 
 #### Requirement:
 > As someone who is interested in studying in many different countries, I want data on many countries to be readily available.  
@@ -26,14 +27,6 @@
     - Implemented by: Kyle Radzvin    
     - Approved by:Victor Rodriguez    
 ![Datatbase](Deliverable4_images/pennypilot_d4_requirement1.jpg)  
-
-#### Requirement:
-> As a new account holder, I want to be able to add and track my trips  
- - Issue: [Issue](https://github.com/sesartrumpet/cs386-pennypilot/issues/115)  
- - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/119)  
-    - Implemented by: Elijah Sprouse  
-    - Approved by: Kyle Radzvin  
-<screenshot>
 
 #### Requirement:
 > As a person who wants to easily manage their finances, I want to be able to see a clear breakdown of my total savings.  
