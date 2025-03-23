@@ -103,19 +103,19 @@ class PennyPilotApp:
         threading.Thread(target=self.calculate_in_background, args=(trip, date_str)).start()
 
     # Runs the savings calculation and updates UI tables in a background thread.
-    def calculate_in_background(self, trip, date_str):
-        success, result = calculate_savings_goal(trip[1], date_str)
-        if success:
-            self.result_label.config(text="")
+    #def calculate_in_background(self, trip, date_str):
+     #   success, result = calculate_savings_goal(trip[1], date_str)
+      #  if success:
+       #     self.result_label.config(text="")
 
-            self.savings_table.item("month", values=("Monthly", f"${result['savings_per_month']}"))
-            self.savings_table.item("week", values=("Weekly", f"${result['savings_per_week']}"))
-            self.savings_table.item("day", values=("Daily", f"${result['savings_per_day']}"))
+        #    self.savings_table.item("month", values=("Monthly", f"${result['savings_per_month']}"))
+         #   self.savings_table.item("week", values=("Weekly", f"${result['savings_per_week']}"))
+          #  self.savings_table.item("day", values=("Daily", f"${result['savings_per_day']}"))
 
-            self.update_expense_breakdown(trip[0])
+           # self.update_expense_breakdown(trip[0])
 
-        else:
-            messagebox.showerror("Error", result)
+        #else:
+         #   messagebox.showerror("Error", result)
 
     # Fetches and displays a detailed cost breakdown for a trip by category.
     def update_expense_breakdown(self, location):
