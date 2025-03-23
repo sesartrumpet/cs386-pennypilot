@@ -37,7 +37,7 @@ class PennyPilotApp:
             messagebox.showerror("Database Error", result)
 
         self.trip_dropdown = ttk.Combobox(root, textvariable=self.trip_var, state="readonly")
-        self.trip_dropdown["values"] = [f"{trip[0]} - {trip[1]} (${trip[2]:.2f})" for trip in self.trips]
+        self.trip_dropdown["values"] = [f"{trip[0]} - ${trip[1]:.2f}" for trip in self.trips]
         self.trip_dropdown.pack(pady=5)
 
         # Date input with calendar widget
@@ -48,12 +48,12 @@ class PennyPilotApp:
         self.calc_btn.pack(pady=5)
 
         # Savings input
-        self.savings_label = tk.Label(root, text="Update current savings:")
-        self.savings_label.pack()
-        self.savings_entry = tk.Entry(root)
-        self.savings_entry.pack()
-        self.savings_btn = tk.Button(root, text="Update Savings", command=self.update_savings)
-        self.savings_btn.pack()
+        # self.savings_label = tk.Label(root, text="Update current savings:")
+        # self.savings_label.pack()
+        # self.savings_entry = tk.Entry(root)
+        # self.savings_entry.pack()
+        # self.savings_btn = tk.Button(root, text="Update Savings", command=self.update_savings)
+        # self.savings_btn.pack()
 
         # Result
         self.result_label = tk.Label(root, text="", font=("Arial", 12))
@@ -76,7 +76,7 @@ class PennyPilotApp:
         self.expense_breakdown_table.pack(pady=10)
 
         # Insert default rows with em dashes and unique IDs
-        self.expense_breakdown_table.insert("", "end", iid="travelto", values=("Travel To", "—"))
+        self.expense_breakdown_table.insert("", "end", iid="travelto", values=("Travel To", "1 million"))
         self.expense_breakdown_table.insert("", "end", iid="travelthere", values=("Travel There", "—"))
         self.expense_breakdown_table.insert("", "end", iid="food", values=("Food", "—"))
         self.expense_breakdown_table.insert("", "end", iid="housing", values=("Housing", "—"))
@@ -89,7 +89,7 @@ class PennyPilotApp:
         self.graph_frame.pack()
 
         # Show initial empty graph
-        self.draw_graph(0, 0)
+        #self.draw_graph(0, 0)
     
     def display_username(self):
         greeting = tk.Label(self.root, text=f"Hello! Welcome to PennyPilot", font=("Arial", 14))
@@ -114,7 +114,7 @@ class PennyPilotApp:
         threading.Thread(target=self.calculate_in_background, args=(trip, date_str)).start()
 
     def calculate_in_background(self, trip, date_str):
-        success, result = calculate_savings_goal(trip[2], date_str)
+        success, result = calculate_savings_goal(trip[1], date_str)
         if success:
             self.result_label.config(text="")
 

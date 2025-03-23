@@ -77,6 +77,8 @@ python3 main.py
    - Choose "Full" for the Setup Type
    - Remember your root password (make it 123455 to avoid altering code)
    - Create a new MySQL Connection named "pennypilot"
+   - Open and run PennyPilot_db.sql inside pennypilot
+   - Open and run data.sql inside pennypilot
 
 3. **Install MySQL Community Server**
    - Download version 8.4.4 LTS from [mysql.com](https://dev.mysql.com/downloads/mysql/)
