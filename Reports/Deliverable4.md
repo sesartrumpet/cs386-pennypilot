@@ -36,7 +36,16 @@
     - Approved by: Vikram Singh  
 ![Datatbase](Deliverable4_images/totalsavins.jpg)
    
-  
+#### Requirement:
+> As a new user, I want my profile information to displayed on my application for me to see
+  - Issue: [Issue](https://github.com/sesartrumpet/cs386-pennypilot/issues/109)
+  - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/137)
+      - Implemented by: Vikram Singh
+      - Approved by: Kyle Radzvin
+(No screenshot available at the moment)
+
+#### Requirement:
+> 
 **Tests**  
 
 # Tests 
