@@ -29,7 +29,7 @@ class Config(object):
     HOST = 'localhost'      # fill with your host address
     DATABASE = 'pennypilot_db'  # fill with your database
     USER = 'root'      # fill with your username
-    PASSWORD = ''  # fill with your user's password
+    PASSWORD = '123455'  # fill with your user's password
     PORT = 3306
 
     CHARSET = 'utf8'
