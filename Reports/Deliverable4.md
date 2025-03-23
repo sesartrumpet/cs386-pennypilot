@@ -24,6 +24,9 @@ For the Penny Pilot project, we adopted the MIT License. This license was chosen
 
 **UX Design**   
 
+**Lessons Learned** 
+During the first release of Penny Pilot, our team faced notable challenges with time management and communication, especially when balancing workloads across different schedules. One of the technical hurdles was working with MySQL, as only one team member had prior experience, which led to a learning curve for the rest of us. Despite this, we’re proud of successfully connecting a working database, which was a major milestone. As development progressed, our scope evolved significantly—we reworked everything from the user interface layout to the type of information we collect for calculating trip costs and savings. Through testing, we realized that some of our original ideas weren’t as essential to the core goal as we thought. For our second release, we plan to expand the database to include more destination options for students, improve the UI for a more polished and engaging user experience, and package the application so it can be distributed as a standalone desktop app.
+
 **Demo**   
 
 
