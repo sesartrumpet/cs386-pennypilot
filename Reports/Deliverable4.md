@@ -26,7 +26,7 @@
  - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/128)  
     - Implemented by: Kyle Radzvin    
     - Approved by:Victor Rodriguez    
-![Datatbase](Deliverable4_images/pennypilot_d4_requirement1.jpg)  
+![Database](Deliverable4_images/pennypilot_d4_requirement1.jpg)  
 
 #### Requirement:
 > As a person who wants to easily manage their finances, I want to be able to see a clear breakdown of my total savings.  
@@ -34,7 +34,7 @@
   - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/144)  
     - Implemented by: Victor Rodriguez  
     - Approved by: Vikram Singh  
-<screenshot>
+[!Database](Deliverable4_images/totalsavins.jpg)
    
   
 **Tests**  
