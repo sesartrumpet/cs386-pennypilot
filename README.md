@@ -1,4 +1,7 @@
 # Penny Pilot
+## Version
+Current version: 0.1.0
+
 
 Penny Pilot is a financial planning tool designed to help students at Northern Arizona University (NAU) manage their budget and savings for studying abroad. Many students struggle with financial planning, which discourages them from pursuing international education opportunities. Penny Pilot provides a user-friendly platform to track expenses, set savings goals, and visualize financial progress, reducing stress and empowering students to focus on learning.
 
