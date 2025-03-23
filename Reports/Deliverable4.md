@@ -28,27 +28,6 @@
     - Approved by: Vikram Singh
 <screenshot>
 
-#### Requirement:
-> 
-  - Issue:
-  - Pull Request:
-      - Implemented by:
-      - Approved by:
-
-
-#### Requirement:
-> 
-  - Issue:
-  - Pull Request:
-      - Implemented by:
-      - Approved by:
-
-#### Requirement:
->
-  - Issue:
-  - Pull Request:
-      - Implemented by:
-      - Approved by:
    
   
 **Tests**  
