@@ -60,9 +60,16 @@
       - Approved by: Kyle Radzvin (#119), Victor Rodriguez (#147)
 ![Datatbase](Deliverable4_images/savings.jpg)
 
-**Tests**  
-
 # Tests 
+
+We used pytest to test our project.
+
+Test units can be found [here.](https://github.com/sesartrumpet/cs386-pennypilot/tree/main/tests) 
+
+An example of a class we test is Finance, in our [test_models.py](https://github.com/sesartrumpet/cs386-pennypilot/tree/main/tests/test_models.py) file.
+
+This is the result of executing our automated tests:
+![Image](Deliverable4_images/tests_passed.png)
 
 # Technology    
 
