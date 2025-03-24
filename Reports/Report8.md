@@ -32,6 +32,11 @@ Kyle:
 - Worked on Deliverable 4  
 
 Sesar:  
+- Helped establish Database connection to project
+- Connected Database to GUI for project
+- Helped fix any errors group members were encountering
+- Attended meetings to work on project
+- Worked on Deliverable 4
 
 Vikram:  
 
@@ -90,7 +95,8 @@ Vikram:
 
 
 Sesar:  
-
+- Start working on second implementation
+- Brainstorm features to add in second implementation
 
 Kyle:  
 - Work on second implementation of project
