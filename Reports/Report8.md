@@ -28,7 +28,10 @@ Kyle:
 
 Sesar:  
 
-Vikram:  
+Vikram:
+- Worked on Deliverable 4 
+- Created User profile display in GUI (work in progress)
+- Attended meetings to work on projects and worksheets
 
 
 ## 2. Retrospective
@@ -63,7 +66,7 @@ Elijah:
 
 
 Vikram:  
-
+- Help out on second implementation 
 
 Sesar:  
 
