@@ -157,3 +157,6 @@ def create_connection():
         print(f"Unexpected error: {e}")
         return None
 
+# Return a MySQL connection object using the provided config (for pytest)
+def get_connection(config):
+    return mysql.connector.Connect(**config)
