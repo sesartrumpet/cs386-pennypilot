@@ -5,14 +5,6 @@
 # Requirements
 
 #### Requirement:
-> As someone who has a lot of transactions, I want to filter transactions so I can know exactly how much I am spending
- - Issue:
- - Pull Request: 
-    - Implemented by:
-    - Approved by:
-<screenshot>
-
-#### Requirement:
 > As someone who is interested in studying in many different countries, I want data on many countries to be readily available.  
  - Issue: [Issue](https://github.com/sesartrumpet/cs386-pennypilot/issues/107)  
  - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/128)  
@@ -58,7 +50,8 @@
   - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/119), [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/147)
       - Implemented by: Victor Rodriguez and Manjot Kaur
       - Approved by: Kyle Radzvin (#119), Victor Rodriguez (#147)
-![Datatbase](Deliverable4_images/savings.jpg)
+![image](https://github.com/user-attachments/assets/65771aad-e3c9-4e10-b339-4123b104b26f)
+
 
 # Tests 
 
@@ -95,6 +88,8 @@ For the Penny Pilot project, we adopted the MIT License. This license was chosen
 The UX design of Penny Pilot focuses on simplicity, clarity, and usability for students planning study abroad trips. Using Tkinter, we developed a clean and intuitive desktop interface that allows users to select a destination, set a travel date, and instantly calculate how much they need to save daily, weekly, or monthly to meet their goal. A detailed expense breakdown by category (such as travel, food, housing, and school) is displayed to give users a transparent view of their total estimated costs. The design process began with wireframes and evolved through feedback, which led us to integrate budget tracking directly within the trip planning flow for a more seamless experience. The interface uses dropdown menus, date selectors, and clearly labeled sections to keep the experience user-friendly. Lessons learned include simplifying the scope, focusing on core features, and planning for future enhancements like visual goal progress and app packaging for wider distribution.    
 
 ![image](https://github.com/user-attachments/assets/6cefdb55-6038-4e76-851e-22148271315c)
+![image](https://github.com/user-attachments/assets/fd538a45-cf6a-4912-a49b-7f5f7a5b0ab6)
+
 
 
 **Lessons Learned**   
