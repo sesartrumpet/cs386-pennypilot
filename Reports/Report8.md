@@ -48,11 +48,30 @@ The project retrospective is an opportunity for the group and each individual to
 5. What we should try next time.
 
 ### Our Retrospective
-1. Appreciations: Victor attended every meeting and had a huge impact.  
-2. Successes: We put all of the moving parts together successfully without too many problems.
-3. Failures: We were not able to plan a meeting with 100% attendance.  
-4. Barriers: We waited too long to get started on this deliverable. 
-5. We will get started on the dliverable right away instead of pushing it to the last week.  
+1. Appreciations
+- **Victor** consistently showed initiative and leadership, especially during critical restructuring and polishing stages.  
+- **Kyle** and **Sesar** provided a solid foundation by setting up and integrating the database, which helped the team move faster.  
+- Team members showed flexibility by contributing across various areas despite evolving requirements.
+
+2. Successes
+- We successfully pivoted and restructured the entire application to align with the new project direction.  
+- Multiple components (frontend, backend, and database) were integrated smoothly and tested on time by **Elijah**.  
+- Strong collaboration between frontend and backend helped us ship a functional MVP for Deliverable 4.
+
+3. Failures
+- Coordination was difficult at times due to inconsistent meeting attendance and communication gaps.  
+- We underestimated the time required for integration and final polish, which led to some last-minute work.
+
+4. Barriers
+- Team scheduling conflicts made it difficult to have full participation in work sessions.  
+- Initial unfamiliarity with MySQL and tkinter created a steep learning curve that delayed development in the early stages.  
+- Some pull requests were merged late due to lack of immediate reviews.
+
+5. What We Should Try Next Time
+- Set fixed weekly work sessions with required attendance to avoid bottlenecks.  
+- Break large tasks into smaller GitHub issues to distribute work more evenly.  
+- Assign reviewers ahead of time for each pull request to ensure quick turnarounds.  
+- Maintain better version control discipline (e.g., consistent branching and PR etiquette).  
 ---
 
 ## 3. Next steps
