@@ -29,12 +29,12 @@
 ![Datatbase](Deliverable4_images/addatrip.jpg)
 
 #### Requirement:
-> As a person who wants to easily manage their finances, I want to be able to see a clear breakdown of my total savings.  
+> As a person who wants to easily manage their finances, I want to be able to see a clear breakdown of my total expenses.  
   - Issue: [Issue](https://github.com/sesartrumpet/cs386-pennypilot/issues/45)  
-  - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/144)  
-    - Implemented by: Victor Rodriguez  
-    - Approved by: Vikram Singh  
-![Datatbase](Deliverable4_images/totalsavins.jpg)
+  - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/144), [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/147)
+    - Implemented by: Victor Rodriguez and Manjot Kaur
+    - Approved by: Vikram Singh (#144), Victor Rodriguez (#147)
+![Datatbase](Deliverable4_images/expenses.jpg)
    
 #### Requirement:
 > As a new user, I want my profile information to displayed on my application for me to see
@@ -45,7 +45,21 @@
 (No screenshot available at the moment)
 
 #### Requirement:
-> 
+> As a user who wants to change locations, I want to be able to know how my total expenses/savings will change
+  - Issue: [Issue]()
+  - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/119), [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/147)
+      - Implemented by: Victor Rodriguez and Manjot Kaur
+      - Approved by: Kyle Radzvin (#119), Victor Rodriguez (#147)
+(No screenshot available at the moment)
+
+#### Requirement:
+> As a student who wants to manage their finances, I want to see a breakdown of my total savings
+  - Issue: [Issue](https://github.com/sesartrumpet/cs386-pennypilot/issues/132)
+  - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/119), [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/147)
+      - Implemented by: Victor Rodriguez and Manjot Kaur
+      - Approved by: Kyle Radzvin (#119), Victor Rodriguez (#147)
+![Datatbase](Deliverable4_images/savings.jpg)
+
 **Tests**  
 
 # Tests 
