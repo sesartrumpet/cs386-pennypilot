@@ -67,8 +67,8 @@ For the Penny Pilot project, we adopted the MIT License. This license was chosen
 # Readme File
 - **README.md**: [README.md](https://github.com/sesartrumpet/cs386-pennypilot?tab=readme-ov-file#penny-pilot)  
 - **CONTRIBUTING.md**: [CONTRIBUTING.md](https://github.com/sesartrumpet/cs386-pennypilot/blob/main/CONTRIBUTING.md)  
-- **LICENSE.md**: [LICENSE.md]https://github.com/sesartrumpet/cs386-pennypilot/blob/main/LICENSE.md)  
-- **CODE_OF_CONDUCT.md**: [CODE_OF_CONDUCT.md]()
+- **LICENSE.md**: [LICENSE.md](https://github.com/sesartrumpet/cs386-pennypilot/blob/main/LICENSE.md)  
+- **CODE_OF_CONDUCT.md**: [CODE_OF_CONDUCT.md](https://github.com/sesartrumpet/cs386-pennypilot/blob/main/CODE_OF_CONDUCT.md)
 
 **UX Design**    
 The UX design of Penny Pilot focuses on simplicity, clarity, and usability for students planning study abroad trips. Using Tkinter, we developed a clean and intuitive desktop interface that allows users to select a destination, set a travel date, and instantly calculate how much they need to save daily, weekly, or monthly to meet their goal. A detailed expense breakdown by category (such as travel, food, housing, and school) is displayed to give users a transparent view of their total estimated costs. The design process began with wireframes and evolved through feedback, which led us to integrate budget tracking directly within the trip planning flow for a more seamless experience. The interface uses dropdown menus, date selectors, and clearly labeled sections to keep the experience user-friendly. Lessons learned include simplifying the scope, focusing on core features, and planning for future enhancements like visual goal progress and app packaging for wider distribution.    
