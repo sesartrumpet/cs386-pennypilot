@@ -46,7 +46,10 @@ Sesar:
 - Worked on Deliverable 4
 - Created robust README.md documentation
 
-Vikram:  
+Vikram:
+- Worked on Deliverable 4 
+- Created User profile display in GUI (work in progress)
+- Attended meetings to work on projects and worksheets
 
 
 ## 2. Retrospective
@@ -101,7 +104,7 @@ Elijah:
 - Polish appearance of the project (frontend GUI)
 
 Vikram:  
-
+- Help out on second implementation 
 
 Sesar:  
 - Start working on second implementation
