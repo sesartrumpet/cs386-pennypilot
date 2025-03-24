@@ -23,7 +23,7 @@ Victor:
 Manjot:   
 - Worked on Deliverable 4
 - Attended meetings to work on project
-- Worked on database and python codes
+- Worked on database and python codes  
 
 Elijah:  
 - Attended meetings to work on project
