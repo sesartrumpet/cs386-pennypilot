@@ -17,14 +17,14 @@
  - Issue: [Issue](https://github.com/sesartrumpet/cs386-pennypilot/issues/107)  
  - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/128)  
     - Implemented by: Kyle Radzvin    
-    - Approved by:Victor Rodriguez    
+    - Approved by: Victor Rodriguez    
 ![Datatbase](Deliverable4_images/pennypilot_d4_requirement1.jpg)  
 
 #### Requirement:
 > As a new account holder, I want to be able to add and track my trips  
  - Issue: [Issue](https://github.com/sesartrumpet/cs386-pennypilot/issues/115)  
  - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/119)  
-    - Implemented by: Elijah Sprouse  
+    - Implemented by: Elijah Sprouse and Sesar Parra
     - Approved by: Kyle Radzvin  
 ![Datatbase](Deliverable4_images/addatrip.jpg)
 
@@ -40,7 +40,7 @@
 > As a new user, I want my profile information to displayed on my application for me to see
   - Issue: [Issue](https://github.com/sesartrumpet/cs386-pennypilot/issues/109)
   - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/137)
-      - Implemented by: Vikram Singh
+      - Implemented by: Vikram Singh and Sesar Parra
       - Approved by: Kyle Radzvin
 (No screenshot available at the moment)
 

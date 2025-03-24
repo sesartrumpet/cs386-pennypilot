@@ -4,7 +4,7 @@
 **Group:** 8  
 **Date:** 03/23/2025  
 **Location:** Cline Library  
-**Present participants:**   Kyle   
+**Present participants:**   Kyle, Elijah, Victor, Sesar, Manjot, Vikram
 **Missing participants:**   
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)  
 
@@ -23,6 +23,10 @@ Victor:
 Manjot:    
 
 Elijah:  
+- Attended meetings to work on project
+- Created robust pytests for project
+- Worked on Deliverable 4
+- Assisted in creating base code for python modules
 
 Kyle:  
 - Created Database for project  
@@ -37,6 +41,7 @@ Sesar:
 - Helped fix any errors group members were encountering
 - Attended meetings to work on project
 - Worked on Deliverable 4
+- Created robust README.md documentation
 
 Vikram:  
 
@@ -89,7 +94,7 @@ Manjot:
 
 
 Elijah:  
-
+- Polish appearance of the project (frontend GUI)
 
 Vikram:  
 
