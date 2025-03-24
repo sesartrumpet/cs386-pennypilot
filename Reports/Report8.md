@@ -20,7 +20,10 @@ Victor:
 - Worked on Deliverable 4  
 - Created Tables for savings/expense breakdowns
 
-Manjot:    
+Manjot:   
+- Worked on Deliverable 4
+- Attended meetings to work on project
+- Worked on database and python codes
 
 Elijah:  
 - Attended meetings to work on project
@@ -91,6 +94,7 @@ Victor:
 - Work on second implementation
 
 Manjot:   
+- Start working on second implementation  
 
 
 Elijah:  
