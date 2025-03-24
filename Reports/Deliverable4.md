@@ -26,7 +26,8 @@
   - Pull Request: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/144), [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/147)
     - Implemented by: Victor Rodriguez and Manjot Kaur
     - Approved by: Vikram Singh (#144), Victor Rodriguez (#147)
-![Datatbase](Deliverable4_images/expenses.jpg)
+![image](https://github.com/user-attachments/assets/3dddcb8d-f470-42f2-a152-1af138659964)
+
    
 #### Requirement:
 > As a new user, I want my profile information to displayed on my application for me to see
