@@ -14,6 +14,11 @@
 Describe what each individual has contributed to the project in the last week.  Provide some supporting documentation (e.g., an issue number, commit id, corresponding meeting date, etc.).  If someone didn't do anything, please be honest and explain why. Activity that advances your project toward completion is expected every week and should be reflected in your Git repository!
 
 Victor:  
+- Helped restructure repo for new project
+- Polished project for first release  
+- Attended meetings to work on project  
+- Worked on Deliverable 4  
+- Created Tables for savings/expense breakdowns
 
 Manjot:    
 
@@ -54,7 +59,7 @@ The project retrospective is an opportunity for the group and each individual to
 Think about what needs to be done and assign tasks. Update your activity management system with new tasks, actual hours spent in the activities, and corresponding GitHub issues.  Summarize these tasks here.
 
 Victor:  
-
+- Work on second implementation
 
 Manjot:   
 
