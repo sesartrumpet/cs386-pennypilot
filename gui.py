@@ -36,9 +36,18 @@ class PennyPilotApp:
             self.trips = []
             messagebox.showerror("Database Error", result)
 
-        self.trip_dropdown = ttk.Combobox(root, textvariable=self.trip_var, state="readonly")
+        self.trip_dropdown = ttk.Combobox(root, textvariable=self.trip_var, state="readonly", width=24)
         self.trip_dropdown["values"] = [f"{trip[0]} - ${trip[1]:.2f}" for trip in self.trips]
         self.trip_dropdown.pack(pady=5)
+
+         # Input for money already saved with placeholder
+        self.int_input = tk.Entry(root, fg='grey', width=24)
+        self.int_input.insert(0, "Already Saved")
+        self.int_input.pack(pady=5)
+
+        # Bind focus events to simulate placeholder behavior
+        self.int_input.bind("<FocusIn>", self.clear_placeholder)
+        self.int_input.bind("<FocusOut>", self.add_placeholder)
 
         # Date input with calendar widget
         self.create_date_dropdown()
@@ -85,7 +94,7 @@ class PennyPilotApp:
     def create_date_dropdown(self):
         
         # Create DateEntry widget from tkcalendar
-        self.date_entry = DateEntry(self.root, width=12, background='darkblue', foreground='white', borderwidth=2, year=datetime.datetime.now().year, month=datetime.datetime.now().month, day=datetime.datetime.now().day)
+        self.date_entry = DateEntry(self.root, width=21, background='darkblue', foreground='white', borderwidth=2, year=datetime.datetime.now().year, month=datetime.datetime.now().month, day=datetime.datetime.now().day)
         self.date_entry.pack(pady=5)
 
     # Starts a background thread to calculate savings based on trip and date input.
@@ -99,12 +108,19 @@ class PennyPilotApp:
         # Get the selected date from the calendar widget
         date_str = self.date_entry.get_date().strftime("%Y-%m-%d")
 
+        saved_text = self.int_input.get()
+        try:
+            already_saved = int(saved_text) if saved_text != "Already Saved" else 0
+        except ValueError:
+            messagebox.showerror("Input Error", "Please enter a valid integer for 'Already Saved'")
+            return
+
         # Run calculation and graph drawing in a separate thread
-        threading.Thread(target=self.calculate_in_background, args=(trip, date_str)).start()
+        threading.Thread(target=self.calculate_in_background, args=(trip, date_str, already_saved)).start()
 
     # Runs the savings calculation and updates UI tables in a background thread.
-    def calculate_in_background(self, trip, date_str):
-        success, result = calculate_savings_goal(trip[1], date_str)
+    def calculate_in_background(self, trip, date_str, already_saved):
+        success, result = calculate_savings_goal(trip[1], date_str, already_saved)
         if success:
             self.result_label.config(text="")
 
@@ -120,6 +136,7 @@ class PennyPilotApp:
     # Fetches and displays a detailed cost breakdown for a trip by category.
     def update_expense_breakdown(self, location):
         success, data = fetch_trip_expense_breakdown(location)
+        print("DEBUG - raw_data:", data, "| type:", type(data))
         categories = ["Travel To", "Travel There", "Food", "Housing", "School", "Misc"]
 
         if success and data:
@@ -157,5 +174,15 @@ class PennyPilotApp:
                 return None
         return self.connector
     
+    def clear_placeholder(self, event):
+     if self.int_input.get() == "Already Saved":
+        self.int_input.delete(0, tk.END)
+        self.int_input.config(fg='black')
+
+    def add_placeholder(self, event):
+        if not self.int_input.get():
+            self.int_input.insert(0, "Already Saved")
+            self.int_input.config(fg='grey')
+
     
     
