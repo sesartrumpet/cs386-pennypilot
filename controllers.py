@@ -4,7 +4,8 @@ from database import (
     fetch_financial_data,
     get_trips as db_get_trips,
     get_user_savings,
-    get_price_breakdown_by_trip_name
+    get_price_breakdown_by_trip_name,
+    authenticate_user
 )
 
 from datetime import datetime
@@ -83,5 +84,10 @@ def fetch_trip_expense_breakdown(location):
         return success, data
     except Exception as e:
         return False, str(e)
+
+
+
+def handle_login(username, password):
+    return authenticate_user(username, password)
 
 

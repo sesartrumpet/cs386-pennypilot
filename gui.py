@@ -1,3 +1,4 @@
+# GUI file for PennyPilot: defines the app's layout and interactions
 import tkinter as tk
 from tkinter import ttk, messagebox
 from controllers import get_trips, calculate_savings_goal, handle_update_savings, fetch_trip_expense_breakdown
@@ -6,6 +7,7 @@ from tkcalendar import DateEntry
 import datetime
 import threading
 import mysql.connector
+from controllers import handle_login
 
 
 # Generates a list of 30 dates starting from today to be used for travel planning.
@@ -16,10 +18,11 @@ def generate_future_dates():
         future_dates.append(today + datetime.timedelta(days=i))
     return future_dates
 
+
 # Main application class that defines and manages the entire Penny Pilot trip savings GUI.
 class PennyPilotApp:
     
-    # Initializes the GUI layout, connects to the database, and sets up all UI components.
+    # Constructor: Builds and displays the GUI layout
     def __init__(self, root):
         self.root = root
         self.root.title("Penny Pilot - Trip Savings")
@@ -36,6 +39,7 @@ class PennyPilotApp:
             self.trips = []
             messagebox.showerror("Database Error", result)
 
+        # Dropdown to select a trip (e.g., "Rome - $2100.00")
         self.trip_dropdown = ttk.Combobox(root, textvariable=self.trip_var, state="readonly", width=24)
         self.trip_dropdown["values"] = [f"{trip[0]} - ${trip[1]:.2f}" for trip in self.trips]
         self.trip_dropdown.pack(pady=5)
@@ -174,15 +178,55 @@ class PennyPilotApp:
                 return None
         return self.connector
     
+    # Placeholder behavior — clear text on focus if default is shown
     def clear_placeholder(self, event):
      if self.int_input.get() == "Already Saved":
         self.int_input.delete(0, tk.END)
         self.int_input.config(fg='black')
 
+    # Placeholder behavior — restore default text if field is empty
     def add_placeholder(self, event):
         if not self.int_input.get():
             self.int_input.insert(0, "Already Saved")
             self.int_input.config(fg='grey')
 
     
+# Initializes the app after successful login        
+def show_main_app(root):
+    #app = 
+    PennyPilotApp(root)
+    #app.mainloop()
+
+# Shows the login popup window
+def show_login_window(start_main_app_callback, root):
+    import tkinter as tk
+    from tkinter import messagebox
+    from controllers import handle_login
+
+    # Use a Toplevel window for the login screen
+    login_window = tk.Toplevel(root)
+    login_window.title("Login")
+
+    tk.Label(login_window, text="Username").grid(row=0, column=0, padx=10, pady=10)
+    username_entry = tk.Entry(login_window)
+    username_entry.grid(row=0, column=1)
+
+    tk.Label(login_window, text="Password").grid(row=1, column=0, padx=10, pady=10)
+    password_entry = tk.Entry(login_window, show='*')
+    password_entry.grid(row=1, column=1)
+
+    # Validates login attempt and starts main app if successful
+    def attempt_login():
+        username = username_entry.get()
+        password = password_entry.get()
+        if handle_login(username, password):
+            login_window.destroy()
+            root.deiconify()
+            start_main_app_callback(root)
+        else:
+            messagebox.showerror("Login Failed", "Invalid username or password")
+
+    # Button to trigger login check
+    tk.Button(login_window, text="Login", command=attempt_login).grid(row=2, column=0, columnspan=2, pady=10)
+
     
