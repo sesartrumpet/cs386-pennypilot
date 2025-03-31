@@ -1,18 +1,16 @@
-# Import necessary functions from the database module for backend operations.
 from database import (
     add_trip,
     update_savings,
     fetch_financial_data,
     get_trips as db_get_trips,
     get_user_savings,
-    get_price_breakdown_by_trip_name
+    get_price_breakdown_by_trip_name,
+    authenticate_user
 )
 
-# Import date/time utilities to calculate savings timeline.
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-# Handles logic to validate and add a trip with a destination and cost.
 def handle_add_trip(destination, cost):
     try:
         cost = float(cost)
@@ -27,7 +25,6 @@ def handle_add_trip(destination, cost):
     except Exception as e:
         return False, str(e)
 
-# Handles logic to update the user's savings, ensuring valid input.
 def handle_update_savings(amount):
     try:
         amount = float(amount)
@@ -38,25 +35,24 @@ def handle_update_savings(amount):
     except Exception as e:
         return False, str(e)
 
-# Handles fetching all financial data (category, amount) from the database.
 def handle_fetch_financial_data():
     try:
         return True, fetch_financial_data()
     except Exception as e:
         return False, str(e)
 
-# Wraps and safely fetches all trips from the database with error handling.
 def get_trips():
     try:
         return True, db_get_trips()
     except Exception as e:
         return False, str(e)
-    
-# Calculates monthly, weekly, and daily savings needed to reach a trip cost by the departure date.
-def calculate_savings_goal(trip_cost, departure_date):
+
+def calculate_savings_goal(trip_cost, departure_date, already_saved=0):
     try:
         today = datetime.today().date()
         dep_date = datetime.strptime(departure_date, "%Y-%m-%d").date()
+        trip_cost = max(0, trip_cost - already_saved)
+
         if dep_date <= today:
             return False, "Departure date must be in the future."
 
@@ -78,9 +74,20 @@ def calculate_savings_goal(trip_cost, departure_date):
     except Exception as e:
         return False, str(e)
     
-# Fetches the cost breakdown for a given trip by name (delegates to DB).
-def fetch_trip_expense_breakdown(trip_name):
-    return get_price_breakdown_by_trip_name(trip_name)
+def fetch_trip_expense_breakdown(location):
+    """
+    Fetches expense breakdown for a given trip location.
+    Returns a list of (category, cost) tuples.
+    """
+    try:
+        success, data = get_price_breakdown_by_trip_name(location)
+        return success, data
+    except Exception as e:
+        return False, str(e)
 
 
-    
+
+def handle_login(username, password):
+    return authenticate_user(username, password)
+
+

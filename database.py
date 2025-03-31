@@ -47,6 +47,7 @@ def main(config):
     cursor.close()
     connector.close()
 
+
 # checks whether the script is being run as the main program
 if __name__ == '__main__':
     #  import the config module
@@ -157,3 +158,16 @@ def create_connection():
         print(f"Unexpected error: {e}")
         return None
 
+# Return a MySQL connection object using the provided config (for pytest)
+def get_connection(config):
+    return mysql.connector.Connect(**config)
+
+# Checks if a user with the given username and password exists in the users table.
+def authenticate_user(username, password):
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM users WHERE username = %s AND password = %s", (username, password))
+
+    user = cursor.fetchone()
+    conn.close()
+    return user is not None

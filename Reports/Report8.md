@@ -4,7 +4,7 @@
 **Group:** 8  
 **Date:** 03/23/2025  
 **Location:** Cline Library  
-**Present participants:**   Kyle   
+**Present participants:**   Kyle, Elijah, Victor, Sesar, Manjot, Vikram   
 **Missing participants:**   
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)  
 
@@ -14,10 +14,22 @@
 Describe what each individual has contributed to the project in the last week.  Provide some supporting documentation (e.g., an issue number, commit id, corresponding meeting date, etc.).  If someone didn't do anything, please be honest and explain why. Activity that advances your project toward completion is expected every week and should be reflected in your Git repository!
 
 Victor:  
+- Helped restructure repo for new project
+- Polished project for first release  
+- Attended meetings to work on project  
+- Worked on Deliverable 4  
+- Created Tables for savings/expense breakdowns
 
-Manjot:    
+Manjot:   
+- Worked on Deliverable 4
+- Attended meetings to work on project
+- Worked on database and python codes  
 
 Elijah:  
+- Attended meetings to work on project
+- Created robust pytests for project
+- Worked on Deliverable 4
+- Assisted in creating base code for python modules
 
 Kyle:  
 - Created Database for project  
@@ -27,6 +39,12 @@ Kyle:
 - Worked on Deliverable 4  
 
 Sesar:  
+- Helped establish Database connection to project
+- Connected Database to GUI for project
+- Helped fix any errors group members were encountering
+- Attended meetings to work on project
+- Worked on Deliverable 4
+- Created robust README.md documentation
 
 Vikram:
 - Worked on Deliverable 4 
@@ -46,30 +64,51 @@ The project retrospective is an opportunity for the group and each individual to
 5. What we should try next time.
 
 ### Our Retrospective
-1. Appreciations: Victor attended every meeting and had a huge impact.  
-2. Successes: We put all of the moving parts together successfully without too many problems.
-3. Failures: We were not able to plan a meeting with 100% attendance.  
-4. Barriers: We waited too long to get started on this deliverable. 
-5. We will get started on the dliverable right away instead of pushing it to the last week.  
+1. Appreciations
+- **Victor** consistently showed initiative and leadership, especially during critical restructuring and polishing stages.  
+- **Kyle** and **Sesar** provided a solid foundation by setting up and integrating the database, which helped the team move faster.  
+- Team members showed flexibility by contributing across various areas despite evolving requirements.
+
+2. Successes
+- We successfully pivoted and restructured the entire application to align with the new project direction.  
+- Multiple components (frontend, backend, and database) were integrated smoothly and tested on time by **Elijah**.  
+- Strong collaboration between frontend and backend helped us ship a functional MVP for Deliverable 4.
+
+3. Failures
+- Coordination was difficult at times due to inconsistent meeting attendance and communication gaps.  
+- We underestimated the time required for integration and final polish, which led to some last-minute work.
+
+4. Barriers
+- Team scheduling conflicts made it difficult to have full participation in work sessions.  
+- Initial unfamiliarity with MySQL and tkinter created a steep learning curve that delayed development in the early stages.  
+- Some pull requests were merged late due to lack of immediate reviews.
+
+5. What We Should Try Next Time
+- Set fixed weekly work sessions with required attendance to avoid bottlenecks.  
+- Break large tasks into smaller GitHub issues to distribute work more evenly.  
+- Assign reviewers ahead of time for each pull request to ensure quick turnarounds.  
+- Maintain better version control discipline (e.g., consistent branching and PR etiquette).  
 ---
 
 ## 3. Next steps
 Think about what needs to be done and assign tasks. Update your activity management system with new tasks, actual hours spent in the activities, and corresponding GitHub issues.  Summarize these tasks here.
 
 Victor:  
-
+- Work on second implementation
 
 Manjot:   
+- Start working on second implementation  
 
 
 Elijah:  
-
+- Polish appearance of the project (frontend GUI)
 
 Vikram:  
 - Help out on second implementation 
 
 Sesar:  
-
+- Start working on second implementation
+- Brainstorm features to add in second implementation
 
 Kyle:  
 - Work on second implementation of project
