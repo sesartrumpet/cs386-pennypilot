@@ -29,6 +29,7 @@ Kyle:
 - Helped group members get data base to work on their system
 
 Sesar:  
+- Did not do anything this week (Busy with Kitt School of Music because of switching majors)
 
 Vikram:
 
@@ -82,7 +83,8 @@ Vikram:
 
 
 Sesar:  
-
+- Assist on Deliverable 5
+- Work on second implementation
 
 Kyle:  
 - Work on deliverable
