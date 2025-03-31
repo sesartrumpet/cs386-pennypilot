@@ -1,10 +1,10 @@
-# Report for Week #8
+# Report for Week #9
 
 **Trip Financer**  
 **Group:** 8  
 **Date:** 03/30/2025  
 **Location:** Cline Library  
-**Present participants:**   Kyle, Elijah, Victor, Sesar, Manjot, Vikram   
+**Present participants:**   Kyle
 **Missing participants:**   
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)  
 
@@ -15,17 +15,18 @@ Describe what each individual has contributed to the project in the last week.  
 
 Victor:  
 
-Manjot:    
+Manjot:   
 
-Elijah:
-- Attended meetings
-- Assisted with helping members set up environment
+Elijah:  
 
 Kyle:  
+- Attended meeting
+- Helped group members get data base to work on their system
 
 Sesar:  
 
 Vikram:
+
 
 
 ## 2. Retrospective
@@ -42,11 +43,15 @@ The project retrospective is an opportunity for the group and each individual to
 ### Our Retrospective
 1. Appreciations
 
+
 2. Successes
+
 
 3. Failures
 
+
 4. Barriers
+
 
 5. What We Should Try Next Time
 
@@ -57,13 +62,20 @@ Think about what needs to be done and assign tasks. Update your activity managem
 
 Victor:  
 
+
 Manjot:   
 
+
+
 Elijah:  
-- Polish appearance of the project (frontend GUI)
+
 
 Vikram:  
 
+
 Sesar:  
 
+
 Kyle:  
+- Work on deliverable
+- Work on secondd implementation of code
