@@ -18,6 +18,8 @@ Victor:
 - Completed login screen for application
 
 Manjot:   
+- Attended meeting
+- Modified codes in GUI
 
 Elijah:  
 - Attended meeting
@@ -72,6 +74,8 @@ Victor:
 - Work on deliverable
 
 Manjot:   
+- Work on deliverable 5
+- Work on second implementation
 
 
 
