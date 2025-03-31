@@ -4,7 +4,7 @@
 **Group:** 8  
 **Date:** 03/30/2025  
 **Location:** Cline Library  
-**Present participants:**   Kyle
+**Present participants:**   Kyle, Elijah, Victor, Sesar, Manjot, Vikram
 **Missing participants:**   
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)  
 
@@ -18,6 +18,9 @@ Victor:
 Manjot:   
 
 Elijah:  
+- Attended meeting
+- Assisted in helping setting up environment for members
+- Completed retrospective
 
 Kyle:  
 - Attended meeting
@@ -42,18 +45,19 @@ The project retrospective is an opportunity for the group and each individual to
 
 ### Our Retrospective
 1. Appreciations
-
+- **Kyle** took extra time and care to set up the database for group members who were having trouble
 
 2. Successes
-
+- **Victor** did some refactoring of the code and made the GUI look nicer.
 
 3. Failures
-
+- Lack of meetings this week led to some low productivity.
 
 4. Barriers
-
+- Time constraints led to a lack of meetings.
 
 5. What We Should Try Next Time
+- Giving members specific objectives to help boost clarity and productivity.
 
 ---
 
@@ -68,7 +72,8 @@ Manjot:
 
 
 Elijah:  
-
+- Work on Deliverable 5
+- Assist where needed
 
 Vikram:  
 
@@ -78,4 +83,4 @@ Sesar:
 
 Kyle:  
 - Work on deliverable
-- Work on secondd implementation of code
+- Work on second implementation of code
