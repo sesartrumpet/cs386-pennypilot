@@ -22,7 +22,18 @@ straightforward and motivating.
 # Class Diagrams   
 
 # Sequence Diagrams   
- 
+
+![image](Deliverable5_images/Sequence%20Diagram.png)
+
+| Use Case         | Viewing Trip Details                                                                                                                      |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| Summary          | This use case describes the process where the user selects a trip from the dropdown of trips, and then the application returns the trip price breakdown. |
+| Actors           | Student                                                                                                                                   |
+| Preconditions    | Student is logged into the PennyPilot app and at least one trip exists in the database.                                                   |
+| Basic sequence   | 1. **Student** clicks on the trip dropdown in the PennyPilotApp interface.  <br> 2. **PennyPilotApp** sends a request to **Controllers** to retrieve available trips via the `get_trips()` method.  <br> 3. **Controllers** request trip data from the **Database** using the `get_trips()` method.  <br> 4. **Database** returns a list of trips to the **Controllers**.  <br> 5. **Controllers** pass the list of trips to the **PennyPilotApp**.  <br> 6. **PennyPilotApp** displays the list of trips in a dropdown menu.  <br> 7. **Student** selects a specific trip from the dropdown.  <br> 8. **PennyPilotApp** calls the `update_expense_breakdown(location)` function in the **Controllers**.  <br> 9. **Controllers** call the `get_price_breakdown_by_trip_name(location)` function in the **Database**.  <br> 10. **Database** returns the price breakdown to **Controllers**.  <br> 11. **Controllers** return the price breakdown data to the **PennyPilotApp**.  <br> 12. **PennyPilotApp** displays the price breakdown to the **Student**. |
+| Alternate Sequence | 1. If no trips are available, the application will throw an error and the user will not be able to select any trips |
+| Postconditions   | The user successfully views the detailed price breakdown of the selected trip.                                                           |
+
 # Design Patterns   
 
 # Design Principles  git 
