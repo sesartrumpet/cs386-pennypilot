@@ -34,6 +34,19 @@ straightforward and motivating.
 | Alternate Sequence | 1. If no trips are available, the application will throw an error and the user will not be able to select any trips |
 | Postconditions   | The user successfully views the detailed price breakdown of the selected trip.                                                           |
 
-# Design Patterns   
+# Design Patterns     
+Penny Pilot uses two classic software design patterns to enhance modularity, maintainability, and data synchronization: the **Observer Pattern** (Behavioral) and the **Singleton Pattern**(Creational). Each was selected based on its practical application within the savings-tracking architecture of the system.   
+
+- **Observer Pattern(Behavioral)**
+The Observer Pattern is used in Penny Pilot to dynamically update the UI whenever the savings value changes. This makes the savings interface reactive and ensures the user always sees up-to-date progress and goal information without manual refresh or reload actions.
+https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Observer%20Pattern.drawio.png
+
+  
+- **Singleton Pattern(Creational)**
+The Singleton Pattern is used in Penny Pilot to manage the MySQL database connection efficiently. It ensures that the application always uses the same database instance throughout the user session, avoiding the creation of multiple unnecessary connections.
+https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Singleton%20Pattern.drawio.png
+
+ 
+
 
 # Design Principles  git 
