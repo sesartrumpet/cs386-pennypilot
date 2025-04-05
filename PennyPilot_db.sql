@@ -40,12 +40,12 @@ CREATE TABLE IF NOT EXISTS trip (
 );
 
 -- This is the simple login user table your login form connects to:
-CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
-);
+--CREATE TABLE IF NOT EXISTS users (
+    --id INT AUTO_INCREMENT PRIMARY KEY,
+    --username VARCHAR(50) NOT NULL UNIQUE,
+    --password VARCHAR(255) NOT NULL
+--);
 
 -- inserts your default test account
-INSERT IGNORE INTO users (username, password) VALUES ('admin', 'password');
+INSERT IGNORE INTO userProfile (username, passwordHash) VALUES ('admin', 'password');
 

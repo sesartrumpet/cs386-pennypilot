@@ -18,6 +18,18 @@ minimizing distractions, aligning with Penny Pilot’s mission to make trip plan
 straightforward and motivating.    
 
 # Architecture    
+![image](Deliverable5_images/High_Level.drawio.png)
+PennyPilot is a desktop application that helps students planning to study abroad   
+manage trip-related finances. The app allows users to log in securely, create    
+trips, estimate total costs based on location-specific price breakdowns,   
+and track savings toward their goal. Users can also view detailed breakdowns of   
+expenses and visualize their savings progress through an interactive chart. The   
+system connects to a MySQL database to persist user credentials, trip data, and    
+financial records, ensuring data is accessible across sessions.
+This system is built using Python with Tkinter for the graphical user interface,    
+and follows a multi-layered architecture that cleanly separates the user interface,    
+application logic, and data management responsibilities.
+
 
 # Class Diagrams   
 
