@@ -61,4 +61,36 @@ https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_
  
 
 
-# Design Principles  git 
+# Design Principles   
+
+**1. Single Responsibility Principle (SRP)**
+
+   Each class in Penny Pilot is responsible for one well-defined task. For example:
+
+- The ```DatabaseConnection``` class manages only the MySQL connection setup and execution of queries. It does not contain any UI or application logic.
+
+- Similarly, the ```SavingsProgressController``` handles the logic for updating savings and retrieving trip-related data, separating it from both the database and UI responsibilities.
+
+- The ```PennyPilotApp``` (UI class) is only responsible for rendering the GUI and handling user interactions, such as button clicks or field inputs.
+
+   By separating these concerns, our code is easier to maintain and test, and changes in one part of the application do not inadvertently affect others.
+
+**2. Open/Closed Principle (OCP)**
+
+   Penny Pilot’s architecture is designed to allow extension without modifying existing code. For instance:
+
+- The ```calculate_goal()``` function in the ```TripController``` uses location and timeline as parameters. If we later add support for new cost factors (e.g., currency conversion or accommodation type), we can extend the logic through subclassing or strategy-based injection rather than modifying the core controller class.
+
+- The expense breakdown visualization is modular. Adding a new type of chart (e.g., pie chart vs. bar chart) can be achieved by adding a new visualization class that inherits from a base chart class.
+
+   This promotes code reuse and makes future feature additions smoother.
+
+**3. Dependency Inversion Principle (DIP)**
+
+The high-level modules in Penny Pilot (such as the UI and controllers) do not directly depend on low-level database details. Instead:
+
+- The application interacts with the database through an abstract ```DatabaseInterface```, allowing us to easily swap the MySQL backend with a mock or different storage system for testing or future scalability.
+
+- Our ```Controller``` classes depend on this abstraction rather than on specific database implementations, reducing tight coupling and increasing testability.
+
+   This inversion of dependency ensures that high-level policy remains unaffected by low-level changes, aligning with clean architecture principles.
