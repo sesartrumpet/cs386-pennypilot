@@ -1,21 +1,25 @@
 # Description
-Penny Pilot is a desktop GUI application built with Python, Tkinter, and MySQL,  
-designed to help students plan and track savings for study abroad trips.  
-The system focuses on simplicity by only asking for three key inputs: destination,  
-current savings, and trip timeline. Once all three fields are filled out,  
-the interface transitions to a dedicated “Progress Screen” where users can monitor  
-and update their savings over time. The savings goal is automatically calculated  
-based on the location and timeline, and a visual breakdown is shown to help users  
-stay on track. 
-When the user reopens the app, they are brought directly to the Progress Screen  
-to continue updating their savings. Whenever savings are updated, both the savings  
-breakdown and goal chart dynamically reflect the new data to provide real-time  
-feedback. This ensures users can clearly see how their progress has changed and  
-what remains to be saved. Only if the user decides to change trip details—such  
-as the destination or timeline—does the app return to the initial “Select Trip”  
-screen. This streamlined design keeps the user focused on goal progress while  
-minimizing distractions, aligning with Penny Pilot’s mission to make trip planning  
-straightforward and motivating.    
+PennyPilot is a desktop application built in Python using Tkinter for the user    
+interface and MySQL for backend data persistence. It is specifically designed to     
+assist students in budgeting for their study abroad trips. The application allows     
+users to securely log in, create and manage trip entries, and track savings     
+progress toward a destination-specific financial goal. With just three key      
+inputs—destination, current savings, and timeline—users can begin monitoring     
+their savings progress on a dynamic progress screen. This screen provides visual      
+insights, including a breakdown of trip costs and real-time updates reflecting    
+the user’s financial input.
+
+At the heart of PennyPilot’s design is simplicity and clarity. When users     
+revisit the app, they're immediately taken to their existing progress screen      
+unless they opt to modify the trip details. This flow reduces friction and helps     
+users remain focused on achieving their savings goal. The application architecture     
+is structured around clear separation of concerns: the UI layer (Tkinter) handles     
+user interaction, the controller layer encapsulates business logic, and the      
+persistence layer manages data transactions with the MySQL database. Additionally,      
+PennyPilot applies the Observer Pattern to update the UI when savings data changes     
+and uses the Singleton Pattern to manage a single, consistent database connection     
+throughout a user session. This structured, layered architecture improves       
+maintainability, scalability, and testability.
 
 # Architecture    
 ![image](Deliverable5_images/High_Level.drawio.png)
