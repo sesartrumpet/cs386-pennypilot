@@ -7,7 +7,8 @@ from tkcalendar import DateEntry
 import datetime
 import threading
 import mysql.connector
-from controllers import handle_login
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import matplotlib.pyplot as plt
 
 
 # Generates a list of 30 dates starting from today to be used for travel planning.
@@ -87,7 +88,10 @@ class PennyPilotApp:
         self.expense_breakdown_table.insert("", "end", iid="housing", values=("Housing", "—"))
         self.expense_breakdown_table.insert("", "end", iid="school", values=("School", "—"))
         self.expense_breakdown_table.insert("", "end", iid="misc", values=("Misc", "—"))
-        self.expense_breakdown_table.insert("", "end", iid="total", values=("Total", "—"))
+        self.expense_breakdown_table.insert("", "end", iid="total", values=("Total", "—"))  
+        # Frame for graph output
+        self.chart_frame = ttk.LabelFrame(root, text="Visual Savings Overview")
+        self.chart_frame.pack(pady=10, fill="both", expand=True)
     
     # Displays a welcome greeting to the user.
     def display_username(self):
@@ -132,10 +136,30 @@ class PennyPilotApp:
             self.savings_table.item("week", values=("Weekly", f"${result['savings_per_week']}"))
             self.savings_table.item("day", values=("Daily", f"${result['savings_per_day']}"))
 
-            self.update_expense_breakdown(trip[0])
+            self.update_expense_breakdown(trip[0])  
+            self.draw_savings_chart(
+                float(result['savings_per_month']),
+                float(result['savings_per_week']),
+                float(result['savings_per_day'])
+            )
 
         else:
-            messagebox.showerror("Error", result)
+            messagebox.showerror("Error", result)  
+    #new
+    def draw_savings_chart(self, month, week, day):
+        for widget in self.chart_frame.winfo_children():
+            widget.destroy()
+
+        fig, ax = plt.subplots(figsize=(4, 3), dpi=100)
+        bars = ax.bar(["Monthly", "Weekly", "Daily"], [month, week, day], color=["skyblue", "lightgreen", "lightcoral"])
+        ax.set_ylabel("Amount ($)")
+        ax.set_title("Savings Plan")
+        ax.bar_label(bars, fmt="$%.2f")
+
+        fig.tight_layout()
+        canvas = FigureCanvasTkAgg(fig, master=self.chart_frame)
+        canvas.draw()
+        canvas.get_tk_widget().pack()
 
     # Fetches and displays a detailed cost breakdown for a trip by category.
     def update_expense_breakdown(self, location):
