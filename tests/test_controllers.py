@@ -26,7 +26,7 @@ def dummy_get_price_breakdown_by_trip_name(trip_name):
 
     # Return dummy breakdown for categories:
     # (Travel To, Travel There, Food, Housing, School, Misc)
-    return (50, 75, 100, 150, 200, 25)
+    return True, (50, 75, 100, 150, 200, 25)
 
 # Test handle_add_trip
 def test_handle_add_trip_valid(monkeypatch):
