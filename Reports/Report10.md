@@ -25,7 +25,7 @@ Elijah:
 
 
 Kyle:  
-
+- Completed UML Class Diagram on D5
 
 Sesar:  
 - Completed Sequence Design on D5
@@ -48,19 +48,19 @@ The project retrospective is an opportunity for the group and each individual to
 
 ### Our Retrospective
 1. Appreciations
-
+- Everyone met expectations and performed well.
 
 2. Successes
-
+- We did not have to cram any work into the last few hours. Our deliverable was completed in a timely manner.
 
 3. Failures
-
+- No updates where made to our code to progress towards our second implementation. 
 
 4. Barriers
-
+- We had no in person meetings this week for the deliverable.
 
 5. What We Should Try Next Time
-
+- Resume regular meetings to boost productivity and efficiency.
 
 ---
 
@@ -84,5 +84,5 @@ Sesar:
 - Start working on Deliverable 6
 
 Kyle:  
-
+- Begin working on screen for selected trips
 
