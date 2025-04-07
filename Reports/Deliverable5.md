@@ -58,13 +58,16 @@ application logic, and data management responsibilities.
 Penny Pilot uses two classic software design patterns to enhance modularity, maintainability, and data synchronization: the **Observer Pattern** (Behavioral) and the **Singleton Pattern**(Creational). Each was selected based on its practical application within the savings-tracking architecture of the system.   
 
 - **Observer Pattern(Behavioral)**
-The Observer Pattern is used in Penny Pilot to dynamically update the UI whenever the savings value changes. This makes the savings interface reactive and ensures the user always sees up-to-date progress and goal information without manual refresh or reload actions.
-https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Observer%20Pattern.drawio.png
+The Observer Pattern enables dynamic updates of the user interface whenever the savings data changes. This is critical in Penny Pilot, where users want to track their progress in real-time after inputting or adjusting their savings and trip information.
+
+
+[https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Observer%20Pattern.drawio.png](https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Observer%20Pattern.drawio%20(1).png)
 
   
 - **Singleton Pattern(Creational)**
-The Singleton Pattern is used in Penny Pilot to manage the MySQL database connection efficiently. It ensures that the application always uses the same database instance throughout the user session, avoiding the creation of multiple unnecessary connections.
-https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Singleton%20Pattern.drawio.png
+The Singleton Pattern is used to manage the database connection via DatabaseConnector. This ensures only one connection to the MySQL database is active at a time across the application, preventing resource waste and maintaining centralized access to persistent data.
+
+[https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Singleton%20Pattern.drawio.png](https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Observer%20Pattern.drawio.png)
 
  
 
