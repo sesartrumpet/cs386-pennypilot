@@ -37,6 +37,8 @@ application logic, and data management responsibilities.
 
 # Class Diagrams   
 
+![image](Deliverable5_images/d5umldiagram.png)
+
 # Sequence Diagrams   
 
 ![image](Deliverable5_images/Sequence%20Diagram.png)

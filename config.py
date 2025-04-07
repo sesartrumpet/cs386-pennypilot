@@ -31,6 +31,7 @@ class Config(object):
     USER = 'root'      # fill with your username
     PASSWORD = '123455'  # fill with your user's password
     PORT = 3306
+    
 
     CHARSET = 'utf8'
     UNICODE = True
