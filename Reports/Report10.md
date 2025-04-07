@@ -81,7 +81,7 @@ Elijah:
 
 
 Vikram:  
-
+- Start working on Deliverable 6
 
 Sesar:  
 - Start working on Deliverable 6
