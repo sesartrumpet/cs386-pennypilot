@@ -32,7 +32,8 @@ Sesar:
 
 
 Vikram:
-
+- Helped implement Observer and Singleton design patterns in application
+- Helped complete design patterns
 
 
 ## 2. Retrospective
