@@ -19,6 +19,7 @@ Victor:
 
 
 Manjot:   
+- Completed Design Pattern on D5
 
 
 Elijah:  
@@ -72,7 +73,8 @@ Victor:
 - Work on Login screen and fucntionality
 
 
-Manjot:   
+Manjot:    
+- Start working on Deliverable 6
 
 
 Elijah:  
