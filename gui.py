@@ -1,6 +1,7 @@
 # GUI file for PennyPilot: defines the app's layout and interactions
 import tkinter as tk
 from tkinter import ttk, messagebox
+from design_patterns_penny import SavingsModel, ChartView, BreakdownPanel
 from controllers import get_trips, calculate_savings_goal, handle_update_savings, fetch_trip_expense_breakdown
 from database import get_user_savings
 from tkcalendar import DateEntry 
@@ -92,6 +93,14 @@ class PennyPilotApp:
         # Frame for graph output
         self.chart_frame = ttk.LabelFrame(root, text="Visual Savings Overview")
         self.chart_frame.pack(pady=10, fill="both", expand=True)
+        self.model = SavingsModel()
+        self.chart_observer = ChartView()
+        self.breakdown_observer = BreakdownPanel()
+
+        # Attach observers
+        self.model.attach(self.chart_observer)
+        self.model.attach(self.breakdown_observer)
+
     
     # Displays a welcome greeting to the user.
     def display_username(self):
@@ -130,7 +139,7 @@ class PennyPilotApp:
     def calculate_in_background(self, trip, date_str, already_saved):
         success, result = calculate_savings_goal(trip[1], date_str, already_saved)
         if success:
-            self.result_label.config(text="")
+            self.model.set_savings(float(result['savings_per_month']))
 
             self.savings_table.item("month", values=("Monthly", f"${result['savings_per_month']}"))
             self.savings_table.item("week", values=("Weekly", f"${result['savings_per_week']}"))
