@@ -80,7 +80,6 @@ Elijah:
 
 Vikram:  
 - Start working on Deliverable 6
-- Run pytest
 
 Sesar:  
 - Start working on Deliverable 6
