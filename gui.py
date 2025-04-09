@@ -1,15 +1,13 @@
 # GUI file for PennyPilot: defines the app's layout and interactions
 import tkinter as tk
 from tkinter import ttk, messagebox
-from design_patterns_penny import SavingsModel, ChartView, BreakdownPanel
 from controllers import get_trips, calculate_savings_goal, handle_update_savings, fetch_trip_expense_breakdown
 from database import get_user_savings
 from tkcalendar import DateEntry 
 import datetime
 import threading
 import mysql.connector
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import matplotlib.pyplot as plt
+from controllers import handle_login
 
 
 # Generates a list of 30 dates starting from today to be used for travel planning.
@@ -89,18 +87,7 @@ class PennyPilotApp:
         self.expense_breakdown_table.insert("", "end", iid="housing", values=("Housing", "—"))
         self.expense_breakdown_table.insert("", "end", iid="school", values=("School", "—"))
         self.expense_breakdown_table.insert("", "end", iid="misc", values=("Misc", "—"))
-        self.expense_breakdown_table.insert("", "end", iid="total", values=("Total", "—"))  
-        # Frame for graph output
-        self.chart_frame = ttk.LabelFrame(root, text="Visual Savings Overview")
-        self.chart_frame.pack(pady=10, fill="both", expand=True)
-        self.model = SavingsModel()
-        self.chart_observer = ChartView()
-        self.breakdown_observer = BreakdownPanel()
-
-        # Attach observers
-        self.model.attach(self.chart_observer)
-        self.model.attach(self.breakdown_observer)
-
+        self.expense_breakdown_table.insert("", "end", iid="total", values=("Total", "—"))
     
     # Displays a welcome greeting to the user.
     def display_username(self):
@@ -139,36 +126,16 @@ class PennyPilotApp:
     def calculate_in_background(self, trip, date_str, already_saved):
         success, result = calculate_savings_goal(trip[1], date_str, already_saved)
         if success:
-            self.model.set_savings(float(result['savings_per_month']))
+            self.result_label.config(text="")
 
             self.savings_table.item("month", values=("Monthly", f"${result['savings_per_month']}"))
             self.savings_table.item("week", values=("Weekly", f"${result['savings_per_week']}"))
             self.savings_table.item("day", values=("Daily", f"${result['savings_per_day']}"))
 
-            self.update_expense_breakdown(trip[0])  
-            self.draw_savings_chart(
-                float(result['savings_per_month']),
-                float(result['savings_per_week']),
-                float(result['savings_per_day'])
-            )
+            self.update_expense_breakdown(trip[0])
 
         else:
-            messagebox.showerror("Error", result)  
-    #new
-    def draw_savings_chart(self, month, week, day):
-        for widget in self.chart_frame.winfo_children():
-            widget.destroy()
-
-        fig, ax = plt.subplots(figsize=(4, 3), dpi=100)
-        bars = ax.bar(["Monthly", "Weekly", "Daily"], [month, week, day], color=["skyblue", "lightgreen", "lightcoral"])
-        ax.set_ylabel("Amount ($)")
-        ax.set_title("Savings Plan")
-        ax.bar_label(bars, fmt="$%.2f")
-
-        fig.tight_layout()
-        canvas = FigureCanvasTkAgg(fig, master=self.chart_frame)
-        canvas.draw()
-        canvas.get_tk_widget().pack()
+            messagebox.showerror("Error", result)
 
     # Fetches and displays a detailed cost breakdown for a trip by category.
     def update_expense_breakdown(self, location):
