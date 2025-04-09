@@ -1,4 +1,3 @@
-
 -- Create and enter database
 CREATE DATABASE IF NOT EXISTS pennypilot_db;
 USE pennypilot_db;
@@ -37,12 +36,5 @@ CREATE TABLE IF NOT EXISTS trip (
     timeframe INT NOT NULL, -- in months
     FOREIGN KEY (userName) REFERENCES userProfile(userName) ON DELETE CASCADE,
     FOREIGN KEY (location) REFERENCES tripDestination(location) ON DELETE CASCADE
-);
-
--- This is the simple login user table your login form connects to:
-CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
 );
 
