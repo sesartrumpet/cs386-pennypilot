@@ -22,3 +22,6 @@ INSERT IGNORE INTO prices VALUES
   ('South Korea', 1100.00, 550.00, 650.00, 1500.00, 2500.00, 280.00);
 
 INSERT IGNORE INTO trip VALUES ('Krqf', 'France', 24);
+
+INSERT IGNORE INTO users (username, password) VALUES ('admin', 'password');
+INSERT IGNORE INTO userProfile (userName, passwordHash) VALUES ('admin', 'password');

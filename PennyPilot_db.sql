@@ -46,6 +46,3 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) NOT NULL
 );
 
--- inserts your default test account
-INSERT IGNORE INTO userProfile (username, passwordHash) VALUES ('admin', 'password');
-
