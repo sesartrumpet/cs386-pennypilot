@@ -219,13 +219,21 @@ def get_connection(config):
 def authenticate_user(username, password):
     conn = create_connection()
     if conn is None:
+        print("Failed to create database connection")
         return False
         
     try:
         cursor = conn.cursor()
+        # Debug print the query and parameters
+        print(f"Attempting to authenticate user: {username}")
         cursor.execute("SELECT * FROM userProfile WHERE userName = %s AND passwordHash = %s", (username, password))
         user = cursor.fetchone()
-        return user is not None
+        if user:
+            print(f"User {username} authenticated successfully")
+            return True
+        else:
+            print(f"Authentication failed for user {username}")
+            return False
     except Exception as e:
         print(f"Error authenticating user: {e}")
         return False
