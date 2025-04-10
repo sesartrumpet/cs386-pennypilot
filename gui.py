@@ -9,6 +9,34 @@ import threading
 import mysql.connector
 from controllers import handle_login
 
+def set_window_size(window, width=400, height=600):
+    """Sets the window size and centers it on the screen"""
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+    x = (screen_width - width) // 2
+    y = (screen_height - height) // 2
+    window.geometry(f"{width}x{height}+{x}+{y}")
+
+def setup_window_closing(window, root=None, cleanup_func=None):
+    """
+    Sets up window closing behavior for any window in the application.
+    Args:
+        window: The window to set up closing for
+        root: The root window to destroy (if any)
+        cleanup_func: Optional function to call before closing (e.g., for database cleanup)
+    """
+    def on_closing():
+        try:
+            if cleanup_func:
+                cleanup_func()
+            if root:
+                root.destroy()
+            window.destroy()
+        except tk.TclError:
+            # Window was already destroyed, ignore the error
+            pass
+    
+    window.protocol("WM_DELETE_WINDOW", on_closing)
 
 # Generates a list of 30 dates starting from today to be used for travel planning.
 def generate_future_dates():
@@ -26,8 +54,13 @@ class PennyPilotApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Penny Pilot - Trip Savings")
-        self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
         self.connector = None  
+        
+        # Set window size
+        set_window_size(root)
+        
+        # Set up window closing
+        setup_window_closing(root, cleanup_func=self.on_closing)
         
         self.display_username()
         
@@ -163,7 +196,6 @@ class PennyPilotApp:
                 print("Database connection closed")
             except Exception as e:
                 print(f"Error closing database connection: {e}")
-        self.root.destroy()
 
     # Establishes a connection to the MySQL database if not already connected.
     def create_connection(self):
@@ -206,27 +238,209 @@ def show_login_window(start_main_app_callback, root):
     # Use a Toplevel window for the login screen
     login_window = tk.Toplevel(root)
     login_window.title("Login")
+    
+    # Set window size to match main window
+    set_window_size(login_window)
+    
+    # Set up window closing
+    setup_window_closing(login_window, root)
+    
+    # Create a frame to center all content
+    main_frame = tk.Frame(login_window)
+    main_frame.pack(expand=True, fill='both', padx=20, pady=20)
+    
+    # Add title
+    title_label = tk.Label(main_frame, text="PennyPilot", font=("Arial", 16, "bold"))
+    title_label.pack(pady=(0, 20))
+    
+    # Create a frame for the login form
+    login_frame = tk.Frame(main_frame)
+    login_frame.pack(expand=True)
+    
+    # Username
+    username_entry = tk.Entry(login_frame, fg='grey')
+    username_entry.insert(0, "Username")
+    username_entry.grid(row=0, column=0, padx=10, pady=10)
+    
+    def clear_username_placeholder(event):
+        if username_entry.get() == "Username":
+            username_entry.delete(0, tk.END)
+            username_entry.config(fg='black')
+    
+    def add_username_placeholder(event):
+        if not username_entry.get():
+            username_entry.insert(0, "Username")
+            username_entry.config(fg='grey')
+    
+    username_entry.bind("<FocusIn>", clear_username_placeholder)
+    username_entry.bind("<FocusOut>", add_username_placeholder)
 
-    tk.Label(login_window, text="Username").grid(row=0, column=0, padx=10, pady=10)
-    username_entry = tk.Entry(login_window)
-    username_entry.grid(row=0, column=1)
-
-    tk.Label(login_window, text="Password").grid(row=1, column=0, padx=10, pady=10)
-    password_entry = tk.Entry(login_window, show='*')
-    password_entry.grid(row=1, column=1)
+    # Password
+    password_entry = tk.Entry(login_frame, fg='grey')
+    password_entry.insert(0, "Password")
+    password_entry.grid(row=1, column=0, padx=10, pady=10)
+    
+    def clear_password_placeholder(event):
+        if password_entry.get() == "Password":
+            password_entry.delete(0, tk.END)
+            password_entry.config(fg='black', show='*')
+    
+    def add_password_placeholder(event):
+        if not password_entry.get():
+            password_entry.insert(0, "Password")
+            password_entry.config(fg='grey', show='')
+    
+    password_entry.bind("<FocusIn>", clear_password_placeholder)
+    password_entry.bind("<FocusOut>", add_password_placeholder)
 
     # Validates login attempt and starts main app if successful
     def attempt_login():
-        username = username_entry.get()
-        password = password_entry.get()
+        username = username_entry.get() if username_entry.get() != "Username" else ""
+        password = password_entry.get() if password_entry.get() != "Password" else ""
         if handle_login(username, password):
             login_window.destroy()
             root.deiconify()
             start_main_app_callback(root)
         else:
             messagebox.showerror("Login Failed", "Invalid username or password")
-
+    
     # Button to trigger login check
-    tk.Button(login_window, text="Login", command=attempt_login).grid(row=2, column=0, columnspan=2, pady=10)
+    login_button = tk.Button(main_frame, text="Login", command=attempt_login)
+    login_button.pack(pady=10)
+    
+    # Create Account button
+    create_account_button = tk.Button(main_frame, text="Create Account", 
+                                    command=lambda: show_create_account_window(login_window))
+    create_account_button.pack(pady=10)
+
+def show_create_account_window(login_window):
+    import tkinter as tk
+    from tkinter import messagebox
+    from database import create_connection
+    
+    # Hide the login window
+    login_window.withdraw()
+    
+    # Create a new window for account creation
+    create_window = tk.Toplevel(login_window)
+    create_window.title("Create Account")
+    
+    # Set window size
+    set_window_size(create_window)
+    
+    # Set up window closing to show login window again
+    def on_closing():
+        create_window.destroy()
+        login_window.deiconify()
+    
+    create_window.protocol("WM_DELETE_WINDOW", on_closing)
+    
+    # Create a frame to center all content
+    main_frame = tk.Frame(create_window)
+    main_frame.pack(expand=True, fill='both', padx=20, pady=20)
+    
+    # Add title
+    title_label = tk.Label(main_frame, text="Create Account", font=("Arial", 16, "bold"))
+    title_label.pack(pady=(0, 20))
+    
+    # Create a frame for the form
+    form_frame = tk.Frame(main_frame)
+    form_frame.pack(expand=True)
+    
+    # Username
+    username_label = tk.Label(form_frame, text="Username:", anchor='w')
+    username_label.grid(row=0, column=0, padx=10, pady=5, sticky='w')
+    username_entry = tk.Entry(form_frame)
+    username_entry.grid(row=0, column=1, padx=10, pady=5)
+    
+    # Password
+    password_label = tk.Label(form_frame, text="Password:", anchor='w')
+    password_label.grid(row=1, column=0, padx=10, pady=5, sticky='w')
+    password_entry = tk.Entry(form_frame, show='*')
+    password_entry.grid(row=1, column=1, padx=10, pady=5)
+    
+    # Confirm Password
+    confirm_password_label = tk.Label(form_frame, text="Confirm Password:", anchor='w')
+    confirm_password_label.grid(row=2, column=0, padx=10, pady=5, sticky='w')
+    confirm_password_entry = tk.Entry(form_frame, show='*')
+    confirm_password_entry.grid(row=2, column=1, padx=10, pady=5)
+    
+    # First Name
+    first_name_label = tk.Label(form_frame, text="First Name:", anchor='w')
+    first_name_label.grid(row=3, column=0, padx=10, pady=5, sticky='w')
+    first_name_entry = tk.Entry(form_frame)
+    first_name_entry.grid(row=3, column=1, padx=10, pady=5)
+    
+    # Last Name
+    last_name_label = tk.Label(form_frame, text="Last Name:", anchor='w')
+    last_name_label.grid(row=4, column=0, padx=10, pady=5, sticky='w')
+    last_name_entry = tk.Entry(form_frame)
+    last_name_entry.grid(row=4, column=1, padx=10, pady=5)
+    
+    # Email
+    email_label = tk.Label(form_frame, text="NAU Email:", anchor='w')
+    email_label.grid(row=5, column=0, padx=10, pady=5, sticky='w')
+    email_entry = tk.Entry(form_frame)
+    email_entry.grid(row=5, column=1, padx=10, pady=5)
+    
+    def create_account():
+        # Get all the values
+        username = username_entry.get()
+        password = password_entry.get()
+        confirm_password = confirm_password_entry.get()
+        first_name = first_name_entry.get()
+        last_name = last_name_entry.get()
+        email = email_entry.get()
+        
+        # Validate all fields are filled
+        if not all([username, password, confirm_password, first_name, last_name, email]):
+            messagebox.showerror("Error", "All fields are required")
+            return
+            
+        # Validate passwords match
+        if password != confirm_password:
+            messagebox.showerror("Error", "Passwords do not match")
+            return
+            
+        # Validate email format
+        if '@nau.edu' not in email:
+            messagebox.showerror("Error", "Please use a valid NAU email address")
+            return
+            
+        try:
+            # Connect to database
+            conn = create_connection()
+            if conn is None:
+                messagebox.showerror("Error", "Failed to connect to database")
+                return
+                
+            cursor = conn.cursor()
+            
+            # Check if username already exists
+            cursor.execute("SELECT * FROM userProfile WHERE userName = %s", (username,))
+            if cursor.fetchone():
+                messagebox.showerror("Error", "Username already exists")
+                return
+                
+            # Insert new user
+            cursor.execute("""
+                INSERT INTO userProfile (userName, passwordHash, firstName, lastName, nauEmail)
+                VALUES (%s, %s, %s, %s, %s)
+            """, (username, password, first_name, last_name, email))
+            
+            conn.commit()
+            messagebox.showinfo("Success", "Account created successfully!")
+            create_window.destroy()
+            login_window.deiconify()
+            
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to create account: {str(e)}")
+        finally:
+            if conn:
+                conn.close()
+    
+    # Create Account button
+    create_button = tk.Button(main_frame, text="Create Account", command=create_account)
+    create_button.pack(pady=20)
 
     
