@@ -45,6 +45,3 @@ INSERT IGNORE INTO prices VALUES
     -- South Korea: Technology-focused program
     ('South Korea', 1100.00, 550.00, 650.00, 1500.00, 2500.00, 280.00);
 
--- Insert sample trip for testing
--- Format: (username, destination, duration_in_weeks)
-INSERT IGNORE INTO trip VALUES ('Krqf', 'France', 24);

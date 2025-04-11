@@ -46,10 +46,12 @@ CREATE TABLE IF NOT EXISTS prices (
 -- Foreign Keys: 
 --   - userName references userProfile(userName)
 --   - location references tripDestination(location)
+DROP TABLE IF EXISTS trip;
 CREATE TABLE IF NOT EXISTS trip (
     userName VARCHAR(50) NOT NULL PRIMARY KEY,    -- User planning the trip
     location VARCHAR(100) NOT NULL,               -- Selected destination
-    timeframe INT NOT NULL,                       -- Duration in months
+    dateStart DATE NOT NULL,                      -- Start date of the trip
+    dateSelected DATE NOT NULL,                   -- Selected future date
     FOREIGN KEY (userName) REFERENCES userProfile(userName) ON DELETE CASCADE,
     FOREIGN KEY (location) REFERENCES tripDestination(location) ON DELETE CASCADE
 );
