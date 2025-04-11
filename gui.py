@@ -86,7 +86,20 @@ class PennyPilotApp:
         last_calculated_data (dict): Stores the last successful calculation results
     """
     
-    def __init__(self, root):
+    def on_trip_selected(self, event):
+        """
+        Handles the trip selection event.
+        Updates the expense breakdown when a new trip is selected.
+        
+        Args:
+            event: The selection event
+        """
+        selected = self.trip_var.get()
+        if selected:
+            location = selected.split(" - ")[0]
+            self.update_expense_breakdown(location)
+
+    def __init__(self, root, username):
         """
         Initializes the PennyPilot application GUI.
         
@@ -94,6 +107,8 @@ class PennyPilotApp:
             root (tk.Tk): The main application window
         """
         self.root = root
+        self.savings_result = {}
+        self.username = username
         self.root.title("Penny Pilot - Trip Savings")
         self.connector = None  
         
@@ -256,6 +271,8 @@ class PennyPilotApp:
             self.savings_table.item("week", values=("Weekly", f"${result['savings_per_week']}"))
             self.savings_table.item("day", values=("Daily", f"${result['savings_per_day']}"))
 
+            self.savings_result = result
+            
             self.update_expense_breakdown(trip[0])
 
         else:
@@ -265,7 +282,8 @@ class PennyPilotApp:
             "trip_name": trip[0],
             "total_cost": trip[1],
             "savings": result,
-            "end_date": date_str
+            "end_date": date_str,
+            "progress": round(min((already_saved / trip[1]) * 100, 100), 2)
         }
 
         self.update_expense_breakdown(trip[0])
@@ -343,100 +361,91 @@ class PennyPilotApp:
             self.int_input.config(fg='grey')
     
     def handle_confirm_click(self):
-        """
-        Handles the confirm button click event.
-        Validates that calculations have been performed before proceeding.
-        Updates the trip table with the selected trip information.
-        """
         if not self.calculation_ready:
             messagebox.showerror("Error", "Please calculate trip savings before confirming.")
             return
 
-            
+        selected = self.trip_var.get()
+        if not selected:
+            messagebox.showerror("Error", "No trip selected")
+            return
+
+        location = selected.split(" - ")[0]
+
         try:
-            # Get the selected trip information
-            selected = self.trip_var.get()
-            if not selected:
-                messagebox.showerror("Error", "No trip selected")
-                return
-                
-            # Get the location from the trip destination
-            # Format is "Location - $XXXX.XX", so split on " - " and take first part
-            location = selected.split(" - ")[0]
-            
-            # Get the dates
-            date_start = datetime.datetime.now().date()  # Today's date
-            date_selected = self.date_entry.get_date()   # Date selected in the calendar
-            
-            # Connect to database
             conn = self.create_connection()
             if conn is None:
                 messagebox.showerror("Error", "Failed to connect to database")
                 return
-                
+
             cursor = conn.cursor()
             
-            # First verify the location exists in tripDestination
             cursor.execute("SELECT location FROM tripDestination WHERE location = %s", (location,))
             if not cursor.fetchone():
                 messagebox.showerror("Error", f"Invalid destination: {location}")
                 return
+
+            cursor.execute("DELETE FROM trip WHERE userName = %s", (self.username,))
             
-            # Get current logged in username from userProfile
-            cursor.execute("SELECT userName FROM userProfile LIMIT 1")
-            user_result = cursor.fetchone()
-            if not user_result:
-                messagebox.showerror("Error", "No user profile found")
-                return
-                
-            username = user_result[0]
-            
-            # First delete any existing trip for this user
-            cursor.execute("DELETE FROM trip WHERE userName = %s", (username,))
-            
-            # Insert new trip information
+            date_start = datetime.datetime.now().date()
+            date_selected = self.date_entry.get_date()
             cursor.execute("""
                 INSERT INTO trip (userName, location, dateStart, dateSelected)
                 VALUES (%s, %s, %s, %s)
-            """, (username, location, date_start, date_selected))
-            
+            """, (self.username, location, date_start, date_selected))
             conn.commit()
-            
-            # Print trip table contents for testing
-            cursor.execute("SELECT * FROM trip")
-            trips = cursor.fetchall()
-            print("\nCurrent Trip Table Contents:")
-            print("Username | Location | Start Date | Selected Date")
-            print("-" * 50)
-            for trip in trips:
-                print(f"{trip[0]} | {trip[1]} | {trip[2]} | {trip[3]}")
-            
+
+            cursor.execute("""
+                SELECT 
+                t.location, 
+                td.university, 
+                t.dateStart, 
+                t.dateSelected,
+                p.Travelto, 
+                p.Travelthere, 
+                p.Food, 
+                p.Housing, 
+                p.School, 
+                p.Misc
+                FROM trip t
+                JOIN tripDestination td ON t.location = td.location
+                JOIN prices p ON t.location = p.location
+                WHERE t.userName = %s
+            """, (self.username,))
+            row = cursor.fetchone()
+            if not row:
+                messagebox.showerror("Error", "No trip data found for user.")
+                return
+
+            trip_data = {
+                "trip_name": row[0],
+                "university": row[1],
+                "date_start": row[2],
+                "date_selected": row[3],
+                "prices": {
+                    "Travelto": row[4],
+                    "Travelthere": row[5],
+                    "Food": row[6],
+                    "Housing": row[7],
+                    "School": row[8],
+                    "Misc": row[9]
+                },
+
+                "savings": self.savings_result,
+                "progress": self.last_calculated_data.get("progress", 0)
+            }
+
             messagebox.showinfo("Success", "Trip destination confirmed successfully!")
-            show_progress_window(self.last_calculated_data)
-            
+
+            trip_data["main_window"] = self.root
+
+            show_progress_window(trip_data)
+
         except Exception as e:
             messagebox.showerror("Error", f"Failed to confirm trip: {str(e)}")
         finally:
             if conn:
                 conn.close()
-        
-        # Add the main window reference to the data
-        self.last_calculated_data['main_window'] = self.root
-        show_progress_window(self.last_calculated_data)
-
-
-    def on_trip_selected(self, event):
-        """
-        Handles the trip selection event.
-        Updates the expense breakdown when a new trip is selected.
-        
-        Args:
-            event: The selection event
-        """
-        selected = self.trip_var.get()
-        if selected:
-            location = selected.split(" - ")[0]
-            self.update_expense_breakdown(location)
 
     def show_temporary_message(self, message):
         """
@@ -457,14 +466,14 @@ class PennyPilotApp:
         """
         self.temp_message_label.config(text="")
 
-def show_main_app(root):
+def show_main_app(root, username):
     """
     Initializes and displays the main application window.
     
     Args:
         root (tk.Tk): The root window
     """
-    PennyPilotApp(root)
+    PennyPilotApp(root, username)
 
 def show_login_window(start_main_app_callback, root):
     """
@@ -547,7 +556,7 @@ def show_login_window(start_main_app_callback, root):
         if handle_login(username, password):
             login_window.destroy()
             root.deiconify()
-            start_main_app_callback(root)
+            start_main_app_callback(root, username)
         else:
             messagebox.showerror("Login Failed", "Invalid username or password")
     
@@ -712,83 +721,78 @@ def show_create_account_window(login_window):
 
 def show_progress_window(data):
     """
-    Displays a window showing the progress of the selected trip.
+    Displays a window showing the progress of the selected trip with
+    information pulled from the database.
     
     Args:
-        data (dict): Trip data including name, cost, savings, and end date
+        data (dict): Trip data including destination, university, dates,
+                     cost breakdown (from prices), and calculated savings.
     """
     import tkinter as tk
     from tkinter import ttk
-    from database import create_connection
 
-    # Get the main window (root) from the data
     main_window = data.get('main_window')
-    
-    # Hide the main window
     if main_window:
         main_window.withdraw()
 
     progress_window = tk.Toplevel()
-    progress_window.title("Penny Pilot - Trip Progress")
-    set_window_size(progress_window, width=350, height=250)
-
+    progress_window.title("Trip Confirmation")
+    set_window_size(progress_window, width=450, height=350)
     progress_window.grab_set()
 
-    def change_destination():
-        """
-        Handles the change destination button click.
-        Deletes the current trip data and closes the progress window.
-        """
-        try:
-            # Connect to database
-            conn = create_connection()
-            if conn is None:
-                messagebox.showerror("Error", "Failed to connect to database")
-                return
-                
-            cursor = conn.cursor()
-            
-            # Get current logged in username from userProfile
-            cursor.execute("SELECT userName FROM userProfile LIMIT 1")
-            user_result = cursor.fetchone()
-            if user_result:
-                username = user_result[0]
-                # Delete the trip for this user
-                cursor.execute("DELETE FROM trip WHERE userName = %s", (username,))
-                conn.commit()
-                print(f"Deleted trip data for user: {username}")
-            
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to delete trip data: {str(e)}")
-        finally:
-            if conn:
-                conn.close()
-            progress_window.destroy()
+    tripHeader = tk.Label(
+        progress_window,
+        text=f"{data['trip_name']}",
+        font=("Arial", 16, "bold"),
+        pady=10
+    )
+    tripHeader.pack()
 
-    # Code to show trip details goes here
-    #
-    #
-    #
-    #
+    uniHeader = tk.Label(
+        progress_window,
+        text=f"{data['university']}",
+        font=("Arial", 12, "bold"),
+        pady=10
+    )
+    uniHeader.pack()
+
+    # Middle section: progress bar
+    tk.Label(progress_window, text="Trip Progress", font=("Arial", 10)).pack(pady=(5, 0))
+    progress_bar = ttk.Progressbar(progress_window, mode="determinate", length=300)
+    progress_bar["value"] = data.get("progress")
+    progress_bar.pack(pady=10)
 
 
-    close_button = tk.Button(progress_window, text="Change Destination", command=change_destination)
+    savings_frame = tk.Frame(progress_window)
+    savings_frame.pack(pady=10)
+
+    savings_table = ttk.Treeview(savings_frame, columns=("Period", "Amount"), show="headings", height=3)
+    savings_table.heading("Period", text="Period")
+    savings_table.heading("Amount", text="Amount")
+    savings_table.column("Period", anchor="center", width=100)
+    savings_table.column("Amount", anchor="center", width=150)
+    savings_table.pack()
+
+    savings = data.get("savings", {})
+
+    def fmt(val):
+        return f"${float(val):,.2f}" if val is not None else "—"
+
+    savings_table.insert("", "end", values=("Monthly", fmt(savings.get("savings_per_month"))))
+    savings_table.insert("", "end", values=("Weekly", fmt(savings.get("savings_per_week"))))
+    savings_table.insert("", "end", values=("Daily", fmt(savings.get("savings_per_day"))))
+
 
     def on_change_destination():
-        # Show the main window again
         if main_window:
             main_window.deiconify()
-        # Close the progress window
         progress_window.destroy()
 
-    close_button = tk.Button(progress_window, text="Change Destination", command=on_change_destination)
+    tk.Button(progress_window, text="Change Destination", command=on_change_destination).pack(pady=15)
 
-    close_button.pack(pady=20)
-
-    # Set up window closing to also show the main window
     def on_closing():
         if main_window:
             main_window.deiconify()
         progress_window.destroy()
-    
+
     progress_window.protocol("WM_DELETE_WINDOW", on_closing)
