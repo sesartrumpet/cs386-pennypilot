@@ -89,6 +89,10 @@ class PennyPilotApp:
         # Date input with calendar widget
         self.create_date_dropdown()
 
+        # Bool to store if calculate button has generated trip data
+        self.calculation_ready = False
+        self.last_calculated_data = {}
+
         # Calculate button
         self.calc_btn = tk.Button(root, text="Calculate Savings Goal", command=self.calculate)
         self.calc_btn.pack(pady=5)
@@ -121,7 +125,16 @@ class PennyPilotApp:
         self.expense_breakdown_table.insert("", "end", iid="school", values=("School", "—"))
         self.expense_breakdown_table.insert("", "end", iid="misc", values=("Misc", "—"))
         self.expense_breakdown_table.insert("", "end", iid="total", values=("Total", "—"))
-    
+
+        self.confirm_btn = tk.Button(
+            root,
+            text="Confirm Trip Destination",
+            command=self.handle_confirm_click
+        )
+        self.confirm_btn.pack(pady=10)
+        self.confirm_btn.pack(ipadx=10)
+        self.confirm_btn.pack(ipady=15)
+
     # Displays a welcome greeting to the user.
     def display_username(self):
         greeting = tk.Label(self.root, text=f"Hello! Welcome to PennyPilot", font=("Arial", 14))
@@ -169,6 +182,15 @@ class PennyPilotApp:
 
         else:
             messagebox.showerror("Error", result)
+        self.calculation_ready = True
+        self.last_calculated_data = {
+            "trip_name": trip[0],
+            "total_cost": trip[1],
+            "savings": result,
+            "end_date": date_str
+        }
+
+        self.update_expense_breakdown(trip[0])
 
     # Fetches and displays a detailed cost breakdown for a trip by category.
     def update_expense_breakdown(self, location):
@@ -221,6 +243,12 @@ class PennyPilotApp:
         if not self.int_input.get():
             self.int_input.insert(0, "Already Saved")
             self.int_input.config(fg='grey')
+    
+    def handle_confirm_click(self):
+        if not self.calculation_ready:
+            messagebox.showerror("Error", "Please calculate trip savings before confirming.")
+            return
+        show_progress_window(self.last_calculated_data)
 
     
 # Initializes the app after successful login        
@@ -443,4 +471,23 @@ def show_create_account_window(login_window):
     create_button = tk.Button(main_frame, text="Create Account", command=create_account)
     create_button.pack(pady=20)
 
-    
+def show_progress_window(data):
+    import tkinter as tk
+    from tkinter import ttk
+
+    progress_window = tk.Toplevel()
+    progress_window.title("Trip Progress")
+    set_window_size(progress_window, width=350, height=250)
+
+    progress_window.grab_set()
+
+    # Code to show trip details goes here
+    #
+    #
+    #
+    #
+
+    close_button = tk.Button(progress_window, text="Change Destination", command=progress_window.destroy)
+    close_button.pack(pady=20)
+
+    setup_window_closing(progress_window)
