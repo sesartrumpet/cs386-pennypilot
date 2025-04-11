@@ -141,6 +141,10 @@ class PennyPilotApp:
         # Create calculate button
         self.calc_btn = tk.Button(root, text="Calculate Savings Goal", command=self.calculate)
         self.calc_btn.pack(pady=5)
+        
+        # Create temporary message label (initially empty)
+        self.temp_message_label = tk.Label(root, text="", fg="green", font=("Arial", 10))
+        self.temp_message_label.pack(pady=2)
 
         # Create result display
         self.result_label = tk.Label(root, text="", font=("Arial", 12))
@@ -227,6 +231,9 @@ class PennyPilotApp:
             messagebox.showerror("Input Error", "Please enter a valid integer for 'Already Saved'")
             return
 
+        # Show temporary message
+        self.show_temporary_message("Updated Goal")
+        
         # Start calculation in background thread
         threading.Thread(target=self.calculate_in_background, args=(trip, date_str, already_saved)).start()
 
@@ -360,6 +367,25 @@ class PennyPilotApp:
         if selected:
             location = selected.split(" - ")[0]
             self.update_expense_breakdown(location)
+
+    def show_temporary_message(self, message):
+        """
+        Shows a temporary message that disappears after 3 seconds.
+        
+        Args:
+            message (str): The message to display
+        """
+        # Update the label with the message
+        self.temp_message_label.config(text=message)
+        
+        # Schedule the message to disappear after 3 seconds
+        self.root.after(3000, self.clear_temporary_message)
+        
+    def clear_temporary_message(self):
+        """
+        Clears the temporary message.
+        """
+        self.temp_message_label.config(text="")
 
 def show_main_app(root):
     """
