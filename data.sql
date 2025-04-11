@@ -11,16 +11,17 @@ INSERT IGNORE INTO userProfile VALUES
 -- Insert available trip destinations
 -- Format: (location, programType)
 -- programType indicates the type of educational program at the destination
-INSERT IGNORE INTO tripDestination VALUES 
-    ('France', 'college'),              -- College program in France
-    ('Mexico', 'school'),               -- School program in Mexico
-    ('Germany', 'Technical University'), -- Technical university program
-    ('Japan', 'Language School'),       -- Language school program
-    ('Canada', 'Exchange Program'),     -- Exchange program
-    ('Italy', 'Design Academy'),        -- Design academy program
-    ('Brazil', 'Study Abroad'),         -- General study abroad program
-    ('Australia', 'Marine Institute'),  -- Marine studies program
-    ('South Korea', 'Tech University'); -- Technology university program
+INSERT IGNORE INTO tripDestination VALUES
+    ('France', 'Sorbonne University'),                      -- College program in France
+    ('Mexico', 'National Autonomous University of Mexico'), -- School program in Mexico
+    ('Germany', 'Technical University of Munich'),          -- Technical university program
+    ('Japan', 'KAI Japanese Language School'),              -- Language school program
+    ('Canada', 'University of British Columbia'),           -- Exchange program
+    ('Italy', 'Domus Academy'),                             -- Design academy program
+    ('Brazil', 'Pontifical Catholic University of Rio de Janeiro'), -- General study abroad program
+    ('Australia', 'Australian Maritime College'),           -- Marine studies program
+    ('South Korea', 'Korea Advanced Institute of Science and Technology'); -- Technology university program
+
 
 -- Insert price breakdowns for each destination
 -- Format: (location, Travelto, Travelthere, Food, Housing, School, Misc)
