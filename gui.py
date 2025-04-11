@@ -343,6 +343,9 @@ class PennyPilotApp:
         if not self.calculation_ready:
             messagebox.showerror("Error", "Please calculate trip savings before confirming.")
             return
+        
+        # Add the main window reference to the data
+        self.last_calculated_data['main_window'] = self.root
         show_progress_window(self.last_calculated_data)
 
     def on_trip_selected(self, event):
@@ -616,8 +619,15 @@ def show_progress_window(data):
     import tkinter as tk
     from tkinter import ttk
 
+    # Get the main window (root) from the data
+    main_window = data.get('main_window')
+    
+    # Hide the main window
+    if main_window:
+        main_window.withdraw()
+
     progress_window = tk.Toplevel()
-    progress_window.title("Trip Progress")
+    progress_window.title("Penny Pilot - Trip Progress")
     set_window_size(progress_window, width=350, height=250)
 
     progress_window.grab_set()
@@ -628,7 +638,20 @@ def show_progress_window(data):
     #
     #
 
-    close_button = tk.Button(progress_window, text="Change Destination", command=progress_window.destroy)
+    def on_change_destination():
+        # Show the main window again
+        if main_window:
+            main_window.deiconify()
+        # Close the progress window
+        progress_window.destroy()
+
+    close_button = tk.Button(progress_window, text="Change Destination", command=on_change_destination)
     close_button.pack(pady=20)
 
-    setup_window_closing(progress_window)
+    # Set up window closing to also show the main window
+    def on_closing():
+        if main_window:
+            main_window.deiconify()
+        progress_window.destroy()
+    
+    progress_window.protocol("WM_DELETE_WINDOW", on_closing)
