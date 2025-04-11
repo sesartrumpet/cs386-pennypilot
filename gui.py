@@ -1,4 +1,16 @@
-# GUI file for PennyPilot: defines the app's layout and interactions
+"""
+Graphical User Interface module for the PennyPilot application.
+This module handles all user interface components and interactions,
+including the main application window, login screen, and trip planning interface.
+
+The GUI is built using Tkinter and includes:
+- Login/authentication system
+- Trip selection and cost breakdown
+- Savings calculation and display
+- Date selection for trip planning
+- Expense breakdown visualization
+"""
+
 import tkinter as tk
 from tkinter import ttk, messagebox
 from controllers import get_trips, calculate_savings_goal, handle_update_savings, fetch_trip_expense_breakdown
@@ -10,7 +22,14 @@ import mysql.connector
 from controllers import handle_login
 
 def set_window_size(window, width=400, height=600):
-    """Sets the window size and centers it on the screen"""
+    """
+    Centers and sets the size of a window on the screen.
+    
+    Args:
+        window (tk.Tk or tk.Toplevel): The window to resize
+        width (int): Desired width of the window
+        height (int): Desired height of the window
+    """
     screen_width = window.winfo_screenwidth()
     screen_height = window.winfo_screenheight()
     x = (screen_width - width) // 2
@@ -19,11 +38,12 @@ def set_window_size(window, width=400, height=600):
 
 def setup_window_closing(window, root=None, cleanup_func=None):
     """
-    Sets up window closing behavior for any window in the application.
+    Configures proper window closing behavior with cleanup.
+    
     Args:
-        window: The window to set up closing for
-        root: The root window to destroy (if any)
-        cleanup_func: Optional function to call before closing (e.g., for database cleanup)
+        window (tk.Tk or tk.Toplevel): The window to configure
+        root (tk.Tk, optional): The root window to destroy
+        cleanup_func (callable, optional): Function to call before closing
     """
     def on_closing():
         try:
@@ -38,20 +58,41 @@ def setup_window_closing(window, root=None, cleanup_func=None):
     
     window.protocol("WM_DELETE_WINDOW", on_closing)
 
-# Generates a list of 30 dates starting from today to be used for travel planning.
 def generate_future_dates():
+    """
+    Generates a list of dates for the next 30 days.
+    Used for trip planning and date selection.
+    
+    Returns:
+        list: List of datetime.date objects for the next 30 days
+    """
     today = datetime.date.today()
     future_dates = []
     for i in range(1, 31):  
         future_dates.append(today + datetime.timedelta(days=i))
     return future_dates
 
-
-# Main application class that defines and manages the entire Penny Pilot trip savings GUI.
 class PennyPilotApp:
+    """
+    Main application class that manages the PennyPilot GUI.
+    This class handles all user interface components and their interactions.
     
-    # Constructor: Builds and displays the GUI layout
+    Attributes:
+        root (tk.Tk): The main application window
+        connector (mysql.connector): Database connection object
+        trips (list): List of available trips
+        trip_var (tk.StringVar): Variable for selected trip
+        calculation_ready (bool): Flag indicating if savings have been calculated
+        last_calculated_data (dict): Stores the last successful calculation results
+    """
+    
     def __init__(self, root):
+        """
+        Initializes the PennyPilot application GUI.
+        
+        Args:
+            root (tk.Tk): The main application window
+        """
         self.root = root
         self.root.title("Penny Pilot - Trip Savings")
         self.connector = None  
@@ -64,6 +105,7 @@ class PennyPilotApp:
         
         self.display_username()
         
+        # Initialize trip selection
         self.trip_var = tk.StringVar()
         success, result = get_trips()
         if success:
@@ -72,52 +114,56 @@ class PennyPilotApp:
             self.trips = []
             messagebox.showerror("Database Error", result)
 
-        # Dropdown to select a trip (e.g., "Rome - $2100.00")
+        # Create trip selection dropdown
         self.trip_dropdown = ttk.Combobox(root, textvariable=self.trip_var, state="readonly", width=24)
         self.trip_dropdown["values"] = [f"{trip[0]} - ${trip[1]:.2f}" for trip in self.trips]
         self.trip_dropdown.pack(pady=5)
+        
+        # Bind selection event to update expense breakdown
+        self.trip_dropdown.bind('<<ComboboxSelected>>', self.on_trip_selected)
 
-         # Input for money already saved with placeholder
+        # Create savings input field with placeholder
         self.int_input = tk.Entry(root, fg='grey', width=24)
         self.int_input.insert(0, "Already Saved")
         self.int_input.pack(pady=5)
 
-        # Bind focus events to simulate placeholder behavior
+        # Set up placeholder behavior
         self.int_input.bind("<FocusIn>", self.clear_placeholder)
         self.int_input.bind("<FocusOut>", self.add_placeholder)
 
-        # Date input with calendar widget
+        # Create date selection widget
         self.create_date_dropdown()
 
-        # Bool to store if calculate button has generated trip data
+        # Initialize calculation state
         self.calculation_ready = False
         self.last_calculated_data = {}
 
-        # Calculate button
+        # Create calculate button
         self.calc_btn = tk.Button(root, text="Calculate Savings Goal", command=self.calculate)
         self.calc_btn.pack(pady=5)
 
-        # Result
+        # Create result display
         self.result_label = tk.Label(root, text="", font=("Arial", 12))
         self.result_label.pack(pady=5)
 
-        # Create a savings breakdown table
+        # Create savings breakdown table
         self.savings_table = ttk.Treeview(root, columns=("Period", "Amount"), show="headings", height=3)
         self.savings_table.heading("Period", text="Period")
         self.savings_table.heading("Amount", text="Amount")
         self.savings_table.pack(pady=10)
 
-        # Insert default rows
+        # Initialize savings table with default values
         self.savings_table.insert("", "end", iid="month", values=("Monthly", "—"))
         self.savings_table.insert("", "end", iid="week", values=("Weekly", "—"))
         self.savings_table.insert("", "end", iid="day", values=("Daily", "—"))
 
+        # Create expense breakdown table
         self.expense_breakdown_table = ttk.Treeview(root, columns=("Category", "Estimated Cost"), show="headings", height=7)
         self.expense_breakdown_table.heading("Category", text="Category")
         self.expense_breakdown_table.heading("Estimated Cost", text="Estimated Cost")
         self.expense_breakdown_table.pack(pady=10)
 
-        # Insert default rows with em dashes and unique IDs
+        # Initialize expense table with default values
         self.expense_breakdown_table.insert("", "end", iid="travelto", values=("Travel To", "—"))
         self.expense_breakdown_table.insert("", "end", iid="travelthere", values=("Travel There", "—"))
         self.expense_breakdown_table.insert("", "end", iid="food", values=("Food", "—"))
@@ -126,6 +172,7 @@ class PennyPilotApp:
         self.expense_breakdown_table.insert("", "end", iid="misc", values=("Misc", "—"))
         self.expense_breakdown_table.insert("", "end", iid="total", values=("Total", "—"))
 
+        # Create confirm button
         self.confirm_btn = tk.Button(
             root,
             text="Confirm Trip Destination",
@@ -135,29 +182,44 @@ class PennyPilotApp:
         self.confirm_btn.pack(ipadx=10)
         self.confirm_btn.pack(ipady=15)
 
-    # Displays a welcome greeting to the user.
     def display_username(self):
+        """
+        Displays a welcome message to the user.
+        """
         greeting = tk.Label(self.root, text=f"Hello! Welcome to PennyPilot", font=("Arial", 14))
-        greeting.pack(pady=10) # Add label to window
+        greeting.pack(pady=10)
     
-    # Adds a date picker widget for selecting the trip end date.
     def create_date_dropdown(self):
-        
-        # Create DateEntry widget from tkcalendar
-        self.date_entry = DateEntry(self.root, width=21, background='darkblue', foreground='white', borderwidth=2, year=datetime.datetime.now().year, month=datetime.datetime.now().month, day=datetime.datetime.now().day)
+        """
+        Creates a date selection widget using tkcalendar.
+        """
+        self.date_entry = DateEntry(
+            self.root,
+            width=21,
+            background='darkblue',
+            foreground='white',
+            borderwidth=2,
+            year=datetime.datetime.now().year,
+            month=datetime.datetime.now().month,
+            day=datetime.datetime.now().day
+        )
         self.date_entry.pack(pady=5)
 
-    # Starts a background thread to calculate savings based on trip and date input.
     def calculate(self):
+        """
+        Initiates the savings calculation process.
+        Validates input and starts calculation in a background thread.
+        """
         selected = self.trip_var.get()
         if not selected:
             return
         username = selected.split(" - ")[0]  
         trip = next(t for t in self.trips if t[0] == username)
 
-        # Get the selected date from the calendar widget
+        # Get selected date
         date_str = self.date_entry.get_date().strftime("%Y-%m-%d")
 
+        # Get and validate savings input
         saved_text = self.int_input.get()
         try:
             already_saved = int(saved_text) if saved_text != "Already Saved" else 0
@@ -165,15 +227,24 @@ class PennyPilotApp:
             messagebox.showerror("Input Error", "Please enter a valid integer for 'Already Saved'")
             return
 
-        # Run calculation and graph drawing in a separate thread
+        # Start calculation in background thread
         threading.Thread(target=self.calculate_in_background, args=(trip, date_str, already_saved)).start()
 
-    # Runs the savings calculation and updates UI tables in a background thread.
     def calculate_in_background(self, trip, date_str, already_saved):
+        """
+        Performs savings calculation in a background thread.
+        Updates the UI with calculation results.
+        
+        Args:
+            trip (tuple): Selected trip data (destination, cost)
+            date_str (str): Selected departure date
+            already_saved (float): Amount already saved
+        """
         success, result = calculate_savings_goal(trip[1], date_str, already_saved)
         if success:
             self.result_label.config(text="")
 
+            # Update savings table
             self.savings_table.item("month", values=("Monthly", f"${result['savings_per_month']}"))
             self.savings_table.item("week", values=("Weekly", f"${result['savings_per_week']}"))
             self.savings_table.item("day", values=("Daily", f"${result['savings_per_day']}"))
@@ -192,8 +263,13 @@ class PennyPilotApp:
 
         self.update_expense_breakdown(trip[0])
 
-    # Fetches and displays a detailed cost breakdown for a trip by category.
     def update_expense_breakdown(self, location):
+        """
+        Updates the expense breakdown table with data for the selected location.
+        
+        Args:
+            location (str): The selected trip location
+        """
         success, data = fetch_trip_expense_breakdown(location)
         print("DEBUG - raw_data:", data, "| type:", type(data))
         categories = ["Travel To", "Travel There", "Food", "Housing", "School", "Misc"]
@@ -209,9 +285,11 @@ class PennyPilotApp:
                 self.expense_breakdown_table.item(cat.lower().replace(" ", ""), values=(cat, "—"))
             self.expense_breakdown_table.item("total", values=("Total", "—"))
 
-    # Closes the database connection (if active) and gracefully exits the application.
     def on_closing(self):
-        """Handle cleanup when window is closed"""
+        """
+        Handles cleanup when the application window is closed.
+        Closes database connections and performs other cleanup tasks.
+        """
         if self.connector:
             try:
                 self.connector.close()
@@ -219,61 +297,99 @@ class PennyPilotApp:
             except Exception as e:
                 print(f"Error closing database connection: {e}")
 
-    # Establishes a connection to the MySQL database if not already connected.
     def create_connection(self):
-        """Create database connection if needed"""
-        if not self.connector or not self.connector.is_connected():
-            import config as myconfig
-            config = myconfig.Config.dbinfo().copy()
-            try:
-                self.connector = mysql.connector.Connect(**config)
-            except mysql.connector.Error as err:
-                print(f"Error connecting to database: {err}")
-                return None
-        return self.connector
+        """
+        Establishes a connection to the MySQL database.
+        
+        Returns:
+            mysql.connector: Database connection object or None if connection fails
+        """
+        import config as myconfig
+        config = myconfig.Config.dbinfo().copy()
+        try:
+            self.connector = mysql.connector.Connect(**config)
+            return self.connector
+        except mysql.connector.Error as err:
+            print(f"Error connecting to database: {err}")
+            return None
     
-    # Placeholder behavior — clear text on focus if default is shown
     def clear_placeholder(self, event):
-     if self.int_input.get() == "Already Saved":
-        self.int_input.delete(0, tk.END)
-        self.int_input.config(fg='black')
+        """
+        Clears the placeholder text when the input field is focused.
+        
+        Args:
+            event: The focus event
+        """
+        if self.int_input.get() == "Already Saved":
+            self.int_input.delete(0, tk.END)
+            self.int_input.config(fg='black')
 
-    # Placeholder behavior — restore default text if field is empty
     def add_placeholder(self, event):
+        """
+        Restores the placeholder text if the input field is empty.
+        
+        Args:
+            event: The focus event
+        """
         if not self.int_input.get():
             self.int_input.insert(0, "Already Saved")
             self.int_input.config(fg='grey')
     
     def handle_confirm_click(self):
+        """
+        Handles the confirm button click event.
+        Validates that calculations have been performed before proceeding.
+        """
         if not self.calculation_ready:
             messagebox.showerror("Error", "Please calculate trip savings before confirming.")
             return
         show_progress_window(self.last_calculated_data)
 
-    
-# Initializes the app after successful login        
-def show_main_app(root):
-    #app = 
-    PennyPilotApp(root)
-    #app.mainloop()
+    def on_trip_selected(self, event):
+        """
+        Handles the trip selection event.
+        Updates the expense breakdown when a new trip is selected.
+        
+        Args:
+            event: The selection event
+        """
+        selected = self.trip_var.get()
+        if selected:
+            location = selected.split(" - ")[0]
+            self.update_expense_breakdown(location)
 
-# Shows the login popup window
+def show_main_app(root):
+    """
+    Initializes and displays the main application window.
+    
+    Args:
+        root (tk.Tk): The root window
+    """
+    PennyPilotApp(root)
+
 def show_login_window(start_main_app_callback, root):
+    """
+    Displays the login window and handles authentication.
+    
+    Args:
+        start_main_app_callback (callable): Function to call after successful login
+        root (tk.Tk): The root window
+    """
     import tkinter as tk
     from tkinter import messagebox
     from controllers import handle_login
 
-    # Use a Toplevel window for the login screen
+    # Create login window
     login_window = tk.Toplevel(root)
     login_window.title("Login")
     
-    # Set window size to match main window
+    # Set window size
     set_window_size(login_window)
     
     # Set up window closing
     setup_window_closing(login_window, root)
     
-    # Create a frame to center all content
+    # Create main frame
     main_frame = tk.Frame(login_window)
     main_frame.pack(expand=True, fill='both', padx=20, pady=20)
     
@@ -281,11 +397,11 @@ def show_login_window(start_main_app_callback, root):
     title_label = tk.Label(main_frame, text="PennyPilot", font=("Arial", 16, "bold"))
     title_label.pack(pady=(0, 20))
     
-    # Create a frame for the login form
+    # Create login form
     login_frame = tk.Frame(main_frame)
     login_frame.pack(expand=True)
     
-    # Username
+    # Username field
     username_entry = tk.Entry(login_frame, fg='grey')
     username_entry.insert(0, "Username")
     username_entry.grid(row=0, column=0, padx=10, pady=10)
@@ -303,7 +419,7 @@ def show_login_window(start_main_app_callback, root):
     username_entry.bind("<FocusIn>", clear_username_placeholder)
     username_entry.bind("<FocusOut>", add_username_placeholder)
 
-    # Password
+    # Password field
     password_entry = tk.Entry(login_frame, fg='grey')
     password_entry.insert(0, "Password")
     password_entry.grid(row=1, column=0, padx=10, pady=10)
@@ -320,9 +436,13 @@ def show_login_window(start_main_app_callback, root):
     
     password_entry.bind("<FocusIn>", clear_password_placeholder)
     password_entry.bind("<FocusOut>", add_password_placeholder)
+    # Add Enter key binding to trigger login
+    password_entry.bind("<Return>", lambda event: attempt_login())
 
-    # Validates login attempt and starts main app if successful
     def attempt_login():
+        """
+        Attempts to authenticate the user with provided credentials.
+        """
         username = username_entry.get() if username_entry.get() != "Username" else ""
         password = password_entry.get() if password_entry.get() != "Password" else ""
         if handle_login(username, password):
@@ -332,38 +452,43 @@ def show_login_window(start_main_app_callback, root):
         else:
             messagebox.showerror("Login Failed", "Invalid username or password")
     
-    # Button to trigger login check
+    # Login button
     login_button = tk.Button(main_frame, text="Login", command=attempt_login)
     login_button.pack(pady=10)
     
-    # Create Account button
+    # Create account button
     create_account_button = tk.Button(main_frame, text="Create Account", 
                                     command=lambda: show_create_account_window(login_window))
     create_account_button.pack(pady=10)
 
 def show_create_account_window(login_window):
+    """
+    Displays the account creation window.
+    
+    Args:
+        login_window (tk.Toplevel): The parent login window
+    """
     import tkinter as tk
     from tkinter import messagebox
     from database import create_connection
     
-    # Hide the login window
+    # Hide login window
     login_window.withdraw()
     
-    # Create a new window for account creation
+    # Create account window
     create_window = tk.Toplevel(login_window)
     create_window.title("Create Account")
     
     # Set window size
     set_window_size(create_window)
     
-    # Set up window closing to show login window again
     def on_closing():
         create_window.destroy()
         login_window.deiconify()
     
     create_window.protocol("WM_DELETE_WINDOW", on_closing)
     
-    # Create a frame to center all content
+    # Create main frame
     main_frame = tk.Frame(create_window)
     main_frame.pack(expand=True, fill='both', padx=20, pady=20)
     
@@ -371,48 +496,52 @@ def show_create_account_window(login_window):
     title_label = tk.Label(main_frame, text="Create Account", font=("Arial", 16, "bold"))
     title_label.pack(pady=(0, 20))
     
-    # Create a frame for the form
+    # Create form
     form_frame = tk.Frame(main_frame)
     form_frame.pack(expand=True)
     
-    # Username
+    # Username field
     username_label = tk.Label(form_frame, text="Username:", anchor='w')
     username_label.grid(row=0, column=0, padx=10, pady=5, sticky='w')
     username_entry = tk.Entry(form_frame)
     username_entry.grid(row=0, column=1, padx=10, pady=5)
     
-    # Password
+    # Password field
     password_label = tk.Label(form_frame, text="Password:", anchor='w')
     password_label.grid(row=1, column=0, padx=10, pady=5, sticky='w')
     password_entry = tk.Entry(form_frame, show='*')
     password_entry.grid(row=1, column=1, padx=10, pady=5)
     
-    # Confirm Password
+    # Confirm password field
     confirm_password_label = tk.Label(form_frame, text="Confirm Password:", anchor='w')
     confirm_password_label.grid(row=2, column=0, padx=10, pady=5, sticky='w')
     confirm_password_entry = tk.Entry(form_frame, show='*')
     confirm_password_entry.grid(row=2, column=1, padx=10, pady=5)
     
-    # First Name
+    # First name field
     first_name_label = tk.Label(form_frame, text="First Name:", anchor='w')
     first_name_label.grid(row=3, column=0, padx=10, pady=5, sticky='w')
     first_name_entry = tk.Entry(form_frame)
     first_name_entry.grid(row=3, column=1, padx=10, pady=5)
     
-    # Last Name
+    # Last name field
     last_name_label = tk.Label(form_frame, text="Last Name:", anchor='w')
     last_name_label.grid(row=4, column=0, padx=10, pady=5, sticky='w')
     last_name_entry = tk.Entry(form_frame)
     last_name_entry.grid(row=4, column=1, padx=10, pady=5)
     
-    # Email
+    # Email field
     email_label = tk.Label(form_frame, text="NAU Email:", anchor='w')
     email_label.grid(row=5, column=0, padx=10, pady=5, sticky='w')
     email_entry = tk.Entry(form_frame)
     email_entry.grid(row=5, column=1, padx=10, pady=5)
     
     def create_account():
-        # Get all the values
+        """
+        Attempts to create a new user account with provided information.
+        Validates input and handles database operations.
+        """
+        # Get input values
         username = username_entry.get()
         password = password_entry.get()
         confirm_password = confirm_password_entry.get()
@@ -420,12 +549,12 @@ def show_create_account_window(login_window):
         last_name = last_name_entry.get()
         email = email_entry.get()
         
-        # Validate all fields are filled
+        # Validate required fields
         if not all([username, password, confirm_password, first_name, last_name, email]):
             messagebox.showerror("Error", "All fields are required")
             return
             
-        # Validate passwords match
+        # Validate password match
         if password != confirm_password:
             messagebox.showerror("Error", "Passwords do not match")
             return
@@ -444,13 +573,19 @@ def show_create_account_window(login_window):
                 
             cursor = conn.cursor()
             
-            # Check if username already exists
+            # Check for existing username
             cursor.execute("SELECT * FROM userProfile WHERE userName = %s", (username,))
             if cursor.fetchone():
                 messagebox.showerror("Error", "Username already exists")
                 return
                 
-            # Insert new user
+            # Check for existing email
+            cursor.execute("SELECT * FROM userProfile WHERE nauEmail = %s", (email,))
+            if cursor.fetchone():
+                messagebox.showerror("Error", "Email address already registered")
+                return
+                
+            # Create new user
             cursor.execute("""
                 INSERT INTO userProfile (userName, passwordHash, firstName, lastName, nauEmail)
                 VALUES (%s, %s, %s, %s, %s)
@@ -467,11 +602,17 @@ def show_create_account_window(login_window):
             if conn:
                 conn.close()
     
-    # Create Account button
+    # Create account button
     create_button = tk.Button(main_frame, text="Create Account", command=create_account)
     create_button.pack(pady=20)
 
 def show_progress_window(data):
+    """
+    Displays a window showing the progress of the selected trip.
+    
+    Args:
+        data (dict): Trip data including name, cost, savings, and end date
+    """
     import tkinter as tk
     from tkinter import ttk
 

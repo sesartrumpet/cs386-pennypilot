@@ -23,22 +23,47 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
+"""
+Configuration module for the PennyPilot application.
+This module contains all the necessary configuration settings for the application,
+including database connection parameters and other system-wide settings.
+"""
+
 class Config(object):
-    """Configure me so examples work"""
-
-    HOST = 'localhost'      # fill with your host address
-    DATABASE = 'pennypilot_db'  # fill with your database
-    USER = 'root'      # fill with your username
-    PASSWORD = '123455'  # fill with your user's password
-    PORT = 3306
+    """
+    Configuration class that holds all settings for the PennyPilot application.
+    This class uses class-level variables to store configuration that can be
+    accessed throughout the application.
     
+    To modify these settings:
+    1. Change the values below to match your environment
+    2. Ensure the database exists and is accessible
+    3. Verify the user has proper permissions
+    """
 
-    CHARSET = 'utf8'
-    UNICODE = True
-    WARNINGS = True
+    # Database connection settings
+    HOST = 'localhost'      # MySQL server host address
+    DATABASE = 'pennypilot_db'  # Name of the database to use
+    USER = 'root'      # MySQL username
+    PASSWORD = '123455'  # MySQL password
+    PORT = 3306    # MySQL server port
+    
+    # Character encoding settings
+    CHARSET = 'utf8'    # Character set for database connection
+    UNICODE = True      # Whether to use Unicode
+    
+    # Debug settings
+    WARNINGS = True     # Whether to show MySQL warnings
 
     @classmethod
     def dbinfo(cls):
+        """
+        Returns a dictionary containing all database connection parameters.
+        This method is used to create database connections throughout the application.
+        
+        Returns:
+            dict: A dictionary containing all database connection parameters
+        """
         return {
             'host': cls.HOST,
             'database': cls.DATABASE,
