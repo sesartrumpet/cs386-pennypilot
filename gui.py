@@ -339,14 +339,84 @@ class PennyPilotApp:
         """
         Handles the confirm button click event.
         Validates that calculations have been performed before proceeding.
+        Updates the trip table with the selected trip information.
         """
         if not self.calculation_ready:
             messagebox.showerror("Error", "Please calculate trip savings before confirming.")
             return
+
+            
+        try:
+            # Get the selected trip information
+            selected = self.trip_var.get()
+            if not selected:
+                messagebox.showerror("Error", "No trip selected")
+                return
+                
+            # Get the location from the trip destination
+            # Format is "Location - $XXXX.XX", so split on " - " and take first part
+            location = selected.split(" - ")[0]
+            
+            # Get the dates
+            date_start = datetime.datetime.now().date()  # Today's date
+            date_selected = self.date_entry.get_date()   # Date selected in the calendar
+            
+            # Connect to database
+            conn = self.create_connection()
+            if conn is None:
+                messagebox.showerror("Error", "Failed to connect to database")
+                return
+                
+            cursor = conn.cursor()
+            
+            # First verify the location exists in tripDestination
+            cursor.execute("SELECT location FROM tripDestination WHERE location = %s", (location,))
+            if not cursor.fetchone():
+                messagebox.showerror("Error", f"Invalid destination: {location}")
+                return
+            
+            # Get current logged in username from userProfile
+            cursor.execute("SELECT userName FROM userProfile LIMIT 1")
+            user_result = cursor.fetchone()
+            if not user_result:
+                messagebox.showerror("Error", "No user profile found")
+                return
+                
+            username = user_result[0]
+            
+            # First delete any existing trip for this user
+            cursor.execute("DELETE FROM trip WHERE userName = %s", (username,))
+            
+            # Insert new trip information
+            cursor.execute("""
+                INSERT INTO trip (userName, location, dateStart, dateSelected)
+                VALUES (%s, %s, %s, %s)
+            """, (username, location, date_start, date_selected))
+            
+            conn.commit()
+            
+            # Print trip table contents for testing
+            cursor.execute("SELECT * FROM trip")
+            trips = cursor.fetchall()
+            print("\nCurrent Trip Table Contents:")
+            print("Username | Location | Start Date | Selected Date")
+            print("-" * 50)
+            for trip in trips:
+                print(f"{trip[0]} | {trip[1]} | {trip[2]} | {trip[3]}")
+            
+            messagebox.showinfo("Success", "Trip destination confirmed successfully!")
+            show_progress_window(self.last_calculated_data)
+            
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to confirm trip: {str(e)}")
+        finally:
+            if conn:
+                conn.close()
         
         # Add the main window reference to the data
         self.last_calculated_data['main_window'] = self.root
         show_progress_window(self.last_calculated_data)
+
 
     def on_trip_selected(self, event):
         """
@@ -607,7 +677,12 @@ def show_create_account_window(login_window):
     
     # Create account button
     create_button = tk.Button(main_frame, text="Create Account", command=create_account)
-    create_button.pack(pady=20)
+    create_button.pack(pady=10)
+    
+    # Back to Login button
+    back_button = tk.Button(main_frame, text="Back to Login", 
+                          command=lambda: [create_window.destroy(), login_window.deiconify()])
+    back_button.pack(pady=10)
 
 def show_progress_window(data):
     """
@@ -618,6 +693,7 @@ def show_progress_window(data):
     """
     import tkinter as tk
     from tkinter import ttk
+    from database import create_connection
 
     # Get the main window (root) from the data
     main_window = data.get('main_window')
@@ -632,11 +708,45 @@ def show_progress_window(data):
 
     progress_window.grab_set()
 
+    def change_destination():
+        """
+        Handles the change destination button click.
+        Deletes the current trip data and closes the progress window.
+        """
+        try:
+            # Connect to database
+            conn = create_connection()
+            if conn is None:
+                messagebox.showerror("Error", "Failed to connect to database")
+                return
+                
+            cursor = conn.cursor()
+            
+            # Get current logged in username from userProfile
+            cursor.execute("SELECT userName FROM userProfile LIMIT 1")
+            user_result = cursor.fetchone()
+            if user_result:
+                username = user_result[0]
+                # Delete the trip for this user
+                cursor.execute("DELETE FROM trip WHERE userName = %s", (username,))
+                conn.commit()
+                print(f"Deleted trip data for user: {username}")
+            
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to delete trip data: {str(e)}")
+        finally:
+            if conn:
+                conn.close()
+            progress_window.destroy()
+
     # Code to show trip details goes here
     #
     #
     #
     #
+
+
+    close_button = tk.Button(progress_window, text="Change Destination", command=change_destination)
 
     def on_change_destination():
         # Show the main window again
@@ -646,6 +756,7 @@ def show_progress_window(data):
         progress_window.destroy()
 
     close_button = tk.Button(progress_window, text="Change Destination", command=on_change_destination)
+
     close_button.pack(pady=20)
 
     # Set up window closing to also show the main window
