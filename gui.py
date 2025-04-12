@@ -14,7 +14,7 @@ The GUI is built using Tkinter and includes:
 import tkinter as tk
 from tkinter import ttk, messagebox
 from controllers import get_trips, calculate_savings_goal, handle_update_savings, fetch_trip_expense_breakdown
-from database import get_user_savings
+from database import get_user_savings, create_connection
 from tkcalendar import DateEntry 
 import datetime
 import threading
@@ -260,7 +260,7 @@ class PennyPilotApp:
         Args:
             trip (tuple): Selected trip data (destination, cost)
             date_str (str): Selected departure date
-            already_saved (float): Amount already saved
+            already_saved (int): Amount already saved
         """
         success, result = calculate_savings_goal(trip[1], date_str, already_saved)
         if success:
@@ -371,6 +371,14 @@ class PennyPilotApp:
             return
 
         location = selected.split(" - ")[0]
+        
+        # Get money saved
+        saved_text = self.int_input.get()
+        try:
+            money_saved = int(saved_text) if saved_text != "Already Saved" else 0
+        except ValueError:
+            messagebox.showerror("Error", "Please enter a valid integer for money saved")
+            return
 
         try:
             conn = self.create_connection()
@@ -390,9 +398,9 @@ class PennyPilotApp:
             date_start = datetime.datetime.now().date()
             date_selected = self.date_entry.get_date()
             cursor.execute("""
-                INSERT INTO trip (userName, location, dateStart, dateSelected)
-                VALUES (%s, %s, %s, %s)
-            """, (self.username, location, date_start, date_selected))
+                INSERT INTO trip (userName, location, dateStart, dateSelected, moneySaved)
+                VALUES (%s, %s, %s, %s, %s)
+            """, (self.username, location, date_start, date_selected, money_saved))
             conn.commit()
 
             cursor.execute("""
@@ -401,6 +409,7 @@ class PennyPilotApp:
                 td.university, 
                 t.dateStart, 
                 t.dateSelected,
+                t.moneySaved,
                 p.Travelto, 
                 p.Travelthere, 
                 p.Food, 
@@ -422,20 +431,18 @@ class PennyPilotApp:
                 "university": row[1],
                 "date_start": row[2],
                 "date_selected": row[3],
+                "money_saved": row[4],
                 "prices": {
-                    "Travelto": row[4],
-                    "Travelthere": row[5],
-                    "Food": row[6],
-                    "Housing": row[7],
-                    "School": row[8],
-                    "Misc": row[9]
+                    "Travelto": row[5],
+                    "Travelthere": row[6],
+                    "Food": row[7],
+                    "Housing": row[8],
+                    "School": row[9],
+                    "Misc": row[10]
                 },
-
                 "savings": self.savings_result,
                 "progress": self.last_calculated_data.get("progress", 0)
             }
-
-            messagebox.showinfo("Success", "Trip destination confirmed successfully!")
 
             trip_data["main_window"] = self.root
 
@@ -472,8 +479,28 @@ def show_main_app(root, username):
     
     Args:
         root (tk.Tk): The root window
+        username (str): The logged in user's username
     """
-    PennyPilotApp(root, username)
+    # Check if user has existing trip and get saved amount
+    try:
+        conn = create_connection()
+        if conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT moneySaved FROM trip WHERE userName = %s", (username,))
+            result = cursor.fetchone()
+            cursor.close()
+            conn.close()
+            
+            app = PennyPilotApp(root, username)
+            
+            # If there's an existing saved amount, populate it
+            if result and result[0] is not None:
+                app.int_input.delete(0, tk.END)
+                app.int_input.insert(0, str(result[0]))
+                app.int_input.config(fg='black')
+    except Exception as e:
+        print(f"Error fetching saved amount: {e}")
+        app = PennyPilotApp(root, username)
 
 def show_login_window(start_main_app_callback, root):
     """
@@ -486,6 +513,8 @@ def show_login_window(start_main_app_callback, root):
     import tkinter as tk
     from tkinter import messagebox
     from controllers import handle_login
+    from database import create_connection
+    import datetime
 
     # Create login window
     login_window = tk.Toplevel(root)
@@ -544,8 +573,6 @@ def show_login_window(start_main_app_callback, root):
     
     password_entry.bind("<FocusIn>", clear_password_placeholder)
     password_entry.bind("<FocusOut>", add_password_placeholder)
-    # Add Enter key binding to trigger login
-    password_entry.bind("<Return>", lambda event: attempt_login())
 
     def attempt_login():
         """
@@ -554,17 +581,106 @@ def show_login_window(start_main_app_callback, root):
         username = username_entry.get() if username_entry.get() != "Username" else ""
         password = password_entry.get() if password_entry.get() != "Password" else ""
         if handle_login(username, password):
-            login_window.destroy()
-            root.deiconify()
-            start_main_app_callback(root, username)
+            # Check if user has an existing trip
+            try:
+                conn = create_connection()
+                if conn:
+                    cursor = conn.cursor()
+                    cursor.execute("""
+                        SELECT 
+                        t.location, 
+                        td.university, 
+                        t.dateStart, 
+                        t.dateSelected,
+                        t.moneySaved,
+                        p.Travelto, 
+                        p.Travelthere, 
+                        p.Food, 
+                        p.Housing, 
+                        p.School, 
+                        p.Misc
+                        FROM trip t
+                        JOIN tripDestination td ON t.location = td.location
+                        JOIN prices p ON t.location = p.location
+                        WHERE t.userName = %s
+                    """, (username,))
+                    
+                    trip_data = cursor.fetchone()
+                    cursor.close()
+                    conn.close()
+                    
+                    if trip_data:
+                        # Calculate total cost
+                        total_cost = sum([trip_data[5], trip_data[6], trip_data[7], 
+                                        trip_data[8], trip_data[9], trip_data[10]])
+                        
+                        # Calculate daily savings based on remaining time and money
+                        days_remaining = (trip_data[3] - datetime.datetime.now().date()).days
+                        money_saved = trip_data[4]
+                        remaining_amount = max(0, total_cost - money_saved)  # Ensure non-negative
+                        
+                        if days_remaining > 0:
+                            daily_amount = min(remaining_amount / days_remaining, remaining_amount)  # Cap at remaining amount
+                            savings_info = {
+                                "savings_per_day": daily_amount,
+                                "savings_per_week": min(daily_amount * 7, remaining_amount),
+                                "savings_per_month": min(daily_amount * 30, remaining_amount)
+                            }
+                        else:
+                            # If past the target date, set all values to remaining amount
+                            savings_info = {
+                                "savings_per_day": remaining_amount,
+                                "savings_per_week": remaining_amount,
+                                "savings_per_month": remaining_amount
+                            }
+                        
+                        # User has an existing trip, prepare data for progress window
+                        trip_info = {
+                            "trip_name": trip_data[0],
+                            "university": trip_data[1],
+                            "date_start": trip_data[2],
+                            "date_selected": trip_data[3],
+                            "money_saved": trip_data[4],
+                            "prices": {
+                                "Travelto": trip_data[5],
+                                "Travelthere": trip_data[6],
+                                "Food": trip_data[7],
+                                "Housing": trip_data[8],
+                                "School": trip_data[9],
+                                "Misc": trip_data[10]
+                            },
+                            "savings": savings_info,
+                            "progress": round(min((trip_data[4] / total_cost) * 100, 100), 2),
+                            "main_window": root,
+                            "userName": username  # Add username to trip data
+                        }
+                        
+                        login_window.destroy()
+                        show_progress_window(trip_info)
+                        return
+                    
+                # If no trip found or error occurred, proceed to main app
+                login_window.destroy()
+                root.deiconify()
+                start_main_app_callback(root, username)
+                
+            except Exception as e:
+                print(f"Error checking for existing trip: {e}")
+                # If there's an error, fall back to main app
+                login_window.destroy()
+                root.deiconify()
+                start_main_app_callback(root, username)
         else:
             messagebox.showerror("Login Failed", "Invalid username or password")
+    
+    # Add Enter key binding to trigger login
+    password_entry.bind("<Return>", lambda event: attempt_login())
     
     # Login button
     login_button = tk.Button(main_frame, text="Login", command=attempt_login)
     login_button.pack(pady=10)
     
-    # Create account button
+    # Create Account button
     create_account_button = tk.Button(main_frame, text="Create Account", 
                                     command=lambda: show_create_account_window(login_window))
     create_account_button.pack(pady=10)
@@ -700,7 +816,6 @@ def show_create_account_window(login_window):
             """, (username, password, first_name, last_name, email))
             
             conn.commit()
-            messagebox.showinfo("Success", "Account created successfully!")
             create_window.destroy()
             login_window.deiconify()
             
@@ -730,6 +845,7 @@ def show_progress_window(data):
     """
     import tkinter as tk
     from tkinter import ttk
+    import datetime
 
     main_window = data.get('main_window')
     if main_window:
@@ -737,7 +853,7 @@ def show_progress_window(data):
 
     progress_window = tk.Toplevel()
     progress_window.title("Trip Confirmation")
-    set_window_size(progress_window, width=450, height=350)
+    set_window_size(progress_window, width=450, height=400)
     progress_window.grab_set()
 
     tripHeader = tk.Label(
@@ -756,12 +872,52 @@ def show_progress_window(data):
     )
     uniHeader.pack()
 
+    # Calculate total money saved including accumulated daily savings
+    original_saved = data.get('money_saved', 0)
+    start_date = data.get('date_start')
+    daily_savings = data.get('savings', {}).get('savings_per_day', 0)
+    total_cost = sum(data.get('prices', {}).values())
+    
+    # Calculate days since start and total saved
+    if isinstance(start_date, datetime.date):
+        days_passed = (datetime.datetime.now().date() - start_date).days
+        remaining_cost = max(0, total_cost - original_saved)
+        if days_passed > 0:
+            accumulated_savings = min(daily_savings * days_passed, remaining_cost)  # Cap at remaining cost
+            total_saved = min(original_saved + accumulated_savings, total_cost)  # Cap at total cost
+        else:
+            total_saved = original_saved
+    else:
+        total_saved = original_saved
+
+    # Display total money saved
+    savings_label = tk.Label(
+        progress_window,
+        text=f"Money Saved: ${total_saved:,.2f}",
+        font=("Arial", 12),
+        pady=10
+    )
+    savings_label.pack()
+
+    # Calculate new progress percentage based on total cost
+    if total_cost > 0:
+        progress = min(100, (total_saved / total_cost) * 100)
+    else:
+        progress = 0
+
     # Middle section: progress bar
     tk.Label(progress_window, text="Trip Progress", font=("Arial", 10)).pack(pady=(5, 0))
     progress_bar = ttk.Progressbar(progress_window, mode="determinate", length=300)
-    progress_bar["value"] = data.get("progress")
+    progress_bar["value"] = progress
     progress_bar.pack(pady=10)
 
+    # Progress percentage label
+    progress_label = tk.Label(
+        progress_window,
+        text=f"{progress:.1f}%",
+        font=("Arial", 10)
+    )
+    progress_label.pack()
 
     savings_frame = tk.Frame(progress_window)
     savings_frame.pack(pady=10)
@@ -782,17 +938,39 @@ def show_progress_window(data):
     savings_table.insert("", "end", values=("Weekly", fmt(savings.get("savings_per_week"))))
     savings_table.insert("", "end", values=("Daily", fmt(savings.get("savings_per_day"))))
 
-
     def on_change_destination():
         if main_window:
+            # Calculate total saved amount including accumulated savings
+            original_saved = data.get('money_saved', 0)
+            start_date = data.get('date_start')
+            daily_savings = data.get('savings', {}).get('savings_per_day', 0)
+            total_cost = sum(data.get('prices', {}).values())
+            
+            # Calculate total saved with accumulated savings
+            if isinstance(start_date, datetime.date):
+                days_passed = (datetime.datetime.now().date() - start_date).days
+                remaining_cost = max(0, total_cost - original_saved)
+                if days_passed > 0:
+                    accumulated_savings = min(daily_savings * days_passed, remaining_cost)
+                    total_saved = min(original_saved + accumulated_savings, total_cost)
+                else:
+                    total_saved = original_saved
+            else:
+                total_saved = original_saved
+
             main_window.deiconify()
+            app = PennyPilotApp(main_window, data.get('userName'))
+            app.int_input.delete(0, tk.END)
+            app.int_input.insert(0, str(int(total_saved)))
+            app.int_input.config(fg='black')
         progress_window.destroy()
 
     tk.Button(progress_window, text="Change Destination", command=on_change_destination).pack(pady=15)
 
     def on_closing():
+        # Close the entire application
         if main_window:
-            main_window.deiconify()
+            main_window.destroy()
         progress_window.destroy()
 
     progress_window.protocol("WM_DELETE_WINDOW", on_closing)
