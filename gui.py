@@ -837,27 +837,46 @@ def show_create_account_window(login_window):
 def show_progress_window(data):
     """
     Displays a window showing the progress of the selected trip with
-    information pulled from the database.
+    information pulled from the database. This window includes:
+    - Real-time savings updates
+    - Progress tracking
+    - Savings goals calculation
+    - Visual feedback through progress bar
     
     Args:
-        data (dict): Trip data including destination, university, dates,
-                     cost breakdown (from prices), and calculated savings.
+        data (dict): Trip data including:
+            - trip_name (str): Name of the destination
+            - university (str): Associated university
+            - date_start (datetime): Trip start date
+            - date_selected (datetime): Selected future date
+            - money_saved (float): Current savings amount
+            - prices (dict): Breakdown of trip costs
+            - savings (dict): Savings goals per period
+            - userName (str): Current user's username
     """
     import tkinter as tk
-    from tkinter import ttk
+    from tkinter import ttk, messagebox
     import datetime
+    from controllers import handle_update_savings, calculate_savings_goal
 
+    # Hide main window while showing progress
     main_window = data.get('main_window')
     if main_window:
         main_window.withdraw()
 
+    # Create and configure progress window
     progress_window = tk.Toplevel()
-    progress_window.title("Trip Confirmation")
-    set_window_size(progress_window, width=450, height=400)
-    progress_window.grab_set()
+    progress_window.title("Trip Progress")
+    set_window_size(progress_window, width=450, height=600)
+    progress_window.grab_set()  # Make window modal
 
+    # Create main frame for better organization and padding
+    main_frame = tk.Frame(progress_window)
+    main_frame.pack(expand=True, fill='both', padx=20, pady=20)
+
+    # Display trip destination and university headers
     tripHeader = tk.Label(
-        progress_window,
+        main_frame,
         text=f"{data['trip_name']}",
         font=("Arial", 16, "bold"),
         pady=10
@@ -865,20 +884,20 @@ def show_progress_window(data):
     tripHeader.pack()
 
     uniHeader = tk.Label(
-        progress_window,
+        main_frame,
         text=f"{data['university']}",
         font=("Arial", 12, "bold"),
         pady=10
     )
     uniHeader.pack()
 
-    # Calculate total money saved including accumulated daily savings
+    # Calculate initial savings and total cost
     original_saved = data.get('money_saved', 0)
     start_date = data.get('date_start')
     daily_savings = data.get('savings', {}).get('savings_per_day', 0)
     total_cost = sum(data.get('prices', {}).values())
     
-    # Calculate days since start and total saved
+    # Calculate accumulated savings based on time passed
     if isinstance(start_date, datetime.date):
         days_passed = (datetime.datetime.now().date() - start_date).days
         remaining_cost = max(0, total_cost - original_saved)
@@ -890,38 +909,173 @@ def show_progress_window(data):
     else:
         total_saved = original_saved
 
-    # Display total money saved
+    # Create frame for savings update controls
+    update_frame = tk.Frame(main_frame)
+    update_frame.pack(pady=10)
+
+    # Create entry widget for new savings amount
+    savings_var = tk.StringVar(value=str(total_saved))
+    savings_entry = tk.Entry(update_frame, textvariable=savings_var, width=15)
+    savings_entry.pack(side=tk.LEFT, padx=5)
+
+    # Add status message label for feedback
+    status_label = tk.Label(
+        main_frame,
+        text="",
+        font=("Arial", 10),
+        fg="green"  # Default to green for success messages
+    )
+    status_label.pack(pady=5)
+
+    def clear_status():
+        """Clears the status message after a delay."""
+        status_label.config(text="")
+
+    def update_savings_display():
+        """
+        Handles the savings update process:
+        1. Validates the new savings amount
+        2. Updates the database
+        3. Recalculates all derived values
+        4. Updates the UI in real-time
+        5. Provides visual feedback
+        """
+        try:
+            # Input validation
+            new_savings = float(savings_var.get())
+            if new_savings < 0:
+                status_label.config(text="Error: Savings amount cannot be negative", fg="red")
+                main_frame.after(3000, clear_status)
+                return
+            
+            # Update database with new savings amount
+            success, message = handle_update_savings(new_savings, data.get('userName'))
+            if success:
+                # Convert values to float for calculations
+                total_cost_float = float(total_cost)
+                new_savings_float = float(new_savings)
+                
+                # Update savings display
+                savings_label.config(text=f"Current Savings: ${new_savings_float:,.2f}")
+                
+                # Update remaining amount
+                remaining = max(0, total_cost_float - new_savings_float)
+                remaining_label.config(text=f"Remaining Amount: ${remaining:,.2f}")
+                
+                # Update progress visualization
+                new_progress = min(100, (new_savings_float / total_cost_float) * 100) if total_cost_float > 0 else 0
+                progress_bar["value"] = new_progress
+                progress_label.config(text=f"{new_progress:.1f}%")
+                
+                # Force immediate update of progress bar
+                progress_bar.update()
+                progress_bar.update_idletasks()
+                
+                # Recalculate savings goals with new amount
+                success, new_goals = calculate_savings_goal(
+                    total_cost_float, 
+                    data['date_selected'].strftime("%Y-%m-%d"), 
+                    new_savings_float
+                )
+                
+                if success:
+                    # Update savings goals table
+                    for item in savings_table.get_children():
+                        savings_table.delete(item)
+                    
+                    # Insert new calculated goals
+                    savings_table.insert("", "end", values=("Monthly", fmt(new_goals.get("savings_per_month"))))
+                    savings_table.insert("", "end", values=("Weekly", fmt(new_goals.get("savings_per_week"))))
+                    savings_table.insert("", "end", values=("Daily", fmt(new_goals.get("savings_per_day"))))
+                    
+                    # Force immediate update of table
+                    savings_table.update()
+                    savings_table.update_idletasks()
+                
+                # Update stored data
+                data['money_saved'] = new_savings_float
+                nonlocal total_saved
+                total_saved = new_savings_float
+                
+                # Force immediate update of all UI elements
+                savings_label.update()
+                remaining_label.update()
+                progress_label.update()
+                cost_label.update()
+                
+                # Force update of containers
+                main_frame.update()
+                main_frame.update_idletasks()
+                progress_window.update()
+                progress_window.update_idletasks()
+                
+                # Show success message with auto-clear
+                status_label.config(text="✓ Savings updated successfully!", fg="green")
+                main_frame.after(3000, clear_status)
+            else:
+                # Show error message with auto-clear
+                status_label.config(text=f"Error: {message}", fg="red")
+                main_frame.after(3000, clear_status)
+        except ValueError:
+            # Show input validation error with auto-clear
+            status_label.config(text="Error: Please enter a valid number", fg="red")
+            main_frame.after(3000, clear_status)
+
+    # Create update button
+    update_button = tk.Button(update_frame, text="Update Savings", command=update_savings_display)
+    update_button.pack(side=tk.LEFT, padx=5)
+
+    # Display financial information labels
     savings_label = tk.Label(
-        progress_window,
-        text=f"Money Saved: ${total_saved:,.2f}",
+        main_frame,
+        text=f"Current Savings: ${total_saved:,.2f}",
         font=("Arial", 12),
-        pady=10
+        pady=5
     )
     savings_label.pack()
 
-    # Calculate new progress percentage based on total cost
+    remaining = max(0, total_cost - total_saved)
+    remaining_label = tk.Label(
+        main_frame,
+        text=f"Remaining Amount: ${remaining:,.2f}",
+        font=("Arial", 12),
+        pady=5
+    )
+    remaining_label.pack()
+
+    cost_label = tk.Label(
+        main_frame,
+        text=f"Total Trip Cost: ${total_cost:,.2f}",
+        font=("Arial", 12),
+        pady=5
+    )
+    cost_label.pack()
+
+    # Calculate and display progress percentage
     if total_cost > 0:
         progress = min(100, (total_saved / total_cost) * 100)
     else:
         progress = 0
 
-    # Middle section: progress bar
-    tk.Label(progress_window, text="Trip Progress", font=("Arial", 10)).pack(pady=(5, 0))
-    progress_bar = ttk.Progressbar(progress_window, mode="determinate", length=300)
+    # Create progress bar section
+    tk.Label(main_frame, text="Trip Progress", font=("Arial", 10, "bold")).pack(pady=(10, 0))
+    progress_bar = ttk.Progressbar(main_frame, mode="determinate", length=300)
     progress_bar["value"] = progress
-    progress_bar.pack(pady=10)
+    progress_bar.pack(pady=5)
 
-    # Progress percentage label
     progress_label = tk.Label(
-        progress_window,
+        main_frame,
         text=f"{progress:.1f}%",
         font=("Arial", 10)
     )
     progress_label.pack()
 
-    savings_frame = tk.Frame(progress_window)
-    savings_frame.pack(pady=10)
+    # Create savings goals section
+    tk.Label(main_frame, text="Savings Goals", font=("Arial", 10, "bold")).pack(pady=(15, 5))
+    savings_frame = tk.Frame(main_frame)
+    savings_frame.pack(pady=5)
 
+    # Create savings breakdown table
     savings_table = ttk.Treeview(savings_frame, columns=("Period", "Amount"), show="headings", height=3)
     savings_table.heading("Period", text="Period")
     savings_table.heading("Amount", text="Amount")
@@ -929,48 +1083,42 @@ def show_progress_window(data):
     savings_table.column("Amount", anchor="center", width=150)
     savings_table.pack()
 
-    savings = data.get("savings", {})
-
     def fmt(val):
+        """Formats monetary values with dollar sign and two decimal places."""
         return f"${float(val):,.2f}" if val is not None else "—"
 
-    savings_table.insert("", "end", values=("Monthly", fmt(savings.get("savings_per_month"))))
-    savings_table.insert("", "end", values=("Weekly", fmt(savings.get("savings_per_week"))))
-    savings_table.insert("", "end", values=("Daily", fmt(savings.get("savings_per_day"))))
+    # Calculate and display initial savings goals
+    success, goals = calculate_savings_goal(total_cost, data['date_selected'].strftime("%Y-%m-%d"), total_saved)
+    if success:
+        savings_table.insert("", "end", values=("Monthly", fmt(goals.get("savings_per_month"))))
+        savings_table.insert("", "end", values=("Weekly", fmt(goals.get("savings_per_week"))))
+        savings_table.insert("", "end", values=("Daily", fmt(goals.get("savings_per_day"))))
+    else:
+        savings_table.insert("", "end", values=("Monthly", "—"))
+        savings_table.insert("", "end", values=("Weekly", "—"))
+        savings_table.insert("", "end", values=("Daily", "—"))
 
     def on_change_destination():
+        """
+        Handles the change destination button click.
+        Returns to main window and transfers current savings amount.
+        """
         if main_window:
-            # Calculate total saved amount including accumulated savings
-            original_saved = data.get('money_saved', 0)
-            start_date = data.get('date_start')
-            daily_savings = data.get('savings', {}).get('savings_per_day', 0)
-            total_cost = sum(data.get('prices', {}).values())
-            
-            # Calculate total saved with accumulated savings
-            if isinstance(start_date, datetime.date):
-                days_passed = (datetime.datetime.now().date() - start_date).days
-                remaining_cost = max(0, total_cost - original_saved)
-                if days_passed > 0:
-                    accumulated_savings = min(daily_savings * days_passed, remaining_cost)
-                    total_saved = min(original_saved + accumulated_savings, total_cost)
-                else:
-                    total_saved = original_saved
-            else:
-                total_saved = original_saved
-
             main_window.deiconify()
             app = PennyPilotApp(main_window, data.get('userName'))
             app.int_input.delete(0, tk.END)
             app.int_input.insert(0, str(int(total_saved)))
             app.int_input.config(fg='black')
-        progress_window.destroy()
+            progress_window.destroy()
 
-    tk.Button(progress_window, text="Change Destination", command=on_change_destination).pack(pady=15)
+    # Add change destination button
+    tk.Button(main_frame, text="Change Destination", command=on_change_destination).pack(pady=15)
 
     def on_closing():
-        # Close the entire application
+        """Handles window closing by destroying all windows."""
         if main_window:
             main_window.destroy()
         progress_window.destroy()
 
+    # Set up window closing behavior
     progress_window.protocol("WM_DELETE_WINDOW", on_closing)

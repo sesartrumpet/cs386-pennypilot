@@ -127,39 +127,83 @@ def add_trip(destination, cost):
     cursor.close()
     connector.close()
 
-# Updates or inserts a savings amount into the 'finances' table under the 'Savings' category.
-def update_savings(amount):
+# Updates the savings amount for the current user's trip
+def update_savings(amount, username=None):
+    """
+    Updates the savings amount for the current user's trip.
+    
+    Args:
+        amount (float): The new savings amount to set
+        username (str, optional): The username to update savings for. If None, will try to get current user.
+        
+    Returns:
+        bool: True if update was successful, False otherwise
+    """
     connector = create_connection()
-    cursor = connector.cursor()
-    cursor.execute("SELECT id FROM finances WHERE category = 'Savings'")
-    row = cursor.fetchone()
-    if row:
-        cursor.execute("UPDATE finances SET amount = %s WHERE category = 'Savings'", (amount,))
-    else:
-        cursor.execute("INSERT INTO finances (category, amount) VALUES ('Savings', %s)", (amount,))
-    connector.commit()
-    cursor.close()
-    connector.close()
+    if not connector:
+        return False
+        
+    try:
+        cursor = connector.cursor()
+        
+        # Get the username if not provided
+        if username is None:
+            cursor.execute("SELECT userName FROM userProfile LIMIT 1")
+            user_result = cursor.fetchone()
+            if user_result:
+                username = user_result[0]
+            else:
+                return False
+        
+        # Update the moneySaved amount in the trip table
+        cursor.execute("""
+            UPDATE trip 
+            SET moneySaved = %s 
+            WHERE userName = %s
+        """, (amount, username))
+        connector.commit()
+        
+        # Verify the update was successful
+        cursor.execute("SELECT moneySaved FROM trip WHERE userName = %s", (username,))
+        result = cursor.fetchone()
+        if result and float(result[0]) == float(amount):
+            return True
+            
+        return False
+        
+    except Exception as e:
+        print(f"Error updating savings: {e}")
+        return False
+    finally:
+        if cursor:
+            cursor.close()
+        if connector:
+            connector.close()
 
-# Fetches all records from the 'finances' table as a list of (category, amount) tuples
-def fetch_financial_data():
-    connector = create_connection()
-    cursor = connector.cursor()
-    cursor.execute("SELECT category, amount FROM finances")
-    records = cursor.fetchall()
-    cursor.close()
-    connector.close()
-    return records
-
-# Retrieves the current user's savings amount from the 'finances' table.
+# Retrieves the current user's savings amount
 def get_user_savings():
+    """
+    Retrieves the current user's savings amount from their trip.
+    
+    Returns:
+        float: The current savings amount, or 0.0 if not found
+    """
     connector = create_connection()
-    cursor = connector.cursor()
-    cursor.execute("SELECT amount FROM finances WHERE category = 'Savings'")
-    row = cursor.fetchone()
-    cursor.close()
-    connector.close()
-    return float(row[0]) if row else 0.0
+    if not connector:
+        return 0.0
+        
+    try:
+        cursor = connector.cursor()
+        # Get the current user's savings from their trip
+        cursor.execute("SELECT moneySaved FROM trip LIMIT 1")
+        row = cursor.fetchone()
+        return float(row[0]) if row else 0.0
+    except Exception as e:
+        print(f"Error getting savings: {e}")
+        return 0.0
+    finally:
+        cursor.close()
+        connector.close()
 
 # Retrieves a list of all trips and their total costs by summing up the category columns from the 'prices' table.
 def get_trips():
