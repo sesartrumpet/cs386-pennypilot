@@ -89,15 +89,23 @@ def initialize_database(config=None, verbose=True):
         
         if verbose:
             print("Database initialized successfully.")
-            # Print some initial data to verify setup
+            # Print userProfile data
             cursor.execute("SELECT * FROM userProfile")
             rows = cursor.fetchall()
             print("userProfile data:")
             for row in rows:
                 print(row)
+                
+            # Print trip data
+            cursor.execute("SELECT * FROM trip")
+            trips = cursor.fetchall()
+            print("\ntrip data:")
+            for trip in trips:
+                print(trip)
         
         cursor.close()
         connector.close()
+        
         return True
     except Exception as e:
         print(f"Error initializing database: {e}")

@@ -46,3 +46,5 @@ INSERT IGNORE INTO prices VALUES
     -- South Korea: Technology-focused program
     ('South Korea', 1100.00, 550.00, 650.00, 1500.00, 2500.00, 280.00);
 
+INSERT IGNORE INTO trip VALUES
+    ('Krqf', 'France', '2025-01-01', '2027-01-01', 1000.00);
