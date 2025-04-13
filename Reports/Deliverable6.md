@@ -2,7 +2,7 @@
 
 PennyPilot is a personal finance management tool designed for students planning to study abroad. The application helps users calculate savings goals based on their trip timeline and location, offering personalized daily, weekly, and monthly savings targets. Users input their destination, trip date, and current savings to receive actionable insights and visual feedback to stay on track.
 
-The system connects to a MySQL database to retrieve and update trip data, tracks savings over time, and dynamically updates charts using Python’s Tkinter for GUI and Matplotlib for visualization. With a strong focus on usability and clarity, PennyPilot simplifies financial planning and motivates users to achieve their study-abroad goals.
+The system connects to a MySQL database to retrieve and update trip data, tracks savings over time, and dynamically updates charts using Python's Tkinter for GUI and Matplotlib for visualization. With a strong focus on usability and clarity, PennyPilot simplifies financial planning and motivates users to achieve their study-abroad goals.
 
 **GitHub Repository**:https://github.com/sesartrumpet/cs386-pennypilot
 
@@ -12,11 +12,20 @@ The system connects to a MySQL database to retrieve and update trip data, tracks
 
 #### **Requirement 1: As a Student, I want to select a trip and view its expense breakdown so I can understand the financial requirements.**
 
-* **Issue**:  
-* **Pull Request**:  
-* **Implemented:**  
-* **Approved by**:  
-* **Screenshot**:
+* **Issue**: https://github.com/sesartrumpet/cs386-pennypilot/issues/112
+* **Pull Request**: https://github.com/sesartrumpet/cs386-pennypilot/pull/212
+* **Implemented by**: Victor Rodriguez
+* **Approved by**: ktr66nau (Kyle Radzvin)
+* **Screenshot**: 
+![Trip Selection and Expense Breakdown](Deliverable6_images/trip_selection.png)
+
+This requirement was successfully implemented with the following features:
+- Fixed trip table structure with proper schema
+- Updated date fields (dateStart and dateSelected) for better handling
+- Improved GUI date handling in confirm trip functionality
+- Added DROP TABLE functionality for clean database updates
+- Enhanced data validation and error handling
+- Ensured proper date format consistency across the application
 
 #### **Requirement 2: As a Student, I want to input my current savings and trip end date so I can calculate my savings goals.**
 

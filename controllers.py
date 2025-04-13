@@ -7,7 +7,6 @@ and user authentication.
 from database import (
     add_trip,
     update_savings,
-    fetch_financial_data,
     get_trips as db_get_trips,
     get_user_savings,
     get_price_breakdown_by_trip_name,
@@ -43,12 +42,13 @@ def handle_add_trip(destination, cost):
     except Exception as e:
         return False, str(e)
 
-def handle_update_savings(amount):
+def handle_update_savings(amount, username=None):
     """
     Updates the user's savings amount in the database.
     
     Args:
         amount (float): The new savings amount
+        username (str, optional): The username to update savings for
         
     Returns:
         tuple: (success: bool, message: str)
@@ -59,22 +59,14 @@ def handle_update_savings(amount):
         amount = float(amount)
         if amount < 0:
             return False, "Savings amount cannot be negative"
-        update_savings(amount)
-        return True, "Savings updated"
-    except Exception as e:
-        return False, str(e)
-
-def handle_fetch_financial_data():
-    """
-    Retrieves all financial data from the database.
-    
-    Returns:
-        tuple: (success: bool, data: list)
-            - success: True if data was fetched successfully, False otherwise
-            - data: List of (category, amount) tuples or error message
-    """
-    try:
-        return True, fetch_financial_data()
+            
+        if update_savings(amount, username):
+            return True, "Savings updated successfully"
+        else:
+            return False, "No active trip found to update"
+            
+    except ValueError:
+        return False, "Invalid amount format"
     except Exception as e:
         return False, str(e)
 
