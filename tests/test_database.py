@@ -20,3 +20,16 @@ def test_get_connection():
     # Make sure connection is active
     assert conn.is_connected() is True
     conn.close()
+
+def test_create_database_if_not_exists_invalid_config():
+    from database import create_database_if_not_exists
+    result = create_database_if_not_exists({"host": "invalid", "user": "none", "password": "bad"})
+    assert result is False
+
+def test_run_sql_file_missing_file(tmp_path):
+    from database import run_sql_file
+    fake_file = tmp_path / "fake.sql"
+    class DummyCursor:
+        def execute(self, sql): pass
+    result = run_sql_file(DummyCursor(), str(fake_file))
+    assert result is False
