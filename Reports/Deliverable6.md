@@ -29,13 +29,20 @@ This requirement was successfully implemented with the following features:
 
 #### **Requirement 2: As a Student, I want to input my current savings and trip end date so I can calculate my savings goals.**
 
-* **Issue**:   
-* **Pull Request**:   
-* **Implemented by**:   
-* **Approved by**:  
-* **Screenshot**:
+* **Issue**: https://github.com/sesartrumpet/cs386-pennypilot/issues/219
+* **Pull Request**: https://github.com/sesartrumpet/cs386-pennypilot/pull/218
+* **Implemented by**: pizzadogsquared (Elijah Sprouse)
+* **Approved by**: ktr66nau (Kyle Radzvin)
+* **Screenshot**:  
+![Progress Window](Deliverable6_images/progress_window.png)
 
-#### **Requirement 3:** 
+This requirement was successfully implemented with the following features:
+- Trip information is successfully saved to user profile
+- Button added to calculation screen to transfer to progress screen
+- Progress bar depicting how much money is already saved for trip
+- Location, university, savings, and other pertinent information displayed on progress screen
+
+#### **Requirement 3: As a Student, I want to view a breakdown of my trip saving progress so I know what to save.** 
 
 * **Issue**: (Issue Link)  
 * **Pull Request**:   
@@ -71,12 +78,12 @@ This requirement was successfully implemented with the following features:
 
 ### **Tests**
 
-* **Test Framework**: `unittest` (Python Standard Library)  
-* **Test Folder**: \[GitHub link \]  
-* **Test Case**:  
-  * **Test Class**:  
-  * **Class Being Tested**:   
+* **Test Framework**: `pytest` (Python Standard Library)  
+* **Test Folder**: \[[GitHub Link](https://github.com/sesartrumpet/cs386-pennypilot/tree/main/tests)\]  
+* **Test Case**: Initialization logic for Finance class in [test_utilities.py](https://github.com/sesartrumpet/cs386-pennypilot/blob/main/tests/test_utilities.py):
+  * **Test Class**:  Finance
 * **Test Output Screenshot**:
+![Test Pass Success](Deliverable6_images/tests_passed.png)
 
 ---
 
