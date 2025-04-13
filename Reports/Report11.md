@@ -29,6 +29,11 @@ Elijah:
 
 Kyle:  
 - Reviewed and merged PR #212 for trip table structure fixes
+- Added create account functionality  
+- Fixed MySQL errors
+- Updated inforrmation for colleges  
+- Implemented smooth window switching functionality  
+- Tweaked minor things throughout project
 
 Sesar:  
 
@@ -95,3 +100,4 @@ Sesar:
 
 
 Kyle:  
+- Begin testing program heavily

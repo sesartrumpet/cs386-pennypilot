@@ -50,13 +50,14 @@ This requirement was successfully implemented with the following features:
 * **Approved by**:  
 * **Screenshot**:
 
-#### **Requirement 4:** 
+#### **Requirement 4: As a Student, I want to change my trip location so I can explore different options and adjust my plans.** 
 
-* **Issue**: (Issue Link)  
-* **Pull Request**:   
-* **Implemented by**:   
-* **Approved by**:  
-* **Screenshot**:
+* **Issue**: [Issue Link](https://github.com/sesartrumpet/cs386-pennypilot/issues/209)
+* **Pull Request**: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/220)
+* **Implemented by**: Kyle Radzvin
+* **Approved by**:  D3VTHSTVR (Victor Rodriguez)
+* **Screenshot**: 
+![Switching Screens](Deliverable6_images/switching_screens.gif)
 
 #### **Requirement 5:** 
 
