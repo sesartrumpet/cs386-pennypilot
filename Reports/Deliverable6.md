@@ -45,9 +45,9 @@ This requirement was successfully implemented with the following features:
 #### **Requirement 3: As a Student, I want to view a breakdown of my trip saving progress so I know what to save.** 
 
 * **Issue**: (Issue Link)  
-* **Pull Request**:   
+* **Pull Request**: https://github.com/sesartrumpet/cs386-pennypilot/pull/218  
 * **Implemented by**:   
-* **Approved by**:  
+* **Approved by**:  ktr66nau (Kyle Radzvin)
 * **Screenshot**:
 
 #### **Requirement 4: As a Student, I want to change my trip location so I can explore different options and adjust my plans.** 
