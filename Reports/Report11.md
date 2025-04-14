@@ -36,6 +36,9 @@ Kyle:
 - Tweaked minor things throughout project
 
 Sesar:  
+- Helped with implementing window switching
+- Added message popup for better functionality
+- Helped fix initial errors beginning of Deliverable 6
 
 
 Vikram:
@@ -97,6 +100,9 @@ Vikram:
 
 
 Sesar:  
+- Collect feedback on application
+- Begin working on Deliverable 7
+- Help with testing program
 
 
 Kyle:  
