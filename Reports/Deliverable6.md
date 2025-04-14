@@ -98,20 +98,12 @@ This requirement was successfully implemented with the following features:
 
 ### **Code Quality**
 
-To ensure a high standard of code quality, our team followed these practices:
-
-* Used consistent naming conventions for variables and functions  
-* Separated logic into controllers and GUI classes for modularity  
-* Reviewed every pull request through GitHub before merging  
-* Used docstrings for all functions and classes  
-* Applied design patterns: Singleton (DatabaseConnector), Observer (Model updates views)  
-* Avoided code duplication and followed DRY principles
+To ensure a high standard of code quality, our team adopted several best practices. We maintained consistent naming conventions for all variables and functions to improve readability and reduce confusion. Our architecture separated logic into controllers and GUI classes, enhancing modularity and maintainability. Every pull request was thoroughly reviewed on GitHub before merging to catch potential issues early. We documented all functions and classes using docstrings, which promoted clarity and ease of understanding. Additionally, we applied relevant design patterns such as Singleton for the DatabaseConnector and Observer to ensure that model updates triggered view changes appropriately. We also avoided code duplication by adhering to the DRY (Don't Repeat Yourself) principle.
 
 ---
 
 ### **Lessons Learned**
-* Prioritize punctuality for all in-person meetings
-* Validate and test code thoroughly before merging into the main branch
-* Maintain consistent and timely commits to the repository
-* Ensure all team members are familiar with the functionality and structure of the entire codebase
+
+Through this project, we identified several important takeaways. First, punctuality for all in-person meetings is essential for maintaining alignment and team progress. Second, it is critical to validate and test code thoroughly before merging into the main branch to prevent errors and ensure reliability. Consistent and timely commits help track changes effectively and support better version control. Lastly, making sure that every team member is familiar with all aspects of the codebase ensures smoother collaboration and allows everyone to contribute more effectively.
+
 ---
