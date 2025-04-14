@@ -71,7 +71,7 @@ This requirement was successfully implemented with the following features:
 * **Screenshot**:
 ![Temp Message](Deliverable6_images/temp_message.png)
 
-#### **Requirement 6:** 
+#### **Requirement 6:As a new account holder, I want my profile information to displayed on my screen for a more personalized experience** 
 
 * **Issue**: [Issue Link](https://github.com/sesartrumpet/cs386-pennypilot/issues/109)
 * **Pull Request**: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/235)
