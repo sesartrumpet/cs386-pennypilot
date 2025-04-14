@@ -1,10 +1,10 @@
-# Report for Week #9
+# Report for Week #11
 
 **Trip Financer**  
 **Group:** 8  
-**Date:** 04/6/2025  
+**Date:** 04/12/2025  
 **Location:** Cline Library  
-**Present participants:**   Kyle, Elijah, Victor, Sesar, Manjot, Vikram
+**Present participants:** Kyle, Elijah, Victor, Sesar, Manjot, Vikram
 **Missing participants:**   
 **Project report:** [GitHub Repository](https://github.com/sesartrumpet/cs386-pennypilot.git)  
 
@@ -14,27 +14,31 @@
 Describe what each individual has contributed to the project in the last week.  Provide some supporting documentation (e.g., an issue number, commit id, corresponding meeting date, etc.).  If someone didn't do anything, please be honest and explain why. Activity that advances your project toward completion is expected every week and should be reflected in your Git repository!
 
 Victor:  
-- Completed Description on D5
-- Completed Architecture on D5
-
+- Fixed trip table structure and date handling (PR #212, Issue #112)
+- Added comprehensive documentation to progress window functionality
+- Implemented real-time UI updates for savings tracking
+- Enhanced error handling and user feedback
+- Added status messages with auto-clear functionality
+- Improved type conversion for monetary calculations
 
 Manjot:   
-- Completed Design Pattern on D5
 
 
 Elijah:  
 
 
 Kyle:  
-- Completed UML Class Diagram on D5
+- Reviewed and merged PR #212 for trip table structure fixes
+- Added create account functionality  
+- Fixed MySQL errors
+- Updated inforrmation for colleges  
+- Implemented smooth window switching functionality  
+- Tweaked minor things throughout project
 
 Sesar:  
-- Completed Sequence Design on D5
 
 
 Vikram:
-- Helped implement Observer and Singleton design patterns in application
-- Helped complete design patterns
 
 
 ## 2. Retrospective
@@ -50,19 +54,28 @@ The project retrospective is an opportunity for the group and each individual to
 
 ### Our Retrospective
 1. Appreciations
-- Everyone met expectations and performed well.
+- Team members were responsive to code review requests
+- Good collaboration on fixing database-related issues
+- Clear communication about implementation changes
 
 2. Successes
-- We did not have to cram any work into the last few hours. Our deliverable was completed in a timely manner.
+- Successfully fixed trip table structure and date handling
+- Improved code documentation significantly
+- Enhanced user experience with real-time updates
+- Better error handling implementation
 
 3. Failures
-- No updates where made to our code to progress towards our second implementation. 
+- Initial database schema issues caused some delays
+- Some type conversion issues needed multiple iterations to fix
 
 4. Barriers
-- We had no in person meetings this week for the deliverable.
+- Coordinating database changes across different features
+- Managing date format consistency across the application
 
 5. What We Should Try Next Time
-- Resume regular meetings to boost productivity and efficiency.
+- More thorough schema planning before implementation
+- Better type handling strategy from the start
+- More frequent code reviews for complex changes
 
 ---
 
@@ -70,22 +83,21 @@ The project retrospective is an opportunity for the group and each individual to
 Think about what needs to be done and assign tasks. Update your activity management system with new tasks, actual hours spent in the activities, and corresponding GitHub issues.  Summarize these tasks here.
 
 Victor:  
-- Work on Login screen and fucntionality
-
+- Continue improving UI responsiveness
+- Add more comprehensive error handling
+- Work on additional user feedback features
 
 Manjot:    
-- Start working on Deliverable 6
 
 
 Elijah:  
 
 
 Vikram:  
-- Start working on Deliverable 6
+
 
 Sesar:  
-- Start working on Deliverable 6
+
 
 Kyle:  
-- Begin working on screen for selected trips
-
+- Begin testing program heavily

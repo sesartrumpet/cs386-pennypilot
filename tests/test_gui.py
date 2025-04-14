@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 import tkinter as tk
 from datetime import date, timedelta
 import gui
+from gui import set_window_size
 
 # Test the generate_future_dates function
 def test_generate_future_dates():
@@ -24,7 +25,7 @@ def app_instance(monkeypatch):
     root = tk.Tk()
     # Hide the window during tests
     root.withdraw()
-    app = gui.PennyPilotApp(root)
+    app = gui.PennyPilotApp(root, username="dummy")
     yield app
     # Destroy the window after test
     root.destroy()
@@ -45,12 +46,12 @@ def test_calculate_in_background(app_instance, monkeypatch):
         "savings_per_day": 3.33
     }
     # Monkey-patch calculate_savings_goal to return dummy_result
-    monkeypatch.setattr(gui, "calculate_savings_goal", lambda trip_cost, departure_date: (True, dummy_result))
+    monkeypatch.setattr(gui, "calculate_savings_goal", lambda trip_cost, departure_date, already_saved: (True, dummy_result))
     # Monkey-patch update_expense_breakdown to do nothing
     monkeypatch.setattr(app_instance, "update_expense_breakdown", lambda location: None)
     
     # Call calculate_in_background with a dummy trip and a future date
-    app_instance.calculate_in_background(("TestUser", 1000), "2099-12-31")
+    app_instance.calculate_in_background(("TestUser", 1000), "2099-12-31", 0)
     
     # Retrieve updated table items
     month_item = app_instance.savings_table.item("month")["values"]
@@ -79,3 +80,11 @@ def test_update_expense_breakdown(app_instance, monkeypatch):
     # Validate that total equals the sum of dummy_breakdown values
     expected_total = sum(dummy_breakdown)
     assert f"${expected_total:,.2f}" in total_item[1]
+
+@pytest.mark.skip(reason="Tkinter cannot initialize in headless test environment")
+def test_set_window_size_runs():
+    root = tk.Tk()
+    try:
+        set_window_size(root, 500, 500)
+    finally:
+        root.destroy()

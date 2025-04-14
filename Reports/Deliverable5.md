@@ -50,7 +50,7 @@ application logic, and data management responsibilities.
 | Use Case Description | This use case describes the process where the student views trip details from the application. This is done by selecting the trip dropdown to provide the user with a list of trips. After selecting the trip, the screen will populate with a price breakdown for the trip the student selected. |
 | Actors           | Student                                                                                                                                   |
 | Preconditions    | Student is logged into the PennyPilot app and at least one trip exists in the database.                                                   |
-| Basic scenario   | 1. **Student** clicks on the trip dropdown in the PennyPilotApp interface.  <br> 2. **PennyPilotApp** sends a request to **Controllers** to retrieve available trips via the `get_trips()` method.  <br> 3. **Controllers** request trip data from the **Database** using the `get_trips()` method.  <br> 4. **Database** returns a list of trips to the **Controllers**.  <br> 5. **Controllers** pass the list of trips to the **PennyPilotApp**.  <br> 6. **PennyPilotApp** displays the list of trips in a dropdown menu.  <br> 7. **Student** selects a specific trip from the dropdown.  <br> 8. **PennyPilotApp** calls the `update_expense_breakdown(location)` function in the **Controllers**.  <br> 9. **Controllers** call the `get_price_breakdown_by_trip_name(location)` function in the **Database**.  <br> 10. **Database** returns the price breakdown to **Controllers**.  <br> 11. **Controllers** return the price breakdown data to the **PennyPilotApp**.  <br> 12. **PennyPilotApp** displays the price breakdown to the **Student**. |
+| Basic scenario   | 1. **Student** clicks on the trip dropdown in the PennyPilotApp interface.  <br> 2. **Trip Manager** sends a request to **Controllers** to retrieve available trips via the `get_trips()` method.  <br> 3. **Controllers** request trip data from the **Database** using the `get_trips()` method.  <br> 4. **Database** returns a list of trips to the **Controllers**.  <br> 5. **Controllers** pass the list of trips to the **Trip Manager**.  <br> 6. **Trip Manager** displays the list of trips in a dropdown menu.  <br> 7. **Student** selects a specific trip from the dropdown.  <br> 8. **Trip Manager** calls the `fetch_trip_expense_breakdown(location)` function in the **Controllers**.  <br> 9. **Controllers** call the `get_price_breakdown_by_trip_name(location)` function in the **Database**.  <br> 10. **Database** returns the price breakdown to **Controllers**.  <br> 11. **Controllers** return the price breakdown data to the **Trip Manager**.  <br> 12. **Trip Manager** displays the price breakdown to the **Student**. |
 | Alternate scenario | 1. If no trips are available, the application will throw an error and the user will not be able to select any trips |
 | Postconditions   | The user successfully views the detailed price breakdown of the selected trip.                                                           |
 
@@ -58,13 +58,16 @@ application logic, and data management responsibilities.
 Penny Pilot uses two classic software design patterns to enhance modularity, maintainability, and data synchronization: the **Observer Pattern** (Behavioral) and the **Singleton Pattern**(Creational). Each was selected based on its practical application within the savings-tracking architecture of the system.   
 
 - **Observer Pattern(Behavioral)**
-The Observer Pattern is used in Penny Pilot to dynamically update the UI whenever the savings value changes. This makes the savings interface reactive and ensures the user always sees up-to-date progress and goal information without manual refresh or reload actions.
-https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Observer%20Pattern.drawio.png
+The Observer Pattern enables dynamic updates of the user interface whenever the savings data changes. This is critical in Penny Pilot, where users want to track their progress in real-time after inputting or adjusting their savings and trip information.
+
+
+[https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Observer%20Pattern.drawio.png](https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Observer%20Pattern.drawio%20(1).png)
 
   
 - **Singleton Pattern(Creational)**
-The Singleton Pattern is used in Penny Pilot to manage the MySQL database connection efficiently. It ensures that the application always uses the same database instance throughout the user session, avoiding the creation of multiple unnecessary connections.
-https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Singleton%20Pattern.drawio.png
+The Singleton Pattern is used to manage the database connection via DatabaseConnector. This ensures only one connection to the MySQL database is active at a time across the application, preventing resource waste and maintaining centralized access to persistent data.
+
+[https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Singleton%20Pattern.drawio.png](https://github.com/sesartrumpet/cs386-pennypilot/blob/main/Reports/Deliverable5_images/Observer%20Pattern.drawio.png)
 
  
 
