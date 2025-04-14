@@ -22,7 +22,10 @@ Victor:
 - Improved type conversion for monetary calculations
 
 Manjot:   
-
+- Worked on deliverable 6
+- Worked on GUI
+  
+  
 
 Elijah:  
 - Helped in saving expense breakdown to user profile
@@ -40,10 +43,14 @@ Kyle:
 - Tweaked minor things throughout project
 
 Sesar:  
+- Helped with implementing window switching
+- Added message popup for better functionality
+- Helped fix initial errors beginning of Deliverable 6
 
 
 Vikram:
-
+- Attended meeting (04-09-2025)
+- 
 
 ## 2. Retrospective
 In your weekly meeting, you should spend a few minutes discussing how the group is functioning. What aspects of the group dynamics contribute to the success of the project? In addition, raise any issues—best done directly but with humor and kindness—that you believe are interfering with the effectiveness of the group and your ability to complete the project on time.
@@ -92,6 +99,9 @@ Victor:
 - Work on additional user feedback features
 
 Manjot:    
+- Begin working on Deliverable 7
+- Work on additional features
+  
 
 
 Elijah:  
@@ -99,9 +109,13 @@ Elijah:
 - Assist where needed with database implementations
 
 Vikram:  
-
+- Help Kyle test program
+- Work on next Deliverable
 
 Sesar:  
+- Collect feedback on application
+- Begin working on Deliverable 7
+- Help with testing program
 
 
 Kyle:  

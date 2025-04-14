@@ -205,7 +205,8 @@ class PennyPilotApp:
         """
         Displays a welcome message to the user.
         """
-        greeting = tk.Label(self.root, text=f"Hello! Welcome to PennyPilot", font=("Arial", 14))
+        user = self.username
+        greeting = tk.Label(self.root, text=f"Hello {user}! Welcome to PennyPilot", font=("Arial", 14))
         greeting.pack(pady=10)
     
     def create_date_dropdown(self):
