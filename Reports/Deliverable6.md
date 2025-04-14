@@ -73,12 +73,12 @@ This requirement was successfully implemented with the following features:
 
 #### **Requirement 6:** 
 
-* **Issue**: (Issue Link)  
-* **Pull Request**:   
-* **Implemented by**:   
-* **Approved by**:  
+* **Issue**: [Issue Link](https://github.com/sesartrumpet/cs386-pennypilot/issues/109)
+* **Pull Request**: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/235)
+* **Implemented by**: Vikram Singh  
+* **Approved by**: Elijah Sprouse
 * **Screenshot**:
-
+[!Image](Deliverable6_images/welcome_message.png)
 ---
 
 ### **Tests**
