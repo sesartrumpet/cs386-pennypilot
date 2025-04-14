@@ -28,13 +28,17 @@ Manjot:
   
 
 Elijah:  
-
+- Helped in saving expense breakdown to user profile
+- Created user progress screen
+- Created visualization for progress
+- Updated and added new pytest programs
+- Ran and documented successful pytests in Deliverable 6
 
 Kyle:  
 - Reviewed and merged PR #212 for trip table structure fixes
 - Added create account functionality  
 - Fixed MySQL errors
-- Updated inforrmation for colleges  
+- Updated information for colleges  
 - Implemented smooth window switching functionality  
 - Tweaked minor things throughout project
 
@@ -101,7 +105,8 @@ Manjot:
 
 
 Elijah:  
-
+- Continue to help with user progress window
+- Assist where needed with database implementations
 
 Vikram:  
 - Help Kyle test program
