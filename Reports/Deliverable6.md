@@ -108,7 +108,9 @@ To ensure a high standard of code quality, our team followed these practices:
 ---
 
 ### **Lessons Learned**
-
+* Be timely with in-person meetings
+* Check if code is correct before merging into main branch
+* Commit changes to repository regularly
 ---
 
 ### **Teamwork**
