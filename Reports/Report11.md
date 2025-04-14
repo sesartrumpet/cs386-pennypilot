@@ -22,7 +22,10 @@ Victor:
 - Improved type conversion for monetary calculations
 
 Manjot:   
-
+- Worked on deliverable 6
+- Worked on GUI
+  
+  
 
 Elijah:  
 
@@ -36,6 +39,9 @@ Kyle:
 - Tweaked minor things throughout project
 
 Sesar:  
+- Helped with implementing window switching
+- Added message popup for better functionality
+- Helped fix initial errors beginning of Deliverable 6
 
 
 Vikram:
@@ -89,6 +95,9 @@ Victor:
 - Work on additional user feedback features
 
 Manjot:    
+- Begin working on Deliverable 7
+- Work on additional features
+  
 
 
 Elijah:  
@@ -99,6 +108,9 @@ Vikram:
 - Work on next Deliverable
 
 Sesar:  
+- Collect feedback on application
+- Begin working on Deliverable 7
+- Help with testing program
 
 
 Kyle:  
