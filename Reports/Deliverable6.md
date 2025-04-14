@@ -59,13 +59,14 @@ This requirement was successfully implemented with the following features:
 * **Screenshot**: 
 ![Switching Screens](Deliverable6_images/switching_screens.gif)
 
-#### **Requirement 5:** 
+#### **Requirement 5: As a cautious student, I want to be sure I am looking at the correct savings goal so I can be confident about my savings.** 
 
-* **Issue**: (Issue Link)  
-* **Pull Request**:   
-* **Implemented by**:   
-* **Approved by**:  
+* **Issue**: [Issue Link](https://github.com/sesartrumpet/cs386-pennypilot/issues/213)
+* **Pull Request**: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/215)
+* **Implemented by**: sesartrumpet (Sesar Parra)  
+* **Approved by**: D3VTHSTVR (Victor Rodriguez)
 * **Screenshot**:
+![Temp Message](Deliverable6_images/temp_message.png)
 
 #### **Requirement 6:** 
 
