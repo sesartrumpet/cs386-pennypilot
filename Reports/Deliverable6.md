@@ -51,8 +51,6 @@ This requirement was successfully implemented with the following features:
 * **Screenshot**:
 ![image](https://github.com/user-attachments/assets/d2e04455-1229-45d6-9834-3e354cb2abe5)
 
-
-
 #### **Requirement 4: As a Student, I want to change my trip location so I can explore different options and adjust my plans.** 
 
 * **Issue**: [Issue Link](https://github.com/sesartrumpet/cs386-pennypilot/issues/209)
@@ -69,16 +67,16 @@ This requirement was successfully implemented with the following features:
 * **Implemented by**: sesartrumpet (Sesar Parra)  
 * **Approved by**: D3VTHSTVR (Victor Rodriguez)
 * **Screenshot**:
-![Temp Message](Deliverable6_images/temp_message.png)
+![Image](Deliverable6_images/temp_message.png)
 
-#### **Requirement 6:As a new account holder, I want my profile information to displayed on my screen for a more personalized experience** 
+#### **Requirement 6: As a new account holder, I want my profile information to displayed on my screen for a more personalized experience** 
 
 * **Issue**: [Issue Link](https://github.com/sesartrumpet/cs386-pennypilot/issues/109)
 * **Pull Request**: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/235)
 * **Implemented by**: Vikram Singh  
 * **Approved by**: Elijah Sprouse
 * **Screenshot**:
-[!Image](Deliverable6_images/welcome_message.png)
+![Image](Deliverable6_images/welcome_message.png)
 ---
 
 ### **Tests**
@@ -94,7 +92,7 @@ This requirement was successfully implemented with the following features:
 
 ### **Demo**
 
-**Demo Video**:     (link)
+**Demo Video**: [Demo Video](https://youtu.be/Zw0kEvVKwtE)
 
 ---
 
@@ -112,10 +110,8 @@ To ensure a high standard of code quality, our team followed these practices:
 ---
 
 ### **Lessons Learned**
-* Be timely with in-person meetings
-* Check if code is correct before merging into main branch
-* Commit changes to repository regularly
+* Prioritize punctuality for all in-person meetings
+* Validate and test code thoroughly before merging into the main branch
+* Maintain consistent and timely commits to the repository
+* Ensure all team members are familiar with the functionality and structure of the entire codebase
 ---
-
-### **Teamwork**
-
