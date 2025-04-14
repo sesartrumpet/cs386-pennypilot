@@ -22,7 +22,10 @@ Victor:
 - Improved type conversion for monetary calculations
 
 Manjot:   
-
+- Worked on deliverable 6
+- Worked on GUI
+  
+  
 
 Elijah:  
 
@@ -92,6 +95,9 @@ Victor:
 - Work on additional user feedback features
 
 Manjot:    
+- Begin working on Deliverable 7
+- Work on additional features
+  
 
 
 Elijah:  
