@@ -13,6 +13,9 @@ The GUI is built using Tkinter and includes:
 
 import tkinter as tk
 from tkinter import ttk, messagebox
+#new
+import os
+from PIL import Image, ImageTk
 from controllers import get_trips, calculate_savings_goal, handle_update_savings, fetch_trip_expense_breakdown
 from database import get_user_savings, create_connection
 from tkcalendar import DateEntry 
@@ -98,6 +101,16 @@ class PennyPilotApp:
         if selected:
             location = selected.split(" - ")[0]
             self.update_expense_breakdown(location)
+
+    #new
+    def back_to_login(self):
+        """
+        Returns the user to the login screen.
+        """
+        self.root.withdraw()  # Hide main window
+        from gui import show_login_window
+        show_login_window(show_main_app, self.root)
+
 
     def __init__(self, root, username):
         """
@@ -194,12 +207,18 @@ class PennyPilotApp:
         # Create confirm button
         self.confirm_btn = tk.Button(
             root,
-            text="Confirm Trip Destination",
+            text="Confirm Trip Destination",bg="green", fg="white", activebackground="darkgreen",
             command=self.handle_confirm_click
         )
         self.confirm_btn.pack(pady=10)
         self.confirm_btn.pack(ipadx=10)
         self.confirm_btn.pack(ipady=15)
+
+        #new
+        # Back to login button
+        self.back_btn = tk.Button(self.root, text="Back to Login", command=self.back_to_loginbg="green", fg="white", activebackground="darkgreen")
+        self.back_btn.pack(pady=10)
+
 
     def display_username(self):
         """
@@ -520,6 +539,8 @@ def show_login_window(start_main_app_callback, root):
     # Create login window
     login_window = tk.Toplevel(root)
     login_window.title("Login")
+    #new
+    login_window.configure(bg="#f5f5f5")
     
     # Set window size
     set_window_size(login_window)
@@ -678,13 +699,42 @@ def show_login_window(start_main_app_callback, root):
     password_entry.bind("<Return>", lambda event: attempt_login())
     
     # Login button
-    login_button = tk.Button(main_frame, text="Login", command=attempt_login)
+    #new
+    login_button = tk.Button(main_frame, text="Login", command=attempt_login, bg="green", fg="white", activebackground="darkgreen")
     login_button.pack(pady=10)
     
     # Create Account button
-    create_account_button = tk.Button(main_frame, text="Create Account", 
+    #new
+    create_account_button = tk.Button(main_frame, text="Create Account", bg="green", fg="white", activebackground="darkgreen",
                                     command=lambda: show_create_account_window(login_window))
     create_account_button.pack(pady=10)
+
+    #new
+    # Add images to the login window
+    try:
+        base_dir = os.path.dirname(__file__)
+        image_dir = os.path.join(base_dir, "images")
+
+        earth_img_path = os.path.join(image_dir, "earth.png")
+        student_img_path = os.path.join(image_dir, "student.png")
+
+        earth_img = Image.open(earth_img_path).convert("RGBA").resize((95, 95), Image.Resampling.LANCZOS)
+        student_img = Image.open(student_img_path).convert("RGBA").resize((100, 250), Image.Resampling.LANCZOS)
+
+        earth_photo = ImageTk.PhotoImage(earth_img)
+        student_photo = ImageTk.PhotoImage(student_img)
+
+        earth_label = tk.Label(login_window, image=earth_photo, borderwidth=0, highlightthickness=0)
+        earth_label.image = earth_photo
+        earth_label.place(x=10, y=10)
+
+        student_label = tk.Label(login_window, image=student_photo,borderwidth=0, highlightthickness=0)
+        student_label.image = student_photo
+        student_label.place(relx=1.0, rely=1.0, anchor="se", x=-5, y=-5)
+
+    except Exception as e:
+        print("Image display error:", e)
+
 
 def show_create_account_window(login_window):
     """
@@ -831,7 +881,7 @@ def show_create_account_window(login_window):
     create_button.pack(pady=10)
     
     # Back to Login button
-    back_button = tk.Button(main_frame, text="Back to Login", 
+    back_button = tk.Button(main_frame, text="Back to Login", bg="green", fg="white", activebackground="darkgreen", 
                           command=lambda: [create_window.destroy(), login_window.deiconify()])
     back_button.pack(pady=10)
 
