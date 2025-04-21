@@ -16,7 +16,8 @@ Describe what each individual has contributed to the project in the last week.  
 Victor:  
 
 
-Manjot:   
+Manjot: 
+Worked on GUI file
 
 
 Elijah:  
@@ -66,6 +67,7 @@ Victor:
 
 
 Manjot:    
+Work on Deliverable
 
 
 Elijah:  
