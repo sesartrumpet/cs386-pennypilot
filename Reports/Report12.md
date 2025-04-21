@@ -81,7 +81,8 @@ Work on Deliverable
 
 
 Elijah:  
-
+- Work on presentation
+- Work on Deliverable 7
 
 Vikram:  
 
