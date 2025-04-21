@@ -14,7 +14,11 @@
 Describe what each individual has contributed to the project in the last week.  Provide some supporting documentation (e.g., an issue number, commit id, corresponding meeting date, etc.).  If someone didn't do anything, please be honest and explain why. Activity that advances your project toward completion is expected every week and should be reflected in your Git repository!
 
 Victor:  
-
+- Started implementing chart visualization in progress screen
+- Researched Matplotlib integration with Tkinter
+- Set up initial chart framework for savings progress tracking
+- Created test cases for chart data formatting
+- Documented chart implementation plan
 
 Manjot:   
 
@@ -63,7 +67,11 @@ The project retrospective is an opportunity for the group and each individual to
 Think about what needs to be done and assign tasks. Update your activity management system with new tasks, actual hours spent in the activities, and corresponding GitHub issues.  Summarize these tasks here.
 
 Victor:  
-
+- Complete chart implementation in progress screen
+- Add real-time chart updates with savings changes
+- Implement chart customization options
+- Add chart data export functionality
+- Document chart usage in user guide
 
 Manjot:    
 
