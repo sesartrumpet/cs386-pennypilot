@@ -6,14 +6,17 @@
 
 ## Verification
 
-### Test Framework
+### Test Framework  
+`pytest` (Python Standard Library)
 
-### GitHub Repository (Unit Tests)
+### GitHub Repository (Unit Tests)  
+\[[GitHub Link](https://github.com/sesartrumpet/cs386-pennypilot/tree/main/tests/backend)\]
 
-### Example Test Case with Mock Objects
+### Example Test Case with Mock Objects  
+Initialization logic for Finance class in [test_utilities.py](https://github.com/sesartrumpet/cs386-pennypilot/blob/main/tests/backend)
 
-### Test Execution Screenshot
-
+### Test Execution Screenshot  
+![Test Pass Success](Deliverable7_images/tests_passed.png)
 ---
 
 ## Acceptance Test
