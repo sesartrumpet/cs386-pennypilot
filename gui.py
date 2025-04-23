@@ -126,7 +126,10 @@ class PennyPilotApp:
         self.connector = None  
         
         # Set window size
-        set_window_size(root)
+        self.root = root
+        self.root.title("Penny Pilot - Trip Savings")
+        self.root.geometry("600x800")  
+        self.create_widgets()
         
         # Set up window closing
         setup_window_closing(root, cleanup_func=self.on_closing)
@@ -215,16 +218,16 @@ class PennyPilotApp:
         self.confirm_btn.pack(ipady=15)
 
         
-        # Back to login button
+    # Back to login button
         self.back_btn = tk.Button(
-        self.root,
-        text="Back to Login",
-        command=self.back_to_login,  
-        bg="green",                  
-        fg="white",                  
-        activebackground="darkgreen"  
-    )
-
+            self.root,
+            text="Back to Login",
+            command=self.back_to_login,
+            bg="green",
+            fg="white",
+            activebackground="darkgreen"
+        )
+        self.back_btn.pack(pady=10)
 
     def display_username(self):
         """
