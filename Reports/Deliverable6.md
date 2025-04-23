@@ -51,8 +51,6 @@ This requirement was successfully implemented with the following features:
 * **Screenshot**:
 ![image](https://github.com/user-attachments/assets/d2e04455-1229-45d6-9834-3e354cb2abe5)
 
-
-
 #### **Requirement 4: As a Student, I want to change my trip location so I can explore different options and adjust my plans.** 
 
 * **Issue**: [Issue Link](https://github.com/sesartrumpet/cs386-pennypilot/issues/209)
@@ -69,16 +67,16 @@ This requirement was successfully implemented with the following features:
 * **Implemented by**: sesartrumpet (Sesar Parra)  
 * **Approved by**: D3VTHSTVR (Victor Rodriguez)
 * **Screenshot**:
-![Temp Message](Deliverable6_images/temp_message.png)
+![Image](Deliverable6_images/temp_message.png)
 
-#### **Requirement 6:As a new account holder, I want my profile information to displayed on my screen for a more personalized experience** 
+#### **Requirement 6: As a new account holder, I want my profile information to displayed on my screen for a more personalized experience** 
 
 * **Issue**: [Issue Link](https://github.com/sesartrumpet/cs386-pennypilot/issues/109)
 * **Pull Request**: [Pull Request](https://github.com/sesartrumpet/cs386-pennypilot/pull/235)
 * **Implemented by**: Vikram Singh  
 * **Approved by**: Elijah Sprouse
 * **Screenshot**:
-[!Image](Deliverable6_images/welcome_message.png)
+![Image](Deliverable6_images/welcome_message.png)
 ---
 
 ### **Tests**
@@ -94,28 +92,18 @@ This requirement was successfully implemented with the following features:
 
 ### **Demo**
 
-**Demo Video**:     (link)
+**Demo Video**: [Demo Video](https://youtu.be/Zw0kEvVKwtE)
 
 ---
 
 ### **Code Quality**
 
-To ensure a high standard of code quality, our team followed these practices:
-
-* Used consistent naming conventions for variables and functions  
-* Separated logic into controllers and GUI classes for modularity  
-* Reviewed every pull request through GitHub before merging  
-* Used docstrings for all functions and classes  
-* Applied design patterns: Singleton (DatabaseConnector), Observer (Model updates views)  
-* Avoided code duplication and followed DRY principles
+To ensure a high standard of code quality, our team adopted several best practices. We maintained consistent naming conventions for all variables and functions to improve readability and reduce confusion. Our architecture separated logic into controllers and GUI classes, enhancing modularity and maintainability. Every pull request was thoroughly reviewed on GitHub before merging to catch potential issues early. We documented all functions and classes using docstrings, which promoted clarity and ease of understanding. Additionally, we applied relevant design patterns such as Singleton for the DatabaseConnector and Observer to ensure that model updates triggered view changes appropriately. We also avoided code duplication by adhering to the DRY (Don't Repeat Yourself) principle.
 
 ---
 
 ### **Lessons Learned**
-* Be timely with in-person meetings
-* Check if code is correct before merging into main branch
-* Commit changes to repository regularly
+
+Through this project, we identified several important takeaways. First, punctuality for all in-person meetings is essential for maintaining alignment and team progress. Second, it is critical to validate and test code thoroughly before merging into the main branch to prevent errors and ensure reliability. Consistent and timely commits help track changes effectively and support better version control. Lastly, making sure that every team member is familiar with all aspects of the codebase ensures smoother collaboration and allows everyone to contribute more effectively.
+
 ---
-
-### **Teamwork**
-
