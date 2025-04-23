@@ -13,7 +13,7 @@ The GUI is built using Tkinter and includes:
 
 import tkinter as tk
 from tkinter import ttk, messagebox
-#new
+
 import os
 from PIL import Image, ImageTk
 from controllers import get_trips, calculate_savings_goal, handle_update_savings, fetch_trip_expense_breakdown
@@ -102,7 +102,7 @@ class PennyPilotApp:
             location = selected.split(" - ")[0]
             self.update_expense_breakdown(location)
 
-    #new
+    
     def back_to_login(self):
         """
         Returns the user to the login screen.
@@ -214,10 +214,16 @@ class PennyPilotApp:
         self.confirm_btn.pack(ipadx=10)
         self.confirm_btn.pack(ipady=15)
 
-        #new
+        
         # Back to login button
-        self.back_btn = tk.Button(self.root, text="Back to Login", command=self.back_to_loginbg="green", fg="white", activebackground="darkgreen")
-        self.back_btn.pack(pady=10)
+        self.back_btn = tk.Button(
+        self.root,
+        text="Back to Login",
+        command=self.back_to_login,  
+        bg="green",                  
+        fg="white",                  
+        activebackground="darkgreen"  
+    )
 
 
     def display_username(self):
@@ -539,7 +545,7 @@ def show_login_window(start_main_app_callback, root):
     # Create login window
     login_window = tk.Toplevel(root)
     login_window.title("Login")
-    #new
+    
     login_window.configure(bg="#f5f5f5")
     
     # Set window size
@@ -699,17 +705,17 @@ def show_login_window(start_main_app_callback, root):
     password_entry.bind("<Return>", lambda event: attempt_login())
     
     # Login button
-    #new
+    
     login_button = tk.Button(main_frame, text="Login", command=attempt_login, bg="green", fg="white", activebackground="darkgreen")
     login_button.pack(pady=10)
     
     # Create Account button
-    #new
+    
     create_account_button = tk.Button(main_frame, text="Create Account", bg="green", fg="white", activebackground="darkgreen",
                                     command=lambda: show_create_account_window(login_window))
     create_account_button.pack(pady=10)
 
-    #new
+    
     # Add images to the login window
     try:
         base_dir = os.path.dirname(__file__)
