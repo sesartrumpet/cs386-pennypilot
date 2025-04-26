@@ -20,7 +20,8 @@ Victor:
 - Created test cases for chart data formatting
 - Documented chart implementation plan
 
-Manjot:   
+Manjot: 
+Worked on GUI file
 
 
 Elijah:  
@@ -30,6 +31,7 @@ Kyle:
 - Took a much needed break from the porject
 
 Sesar:  
+- Same thing as Kyle, will continue contributions upcoming week
 
 
 Vikram:
@@ -48,18 +50,19 @@ The project retrospective is an opportunity for the group and each individual to
 
 ### Our Retrospective
 1. Appreciations
+- Manjot tidied up the GUI for the application.
 
 2. Successes
-
+- GUI for the application looks more user-friendly.
 
 3. Failures
-
+- Nothing major, just not a lot was done this week
 
 4. Barriers
-
+- We had no in person meetings this week for the deliverable.
 
 5. What We Should Try Next Time
-
+- Have normal weekly meetings in person to discuss plans for upcoming deliverable
 
 ---
 
@@ -74,15 +77,18 @@ Victor:
 - Document chart usage in user guide
 
 Manjot:    
+Work on Deliverable
 
 
 Elijah:  
-
+- Work on presentation
+- Work on Deliverable 7
 
 Vikram:  
 
 
-Sesar:  
+Sesar: 
+- Work on deliverable 
 
 
 Kyle:  
