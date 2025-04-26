@@ -216,7 +216,13 @@ class PennyPilotApp:
 
         #new
         # Back to login button
-        self.back_btn = tk.Button(self.root, text="Back to Login", command=self.back_to_loginbg="green", fg="white", activebackground="darkgreen")
+        self.back_btn = tk.Button(self.root,
+            text="Back to Login",
+            command=self.back_to_login,
+            bg="green",
+            fg="white",
+            activebackground="darkgreen"
+        )
         self.back_btn.pack(pady=10)
 
 
