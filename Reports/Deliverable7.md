@@ -61,6 +61,38 @@ Initialization logic for Finance class in [test_utilities.py](https://github.com
 
 > "The app is pretty easy to use, but it would be great if I could add custom categories for expenses. I think the bar graph could be more prominent."
 
+Participant 2 Evaluation
+
+#### Results
+
+**Task Completion Time:**
+
+- Task 1 (Create a New account): 2 minutes
+- Task 2 (Create a New Trip): 1 minutes
+- Task 3 (Update Savings): 1 minutes
+- Task 4 (View Trip Breakdown): 1 minutes
+
+**Ratings:**
+
+1. Creating a account: 8/10
+   - *Explanation:*
+   - The user found it easy to create the account but was a bit confused with the login page.
+     
+2. Creating a Trip: 10/10
+   - *Explanation:*
+   - The user created the trip easily as it was simple and straightforward.
+     
+3. Saving Progress Update: 10/10
+   - *Explanation:*
+   - The user thought the website was helpful and really quick in its calculations. 
+     
+4. Trip Breakdown: 9/10
+   - *Explanation:*
+   -  The user was able to get a trip breakdown that was easy to understand. 
+**Feedback:**
+
+> "Overall the app is very quick with its processing and very user-friendly, however maybe the tables and charts could be a little confusing and hard to understand for newer users."
+
 #### Reflection
 
 **Observations:**
