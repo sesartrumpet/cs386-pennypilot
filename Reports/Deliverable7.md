@@ -1,6 +1,9 @@
 # Deliverable 7
 
-## Description
+## Description  
+PennyPilot is a personal finance management tool tailored for students preparing to study abroad. The system helps users calculate savings goals by considering their travel timeline, destination, and current financial status. It generates personalized daily, weekly, and monthly savings targets, providing actionable insights and visual feedback to keep users on track. With a focus on simplicity and clarity, PennyPilot empowers users to effectively plan their finances and stay motivated toward achieving their study-abroad dreams.
+
+The application connects to a MySQL database to manage and update trip-related data, tracks savings progress over time, and dynamically refreshes visual charts using Python’s Tkinter for the GUI. PennyPilot ensures an intuitive user experience, making complex financial planning both accessible and engaging.
 
 ---
 
