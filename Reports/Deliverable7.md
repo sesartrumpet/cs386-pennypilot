@@ -36,7 +36,7 @@ Initialization logic for Finance class in [test_utilities.py](https://github.com
 
 ## Validation
 
-### Participant 1 Evaluation
+### Participant 1 Evaluation (Completed by Victor Rodriguez)
 
 #### Results
 
@@ -61,7 +61,7 @@ Initialization logic for Finance class in [test_utilities.py](https://github.com
 
 > "The app is pretty easy to use, but it would be great if I could add custom categories for expenses. I think the bar graph could be more prominent."
 
-Participant 2 Evaluation
+Participant 2 Evaluation (Completed by Manjot Kaur)
 
 #### Results
 
@@ -110,3 +110,48 @@ Participant 2 Evaluation
 
 - Custom categories for expenses could make the app more versatile, catering to a broader range of users.
 - Enhancing the visibility and prominence of the savings progress bar could improve user engagement and help users track their goals more effectively.
+
+### Participant 3 Evaluation (Completed by Sesar Parra)
+
+#### Results
+
+**Task Completion Time:**
+
+- Task 1 (Create a New account): 1 minute
+- Task 2 (Create a New Trip): 2 minutes
+- Task 3 (Update Savings): 1 minute
+- Task 4 (View Trip Breakdown): 2 minutes
+
+**Ratings:**
+
+1. Creating a Trip: 9/10
+   - *Explanation:* The user got the hang of the application pretty quickly. Everything seemed fine to him, although he thought adding symbols to buttons would be nice.
+
+2. Saving Progress Update: 6/10
+   - *Explanation:* The user was able to input an amount but was unsure whether he could add increments or he would have to add the total to the savings progress. Kind of confusing for the user
+
+3. Trip Breakdown: 9/10
+   - *Explanation:* Around the same as participant 1, the user was able to understand the breakdown of the trip.
+
+**Feedback:**
+
+> "The app could use some touch ups, but they should be very minor. Overall, I thought the application was understandable and easy to navigate."
+
+#### Reflection
+
+**Observations:**
+
+- The participant completed all three tasls quickly, with the total time being 5 minutes.
+- Uncertainty around incrementing vs total savings shows that the labels for savings goal could be more explicit
+- The suggestion about adding symbols to symbols to buttons shows that there can still be more to add.
+
+**What Worked Well:**
+
+- User was able to create a new trip without any guidance from me, showing that it is easy to navigate
+- Trip Breakdown visualization meets user expectations for clarity ad comprehensiveness
+- Overall layout and language appears to be user-friendly
+
+**Areas for Improvement:**
+
+- Clarify savings update control, add a label showing what adding savings does.
+- Add icon labels to improve user-friendliness.
