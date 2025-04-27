@@ -25,13 +25,18 @@ Initialization logic for Finance class in [test_utilities.py](https://github.com
 ## Acceptance Test
 
 ### Test Framework
+`PyAutoGUI`
 
 ### GitHub Repository (Acceptance Tests)
+[GitHub Link]()
 
 ### Example Acceptance Test
+An example acceptance test verifies all major input combinations on the Create Account page. This test ensures proper form validation by automating inputs for blank fields, password mismatches, invalid emails, restricted usernames, and valid submissions.  
+[GitHub Link]()  
+The test uses PyAutoGUI to simulate user actions and captures before/after screenshots to confirm system responses. This ensures the form correctly handles errors and successfully creates valid accounts.  
 
 ### Test Execution Screenshot or Video
-
+[Test Video](https://youtu.be/pyZMF5DkXDU?si=EeQ0ZRdHBjp2TWD_)
 ---
 
 ## Validation
