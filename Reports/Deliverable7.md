@@ -28,11 +28,11 @@ Initialization logic for Finance class in [test_utilities.py](https://github.com
 `PyAutoGUI`
 
 ### GitHub Repository (Acceptance Tests)
-[GitHub Link]()
+[GitHub Link](https://github.com/sesartrumpet/cs386-pennypilot/tree/main/tests/Frontend)
 
 ### Example Acceptance Test
 An example acceptance test verifies all major input combinations on the Create Account page. This test ensures proper form validation by automating inputs for blank fields, password mismatches, invalid emails, restricted usernames, and valid submissions.  
-[GitHub Link]()  
+[GitHub Link](https://github.com/sesartrumpet/cs386-pennypilot/tree/main/tests/Frontend/test_screenshots/Test1)  
 The test uses PyAutoGUI to simulate user actions and captures before/after screenshots to confirm system responses. This ensures the form correctly handles errors and successfully creates valid accounts.  
 
 ### Test Execution Screenshot or Video
