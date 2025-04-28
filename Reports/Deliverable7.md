@@ -133,7 +133,7 @@ Participant 2 Evaluation (Completed by Manjot Kaur)
    - *Explanation:* The user got the hang of the application pretty quickly. Everything seemed fine to him, although he thought adding symbols to buttons would be nice.
 
 2. Saving Progress Update: 6/10
-   - *Explanation:* The user was able to input an amount but was unsure whether he could add increments or he would have to add the total to the savings progress. Kind of confusing for the user
+   - *Explanation:* The user was able to input an amount but was unsure whether he could add increments or he would have to add the total to the savings progress, which was kind of confusing for the user
 
 3. Trip Breakdown: 9/10
    - *Explanation:* Around the same as participant 1, the user was able to understand the breakdown of the trip.
@@ -146,17 +146,62 @@ Participant 2 Evaluation (Completed by Manjot Kaur)
 
 **Observations:**
 
-- The participant completed all three tasls quickly, with the total time being 5 minutes.
-- Uncertainty around incrementing vs total savings shows that the labels for savings goal could be more explicit
+- The participant completed all three tasks quickly, with the total time being 5 minutes.
+- Uncertainty around incrementing versus total savings shows that the labels for savings goal could be more explicit
 - The suggestion about adding symbols to symbols to buttons shows that there can still be more to add.
 
 **What Worked Well:**
 
 - User was able to create a new trip without any guidance from me, showing that it is easy to navigate
-- Trip Breakdown visualization meets user expectations for clarity ad comprehensiveness
+- Trip Breakdown visualization meets user expectations for clarity and comprehensiveness
 - Overall layout and language appears to be user-friendly
 
 **Areas for Improvement:**
 
 - Clarify savings update control, add a label showing what adding savings does.
 - Add icon labels to improve user-friendliness.
+
+
+### Participant 4 Evaluation (Completed by Vikram Singh)
+
+#### Results
+
+**Task Completion Time:**
+
+- Task 1 (Create a New account): 1 minute
+- Task 2 (Create a New Trip): 1 minute
+- Task 3 (Update Savings): 1 minute
+- Task 4 (View Trip Breakdown): 2 minutes
+
+**Ratings:**
+
+1. Creating a Trip: 8/10
+   - *Explanation:* The participant was able to create a trip and goal pretty easily. He claimed it was efficient and straightforward.
+
+2. Saving Progress Update: 6/10
+   - *Explanation:* Around the same as participant 3, Participant did not know what the savings goal labels meant.
+     
+3. Trip Breakdown: 9/10
+   - *Explanation:* The trip breakdown was easy to read and comprehend by the participant. 
+
+**Feedback:**
+
+> "User interface was clean and organized. I understood what the program was doing."
+
+#### Reflection
+
+**Observations:**
+
+- Participant was able to figure out Penny Pilot pretty quickly, indicating our application has good base functionality and usability
+- The confusion on savings goal labels suggests that said labels were not explicit or clear enough
+- According to the participant, our program lacked visual components
+  
+**What Worked Well:**
+
+- Our clean user interface worked pretty well to help the participant understand what the application was doing
+- The ease of creating a trip and saving a goal shows that our program is very user-friendly
+  
+**Areas for Improvement:**
+
+- Add explicit label to show what saving a goal does
+- Add more visual components to make program more appealing to use
