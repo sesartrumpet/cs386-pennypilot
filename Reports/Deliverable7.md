@@ -66,7 +66,7 @@ The test uses PyAutoGUI to simulate user actions and captures before/after scree
 
 > "The app is pretty easy to use, but it would be great if I could add custom categories for expenses. I think the bar graph could be more prominent."
 
-Participant 2 Evaluation (Completed by Manjot Kaur)
+### Participant 2 Evaluation (Completed by Manjot Kaur)
 
 #### Results
 
