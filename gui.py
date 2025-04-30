@@ -376,7 +376,9 @@ class PennyPilotApp:
         Args:
             event: The focus event
         """
-        if not self.int_input.get():
+        current_value = self.int_input.get()
+        # Only restore placeholder if the field is empty or contains "Already Saved"
+        if not current_value or current_value == "Already Saved":
             self.int_input.insert(0, "Already Saved")
             self.int_input.config(fg='grey')
     
@@ -1156,10 +1158,31 @@ def show_progress_window(data):
         """
         if main_window:
             main_window.deiconify()
+            
+            # Create the app instance
             app = PennyPilotApp(main_window, data.get('userName'))
+            
+            # Get the current money saved value from the data dictionary
+            money_saved = data.get('money_saved', 0)
+            print(f"DEBUG: Setting money saved to {money_saved}")
+            
+            # Temporarily unbind the placeholder event handlers
+            app.int_input.unbind("<FocusIn>")
+            app.int_input.unbind("<FocusOut>")
+            
+            # Clear the placeholder text and set the actual value
             app.int_input.delete(0, tk.END)
-            app.int_input.insert(0, str(int(total_saved)))
+            app.int_input.insert(0, str(int(money_saved)))
             app.int_input.config(fg='black')
+            
+            # Rebind the placeholder event handlers
+            app.int_input.bind("<FocusIn>", app.clear_placeholder)
+            app.int_input.bind("<FocusOut>", app.add_placeholder)
+            
+            # Force update the UI
+            app.int_input.update()
+            
+            # Close the progress window
             progress_window.destroy()
 
     # Add change destination button
