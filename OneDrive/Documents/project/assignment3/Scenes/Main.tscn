@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource path="res://assignment3/Scripts/Player.cs" type="Script" id="1"]
+[ext_resource path="res://assignment3/Scripts/Flock.cs" type="Script" id="2"]
+[ext_resource path="res://assignment3/Scenes/Boid.tscn" type="PackedScene" id="3"]
+[ext_resource path="res://assignment3/Scripts/FlockTrigger.cs" type="Script" id="4"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 36.0
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+script = ExtResource("1")
+position = Vector2(400, 280)
+
+[node name="Flock" type="Node2D" parent="."]
+script = ExtResource("2")
+BoidScene = ExtResource("3")
+PlayerPath = NodePath("../Player")
+Count = 60
+ChaseRadius = 240.0
+ChaseSeconds = 6.0
+SeekWeight = 1.2
+
+[node name="DoorTrigger" type="Area2D" parent="."]
+script = ExtResource("4")
+FlockPath = NodePath("../Flock")
+position = Vector2(720, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorTrigger"]
+shape = SubResource("1")
